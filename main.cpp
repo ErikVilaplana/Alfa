@@ -3,6 +3,7 @@
 int main()
 {
 //este es un comentario para ver si puedo editar en el archivo de ViLaPlanK
+//     Si puedo leerlo, pedazo de gato
     //Inicializacion Ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Prueba jueguito v0");
     window.setFramerateLimit(60);
