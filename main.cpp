@@ -5,7 +5,7 @@ int main()
 <<<<<<< HEAD
 //este es un comentario para ver si puedo editar en el archivo de ViLaPlanK
 //     Si puedo leerlo, pedazo de gato
-// aber si yo puedo
+// aber si yo puedo. Tengo el peor internet de la historia, lloro mientras escribo
 =======
     //ERIK VILAPUNK COMO TE VA?
     //Inicializacion Ventana
