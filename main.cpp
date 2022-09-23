@@ -2,8 +2,12 @@
 
 int main()
 {
+<<<<<<< HEAD
 //este es un comentario para ver si puedo editar en el archivo de ViLaPlanK
 //     Si puedo leerlo, pedazo de gato
+=======
+    //ERIK VILAPUNK
+>>>>>>> 5923f82109e8bd173bd60243a681905b0bc4fa6f
     //Inicializacion Ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Prueba jueguito v0");
     window.setFramerateLimit(60);
@@ -19,7 +23,7 @@ int main()
     while (window.isOpen())
     {
         //Read input, perifericos
-        // 
+        //
         //Leer cola de mensajes
         sf::Event event;
         while (window.pollEvent(event))
