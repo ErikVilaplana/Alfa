@@ -2,6 +2,7 @@
 
 int main()
 {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 //este es un comentario para ver si puedo editar en el archivo de ViLaPlanK
 //     Si puedo leerlo, pedazo de gato
@@ -9,6 +10,9 @@ int main()
 =======
     //ERIK VILAPUNK COMO TE VA?
     //Inicializacion Ventana
+=======
+ 
+>>>>>>> Stashed changes
     sf::RenderWindow window(sf::VideoMode(800, 600), "Prueba jueguito v0");
     window.setFramerateLimit(60);
     sf::Sprite NaveProta;
