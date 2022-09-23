@@ -5,6 +5,7 @@ int main()
 <<<<<<< HEAD
 //este es un comentario para ver si puedo editar en el archivo de ViLaPlanK
 //     Si puedo leerlo, pedazo de gato
+// aber si yo puedo
 =======
     //ERIK VILAPUNK COMO TE VA?
     //Inicializacion Ventana
