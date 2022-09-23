@@ -2,7 +2,7 @@
 
 int main()
 {
-
+    //ERIK VILAPUNK
     //Inicializacion Ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Prueba jueguito v0");
     window.setFramerateLimit(60);
@@ -18,7 +18,7 @@ int main()
     while (window.isOpen())
     {
         //Read input, perifericos
-        // 
+        //
         //Leer cola de mensajes
         sf::Event event;
         while (window.pollEvent(event))
