@@ -29,6 +29,8 @@ class Jugador
         _t.loadFromFile(iSrc);
         _spr.setTexture(_t);
     }
+    Jugador();
+    ~Jugador();
     void show(RenderWindow &window);
 
     void control(RenderWindow &window, int pos, Enemigo disp[]);
