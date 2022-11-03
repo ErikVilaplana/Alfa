@@ -1,5 +1,6 @@
-﻿#include "Escena.h"
-#include <SFML/Graphics.hpp>
+﻿
+#include "Escena.h"
+
 void Escena::texto(RenderWindow &w, const char* txt, int tipo, int num, int tam, int pinta, int x, int y)
 {
     if(txt=="")
@@ -9,11 +10,14 @@ void Escena::texto(RenderWindow &w, const char* txt, int tipo, int num, int tam,
         txt=chr;//mirar
     }
     if(tipo==1)
-    {_font.loadFromFile(_ft);
-    }else{_font.loadFromFile(_fd);}
+    {
+        _font.loadFromFile(_ft);
+    }
+    else{_font.loadFromFile(_fd);}
+    
     _text.setFont(_font);
     _text.setString(txt);
-    _text.setCharacterSize(tam);
+    _text.setCharacterSize(tam);///
     _text.setFillColor(Color(pinta));
     _text.setStyle(Text::Bold | Text::Italic);
     _text.setPosition(x,y);
@@ -32,10 +36,10 @@ void Escena::delay(int time)
 }
 void Escena::reset(bool a)
 {
-    _dir=0;
+    
     _x2=1;
     _vel=45;
-    _nEnemigo=35;
+    _nenemigo=35;
 }
 int Escena::getStep()
 {
@@ -45,22 +49,16 @@ int Escena::getVel()
 {
     return _vel;
 }
-int Escena::getDir()
-{
-    return _dir;
-}
+
 int Escena::getNEnemigo()
 {
-    return _nEnemigo;
+    return _nenemigo;
 }
 void Escena::setNEnemigo(int n)
 {
-    _nEnemigo = n;
+    _nenemigo = n;
 }
-void Escena::setDir(int d)
-{
-    _dir = d;
-}
+
 void Escena::setVel(int v)
 {
     _vel=v;

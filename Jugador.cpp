@@ -1,9 +1,16 @@
 ﻿#include "Jugador.h"
+Jugador::Jugador()
+{
+    
+    
+}
+
 
 void Jugador::control(RenderWindow &window, int pos, Enemigo disp[])
 {
     Event e;
     while (window.pollEvent(e))   { if(e.type == Event::Closed) {window.close();}}
+
     if(Keyboard::isKeyPressed(Keyboard::Left) && this-> _x >100) {this-> _x-=8;}
     else if(Keyboard::isKeyPressed(Keyboard::Right) && this-> _x <840){this->_x+=8;}
     else if(Keyboard::isKeyPressed(Keyboard::Escape)){exit(0);}//cerrar juego

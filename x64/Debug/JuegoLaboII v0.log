@@ -1,26 +1,2 @@
-﻿  Base.cpp
-  Enemigo.cpp
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\Enemigo.cpp(69,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\Enemigo.cpp(69,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  Escena.cpp
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\Escena.cpp(19,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\Escena.cpp(19,23): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\Escena.cpp(25,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-  Jugador.cpp
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\Jugador.cpp(26,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\Jugador.cpp(26,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  main.cpp
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(116,79): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(116,59): warning C4309: 'argumento': truncamiento de valor constante
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(117,75): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(117,55): warning C4309: 'argumento': truncamiento de valor constante
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(118,78): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(118,58): warning C4309: 'argumento': truncamiento de valor constante
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(119,67): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(119,47): warning C4309: 'argumento': truncamiento de valor constante
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(120,80): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(120,60): warning C4309: 'argumento': truncamiento de valor constante
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(121,82): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
-C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\main.cpp(121,62): warning C4309: 'argumento': truncamiento de valor constante
-  Generando código...
-  JuegoLaboII v0.vcxproj -> C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\x64\Debug\JuegoLaboII v0.exe
+﻿  main.cpp
+  JuegoLaboII v0.vcxproj -> C:\UTN\JuegoLaboII v0\Alfa\x64\Debug\JuegoLaboII v0.exe

@@ -8,7 +8,6 @@ private:
     Texture _t;
     Sprite _spr;
     bool _hit, _shot;
-    xzczxczxczxasdasd
 
 public:
     
@@ -19,7 +18,7 @@ public:
         _x=x; // posicion en x
         _y=y; // posicion en y
         _w=w; // ancho
-        _h=h, // alto
+        _h=h; // alto
         _shot;
         _hit=0;
 		

@@ -30,7 +30,7 @@ int Enemigo::getStep()
 }
 void Enemigo::setX(int x)
 {
-    _x = x;
+   _x = x;
 }
 void Enemigo::setY(int y)
 {
@@ -80,17 +80,19 @@ void Enemigo::movimiento(int step, int velocidad, int &dir,bool &ban)
 }
 int Enemigo::desplazar()
 {
-    return (30 -(this->_y < 300)*25);
+    return (30 -(this->_y < 300)*25);/// desplaza hacia abajo
 }
 void Enemigo::animando(int step, int velocidad)  
 {
     
-    this->_wx=(step > velocidad/2) ? this->_awx + this->_w : this->_awx; // operador ternario
+    _wx=(step > velocidad/2) ? _awx + _w : _awx; // operador ternario en base a un juego clasico
     
 }
 
 bool Enemigo::colision(Enemigo b[]){
+    
     return this->_x+this->_w > b->getX() && this->_x < b->getX()+b->getW() && this->_y + this->_h > b->getY() && this->_y < b->getY()+b->getH();
     
 }
+
 

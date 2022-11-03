@@ -11,7 +11,7 @@ class Enemigo
     Texture _t;
     Sprite _spr;
     bool _hit, _shot, _ban;
-
+    
     public:
     
     Enemigo(int wx, int wy, int x, int y, int w, int h, const String iSrc){
