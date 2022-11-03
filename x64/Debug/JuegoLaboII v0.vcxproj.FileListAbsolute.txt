@@ -2,3 +2,4 @@ C:\GIT-UTN-TUSP\JUEGO ARKANOID\Proyecto-Juego\JuegoLaboII v0\x64\Debug\JuegoLabo
 C:\UTN\JuegoLaboII v0\Alfa\x64\Debug\JuegoLaboII v0.exe
 C:\Users\Pia\Downloads\Alfa-main\x64\Debug\JuegoLaboII v0.exe
 C:\Users\Pia\Downloads\v3\x64\Debug\JuegoLaboII v0.exe
+C:\Users\Pia\RiderProjects\Alfa\x64\Debug\JuegoLaboII v0.exe

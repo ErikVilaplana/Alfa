@@ -41,7 +41,7 @@ public:
         target.draw();
     }*/
     
-    virtual void dibujar(sf::RenderWindow &w) = 0;
+    //virtual void dibujar(sf::RenderWindow &w) = 0;
     //w.create(sf::VideoMode(1130,600),"Return from hell");
     
 };

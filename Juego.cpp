@@ -38,10 +38,10 @@
 
     void Juego::runJuego() {
         RenderWindow window(VideoMode(1000, 700), "TILED");
-
+        Escena  pantalla;
         Jugador * player = new Jugador(0,  0, 500, 520,   70,  70,"img/Nave.png");
         //init();
-        Escena  pantalla;
+        
 
 
         //arreg
