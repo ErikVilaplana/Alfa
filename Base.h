@@ -7,7 +7,8 @@ private:
     int _wx,_wy,_x,_y,_w,_h,_awx;
     Texture _t;
     Sprite _spr;
-    bool _hit, _shot;xzczxczxczx
+    bool _hit, _shot;
+    xzczxczxczxasdasd
 
 public:
     
