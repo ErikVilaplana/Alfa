@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Escena.h"
 using namespace sf;
-
+// modif de escena
 class Escena 
 {
 private:
