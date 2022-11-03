@@ -6,7 +6,7 @@ using namespace sf;
 class Jugador
 {
     private:
-    int  _vidas=3 , _disparo=3,_pts=0, _record=92000, _velocidad=0;
+    int  _vidas=3 , _disparo=1, _puntos=0, _puntajeAcumulado=0, _velocidad=0;
     
     int _wx,_wy,_x,_y,_w,_h,_awx;
     Texture _t;
@@ -35,7 +35,7 @@ class Jugador
 
     void control(RenderWindow &window, int pos, Enemigo disp[]);
 
-    int getRecord();
+    int getPuntajeAcumulado();
     int getPts();
     int getX();
     int getVidas();

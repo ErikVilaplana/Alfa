@@ -37,9 +37,9 @@
     }
 
     void Juego::runJuego() {
-        RenderWindow window(VideoMode(1000, 700), "TILED");
+        RenderWindow window(VideoMode(1000, 700), "LARAGA.EXE");
         Escena  pantalla;
-        Jugador * player = new Jugador(0,  0, 500, 520,   70,  70,"img/Nave.png");
+        Jugador * player = new Jugador(50,  0, 500,520,   15,  30,"img/SUPERCARROT.png");
         //init();
         
 
@@ -155,7 +155,7 @@
             if(pantalla.getStepCont() > pantalla.getVel()) pantalla.setStep(0);
 
             //estadisticas en pantalla
-            pantalla.texto(window,"",1,player->getRecord(),30,0xFFFF0000FF,890,642);
+            pantalla.texto(window,"",1,player->getPuntajeAcumulado(),30,0xFFFF0000FF,890,642);
             pantalla.texto(window,"",1,player->getPts(),0,0xFFFF0000FF,670,640);
             pantalla.texto(window,"",1,player->getVidas(),30,0xFFFF0000FF,502,616);
             pantalla.texto(window,"normal",2,0,30,0xFFFF0000FF,250,586);

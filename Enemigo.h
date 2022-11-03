@@ -9,7 +9,7 @@ class Enemigo
     int _step=0, _dir=0, _cant=35, _velocidad=45;
     int _wx,_wy,_x,_y,_w,_h,_awx;
     Texture _t;
-    Sprite _spr;
+    Sprite _spriteEnemigo;
     bool _hit, _shot, _ban;
     
     public:
@@ -26,7 +26,7 @@ class Enemigo
         _hit=0;
 		
         _t.loadFromFile(iSrc);
-        _spr.setTexture(_t);
+        _spriteEnemigo.setTexture(_t);
     }
     void show(RenderWindow &window);
 

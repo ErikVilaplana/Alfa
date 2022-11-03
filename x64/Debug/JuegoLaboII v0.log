@@ -1,2 +1,20 @@
-﻿  main.cpp
-  JuegoLaboII v0.vcxproj -> C:\UTN\JuegoLaboII v0\Alfa\x64\Debug\JuegoLaboII v0.exe
+﻿  GamePlay.cpp
+  Juego.cpp
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(158,93): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(158,73): warning C4309: 'argumento': truncamiento de valor constante
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(159,79): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(159,59): warning C4309: 'argumento': truncamiento de valor constante
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(160,82): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(160,62): warning C4309: 'argumento': truncamiento de valor constante
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(161,71): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(161,51): warning C4309: 'argumento': truncamiento de valor constante
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(162,84): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(162,64): warning C4309: 'argumento': truncamiento de valor constante
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(163,86): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+D:\UTN LABORATORIO\Github\Alfa\Juego.cpp(163,66): warning C4309: 'argumento': truncamiento de valor constante
+  Jugador.cpp
+D:\UTN LABORATORIO\Github\Alfa\Jugador.cpp(33,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\UTN LABORATORIO\Github\Alfa\Jugador.cpp(33,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  main.cpp
+  Generando código...
+  JuegoLaboII v0.vcxproj -> D:\UTN LABORATORIO\Github\Alfa\x64\Debug\JuegoLaboII v0.exe

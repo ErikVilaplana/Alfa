@@ -33,13 +33,13 @@ void Jugador::show(RenderWindow &window){
     _spr.setPosition(_x,_y);
     if(!_hit) window.draw(_spr);
 }
-int Jugador::getRecord()
+int Jugador::getPuntajeAcumulado()
 {
-    return this->_record;
+    return this->_puntajeAcumulado;
 }
 int Jugador::getPts()
 {
-    return this->_pts;
+    return this->_puntos;
 }
 int Jugador::getVidas(){
     return this->_vidas;
@@ -53,7 +53,7 @@ int Jugador::getVelocidad()
 }
 void Jugador::setPts(int pts)
 {
-    _pts+=pts;
+    _puntos+=pts;
 }
 int Jugador::getX()
 {
