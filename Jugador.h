@@ -6,7 +6,7 @@ using namespace sf;
 class Jugador
 {
     private:
-    int  _vidas=3 , _disparo=1, _puntos=0, _puntajeAcumulado=0, _velocidad=0;
+    int  _vidas=4 , _disparo=1, _puntos=0, _puntajeAcumulado=0, _velocidad=0;
     
     int _wx,_wy,_x,_y,_w,_h,_awx;
     Texture _t;
