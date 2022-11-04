@@ -92,7 +92,7 @@ void Enemigo::animando(int step, int velocidad)
 bool Enemigo::colision(Enemigo b[]){
     
     return this->_x+this->_w > b->getX() && this->_x < b->getX()+b->getW() && this->_y + this->_h > b->getY() && this->_y < b->getY()+b->getH();
-    
+    //Deberia ir en una clase gameplay, e interactuar con Puntaje de jugador.
 }
 
 

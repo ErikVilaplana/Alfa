@@ -21,7 +21,7 @@ void Jugador::control(RenderWindow &window, int pos, Enemigo disp[])
         { disp->setShot(false); }
     if( disp->getShot() && disp->getY() <= -20)
     {
-        disp->setX(this->_x+30);
+        disp->setX(this->_x+5);
         disp->setY(this->_y-15);
         
     }
