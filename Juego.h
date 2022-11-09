@@ -8,6 +8,7 @@
 #include "Enemigo.h"
 #include "Escena.h"
 #include "Jugador.h"
+#include "Disparo.h"
 using namespace std;
 using namespace sf;
 

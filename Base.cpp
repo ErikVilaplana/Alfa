@@ -1,6 +1,10 @@
 ﻿#include<SFML/Graphics.hpp>
 using namespace sf;
 #include "Base.h"
+Base::Base(){}
+Base::~Base(){}
+
+
 int Base::getWx() 
 {
     return _wx;
@@ -37,4 +41,8 @@ void Base::setX(int x)
 void Base::setY(int y)
 {
     _y = y;
+}
+void Base::setAcuX(int x)
+{
+    _x += x;
 }

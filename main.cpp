@@ -1,7 +1,7 @@
 
 
 #include "Escena.h"
-#include "Base.h"
+
 #include "Enemigo.h"
 #include "Juego.h"
 int main()

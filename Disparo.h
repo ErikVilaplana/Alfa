@@ -1,9 +1,10 @@
 ﻿#pragma once
+
 #include<SFML/Graphics.hpp>
 using namespace sf;
-class Base{
+class Disparo{
     
-protected:
+private:
     int _step=0, _dir=0, _cant=35, _velocidad=45;
     
     int _wx,_wy,_x,_y,_w,_h,_awx;
@@ -13,7 +14,7 @@ protected:
 
 public:
     
-    Base(int wx, int wy, int x, int y, int w, int h){
+    Disparo(int wx, int wy, int x, int y, int w, int h, const String iSrc){
         
         _wx=wx;
         _wy=wy;
@@ -21,7 +22,8 @@ public:
         _y=y; // posicion en y
         _w=w; // ancho
         _h=h; // alto
-        
+        _t.loadFromFile(iSrc);
+        _spr.setTexture(_t);
         
         ///////////////
         _shot=0;
@@ -29,9 +31,10 @@ public:
         _awx=wx;
         
     }
+    Disparo();
+    ~Disparo();
 
-    Base();
-    ~Base();
+    
     void show(RenderWindow &window);
 
     int getAwx();
@@ -45,18 +48,24 @@ public:
     
     int getStep();
     
+    void setShot(bool shot);
+    bool getShot();
+    
     void SetAwx(int awx);
     void SetWx(int wx);
     void SetWy(int wy);
     void setX(int x);
     void setY(int Y);
     
-    void setShot(bool shot);
+    
     void setHit(bool hit);
-    bool getShot();
+    
     void setYacu(int Y);
+    
     void setYacum(int Y);
 
     void setAcuX(int x);
     
+    
 };
+
