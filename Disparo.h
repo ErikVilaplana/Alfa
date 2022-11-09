@@ -1,29 +1,22 @@
 ﻿#pragma once
 
 #include<SFML/Graphics.hpp>
+
+#include "Base.h"
 using namespace sf;
-class Disparo{
+class Disparo : public Base{
     
 private:
     int _step=0, _dir=0, _cant=35, _velocidad=45;
     
-    int _wx,_wy,_x,_y,_w,_h,_awx;
+    
     Texture _t;
     Sprite _spr;
     bool _hit, _shot;
 
 public:
     
-    Disparo(int wx, int wy, int x, int y, int w, int h, const String iSrc){
-        
-        _wx=wx;
-        _wy=wy;
-        _x=x; // posicion en x
-        _y=y; // posicion en y
-        _w=w; // ancho
-        _h=h; // alto
-        _t.loadFromFile(iSrc);
-        _spr.setTexture(_t);
+    Disparo(int wx, int wy, int x, int y, int w, int h, const String iSrc): Base(wx,  wy, x,  y,  w,  h, iSrc){
         
         ///////////////
         _shot=0;
@@ -35,7 +28,7 @@ public:
     ~Disparo();
 
     
-    void show(RenderWindow &window);
+    
 
     int getAwx();
     int getWx();

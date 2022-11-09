@@ -16,17 +16,15 @@ class Enemigo : public Base
     
     public:
     
-    Enemigo(int wx, int wy, int x, int y, int w, int h, const String iSrc): Base(wx,  wy, x,  y,  w,  h){
+    Enemigo(int wx, int wy, int x, int y, int w, int h, const String iSrc): Base(wx,  wy, x,  y,  w,  h, iSrc){
     
         _shot=0;
         _hit=0;
 		
-        _t.loadFromFile(iSrc);
-        _spr.setTexture(_t);
     }
     Enemigo();
     ~Enemigo();
-    void show(RenderWindow &window);
+    
 
     int getWx();
     int getAwx();

@@ -1,7 +1,4 @@
-﻿
-
-
-#include "Disparo.h"
+﻿#include "Disparo.h"
 Disparo::Disparo()
 {
     
@@ -61,11 +58,7 @@ void Disparo::setYacum(int y)
     _y -= y;
 }
 
-void Disparo::show(RenderWindow &window){
-    _spr.setTextureRect(IntRect(_wx,_wy,_w,_h));
-    _spr.setPosition(_x,_y);
-    if(!_hit) window.draw(_spr);
-}
+
 
 bool Disparo::getShot()
 {

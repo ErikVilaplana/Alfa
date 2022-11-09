@@ -37,8 +37,9 @@
     }
 
     void Juego::runJuego() {
-        RenderWindow window(VideoMode(1000, 700), "TILED");
-
+        RenderWindow window(VideoMode(1024, 720), "Laraga");
+        //Prepara Tablero Score
+        
        
         //init();
         Escena  pantalla;
@@ -46,8 +47,7 @@
         Jugador player(0,  0, 500, 520,   70,  70, "img/Nave.png");
         
         
-        //arreg
-        Jugador *escena = new Jugador(  0, 250, 0, 584, 1024, 120, "img/itens.png");
+        Base escena(  0, 250, 0, 584, 1024, 120, "img/itens.png");
 
         // Crea player
         
@@ -151,7 +151,8 @@
             player.show(window);
             
             disparoNave.show(window);
-            escena->show(window);
+            
+            escena.show(window);
 
             if ((ban && pantalla.getVel()==pantalla.getVel()/2) || enemigo[6][4]->getY() < 300)
             {

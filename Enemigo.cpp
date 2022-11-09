@@ -68,11 +68,7 @@ bool Enemigo::getHit()
 }
 
 
-void Enemigo::show(RenderWindow &window){
-    _spr.setTextureRect(IntRect(_wx,_wy,_w,_h));
-    _spr.setPosition(_x,_y);
-    if(!_hit) window.draw(_spr);
-}
+
 void Enemigo::movimiento(int step, int velocidad, int &dir,bool &ban)
 {
     

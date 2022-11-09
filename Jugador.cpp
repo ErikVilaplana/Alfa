@@ -33,11 +33,7 @@ void Jugador::control(RenderWindow &window, int pos, Disparo &disp)
     if(disp.getY() > -20) disp.setYacum(5);
     
 }
-void Jugador::show(RenderWindow &window){
-    _spr.setTextureRect(IntRect(_wx,_wy,_w,_h));
-    _spr.setPosition(_x,_y);
-    if(!_hit) window.draw(_spr);
-}
+
 int Jugador::getRecord()
 {
     return this->_record;

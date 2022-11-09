@@ -16,18 +16,14 @@ class Jugador : public Base
     
     Jugador();
 
-    Jugador(int wx, int wy, int x, int y, int w, int h, const String iSrc) : Base(wx,  wy, x,  y,  w,  h){
-        
+    Jugador(int wx, int wy, int x, int y, int w, int h, const String iSrc) : Base(wx,  wy, x,  y,  w,  h, iSrc){
         
         _shot=0;
         _hit=0;
-        
-        _t.loadFromFile(iSrc);
-        _spr.setTexture(_t);
     }
     
     ~Jugador();
-    void show(RenderWindow &window);
+    
 
     void control(RenderWindow &window, int pos, Disparo &disp);
 

@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <SFML/Graphics.hpp>
-#include "Escena.h"
+
 using namespace sf;
 
 class Escena 
@@ -13,9 +13,7 @@ private:
     Text _text;
     Font _font;
     bool _ban;///no
-    VideoMode vid;
     
-        
     
     const char * _fu="img/galaga.ttf", *_fd="img/JetBrainsMonoNL-Bold.ttf", * _ft="img/Comication.ttf";
 public:

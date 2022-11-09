@@ -1,6 +1,6 @@
-﻿#include<SFML/Graphics.hpp>
-using namespace sf;
-#include "Base.h"
+﻿#include "Base.h"
+
+
 Base::Base(){}
 Base::~Base(){}
 
@@ -45,4 +45,9 @@ void Base::setY(int y)
 void Base::setAcuX(int x)
 {
     _x += x;
+}
+void Base::show(RenderWindow &window){
+    _spr.setTextureRect(IntRect(_wx,_wy,_w,_h));
+    _spr.setPosition(_x,_y);
+    if(!_hit) window.draw(_spr);
 }

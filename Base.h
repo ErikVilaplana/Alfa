@@ -13,7 +13,7 @@ protected:
 
 public:
     
-    Base(int wx, int wy, int x, int y, int w, int h){
+    Base(int wx, int wy, int x, int y, int w, int h,const String iSrc){
         
         _wx=wx;
         _wy=wy;
@@ -22,7 +22,8 @@ public:
         _w=w; // ancho
         _h=h; // alto
         
-        
+        _t.loadFromFile(iSrc);
+        _spr.setTexture(_t);
         ///////////////
         _shot=0;
         _hit=0;
@@ -32,6 +33,7 @@ public:
 
     Base();
     ~Base();
+
     void show(RenderWindow &window);
 
     int getAwx();
