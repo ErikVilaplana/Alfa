@@ -33,13 +33,6 @@ public:
     void setStep(int s);
     RenderWindow getWindow(int w=1024, int h=720);
     int getStepCont();
-    RenderWindow drawt();
-    /*void draw(RenderTarget& target, RenderStates state) const
-    {
-        target.draw();
-    }*/
     
-    
-    //w.create(sf::VideoMode(1130,600),"Return from hell");
     
 };

@@ -7,12 +7,6 @@ using namespace sf;
 class Disparo : public Base{
     
 private:
-    int _step=0, _dir=0, _cant=35, _velocidad=45;
-    
-    
-    Texture _t;
-    Sprite _spr;
-    bool _hit, _shot;
 
 public:
     

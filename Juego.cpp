@@ -37,19 +37,17 @@
     }
 
     void Juego::runJuego() {
+        Escena  pantalla;
+
         RenderWindow window(VideoMode(1024, 720), "Laraga");
         //Prepara Tablero Score
         
-       
-        //init();
-        Escena  pantalla;
-
-        Jugador player(0,  0, 500, 520,   70,  70, "img/Nave.png");
-        
         
         Base escena(  0, 250, 0, 584, 1024, 120, "img/itens.png");
-
+        //init();
+        
         // Crea player
+        Jugador player(0,  0, 500, 520,   70,  70, "img/Nave.png");
         
         
         //Disparo Player and Enemy
@@ -59,11 +57,8 @@
         
         int dir=0, outsrc=670;
         
-        ///
-        Enemigo * enemigo[7][5];
-
-        
         // crea los enemigos
+        Enemigo * enemigo[7][5];
         for(int i = 0; i < 7; i++)
         {
             for(int j = 0; j < 5; j++)

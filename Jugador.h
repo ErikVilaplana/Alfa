@@ -8,8 +8,7 @@ class Jugador : public Base
 {
     private:
     int  _vidas=3 , _disparo=3,_pts=0, _record=92000, _velocidad=0;
-    Texture _t;
-    Sprite _spr;
+    
     bool _hit, _shot;
 
     public:
