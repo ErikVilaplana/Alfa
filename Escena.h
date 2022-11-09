@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <SFML/Graphics.hpp>
-#include "Escena.h"
+
 using namespace sf;
 
 class Escena 
@@ -13,9 +13,7 @@ private:
     Text _text;
     Font _font;
     bool _ban;///no
-    VideoMode vid;
     
-        
     
     const char * _fu="img/galaga.ttf", *_fd="img/JetBrainsMonoNL-Bold.ttf", * _ft="img/Comication.ttf";
 public:
@@ -35,13 +33,6 @@ public:
     void setStep(int s);
     RenderWindow getWindow(int w=1024, int h=720);
     int getStepCont();
-    RenderWindow drawt();
-    /*void draw(RenderTarget& target, RenderStates state) const
-    {
-        target.draw();
-    }*/
     
-    virtual void dibujar(sf::RenderWindow &w) = 0;
-    //w.create(sf::VideoMode(1130,600),"Return from hell");
     
 };

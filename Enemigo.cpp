@@ -1,4 +1,17 @@
 ﻿#include "Enemigo.h"
+
+Enemigo::Enemigo()
+{
+    
+}
+Enemigo::~Enemigo()
+{
+    
+}
+
+
+
+
 int Enemigo::getWx() 
 {
     return _wx;
@@ -64,11 +77,7 @@ bool Enemigo::getHit()
 }
 
 
-void Enemigo::show(RenderWindow &window){
-    _spr.setTextureRect(IntRect(_wx,_wy,_w,_h));
-    _spr.setPosition(_x,_y);
-    if(!_hit) window.draw(_spr);
-}
+
 void Enemigo::movimiento(int step, int velocidad, int &dir,bool &ban)
 {
     
@@ -89,9 +98,9 @@ void Enemigo::animando(int step, int velocidad)
     
 }
 
-bool Enemigo::colision(Enemigo b[]){
+bool Enemigo::colision(Disparo b){
     
-    return this->_x+this->_w > b->getX() && this->_x < b->getX()+b->getW() && this->_y + this->_h > b->getY() && this->_y < b->getY()+b->getH();
+    return this->_x+this->_w > b.getX() && this->_x < b.getX()+b.getW() && this->_y + this->_h > b.getY() && this->_y < b.getY()+b.getH();
     
 }
 
