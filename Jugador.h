@@ -6,7 +6,11 @@ using namespace sf;
 class Jugador
 {
     private:
+<<<<<<< Updated upstream
     int  _vidas=4 , _disparo=1, _puntos=0, _puntajeAcumulado=0, _velocidad=0;
+=======
+        int  _vidas = 3, _disparo = 3, _pts = 0, _record = 92000, _velocidad = 0, _multiplicador = 1;
+>>>>>>> Stashed changes
     
     int _wx,_wy,_x,_y,_w,_h,_awx;
     Texture _t;
@@ -41,7 +45,9 @@ class Jugador
     int getVidas();
     int getDisparo();
     int getVelocidad();
+    int getMultiplicador();
     
+    void setMultiplicador(int m);
     void setPts(int pts);
     void setVidas(int v);
     void setHit(int h);

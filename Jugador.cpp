@@ -15,11 +15,22 @@ void Jugador::control(RenderWindow &window, int pos, Enemigo disp[])
     else if(Keyboard::isKeyPressed(Keyboard::Right) && this-> _x <840){this->_x+=8;}
     else if(Keyboard::isKeyPressed(Keyboard::Escape)){exit(0);}//cerrar juego
     // disparos
+<<<<<<< Updated upstream
     else if(Keyboard::isKeyPressed(Keyboard::Space) && (pos >= 300) && disp->getY() <=-20)
     {   disp->setShot(true);
     }else
         { disp->setShot(false); }
     if( disp->getShot() && disp->getY() <= -20)
+=======
+    else if(Keyboard::isKeyPressed(Keyboard::Space) && (pos >= 300) && disp.getY() <=-20)
+    {   disp.setShot(true);
+    }
+    else
+    {
+        disp.setShot(false);
+    }
+    if( disp.getShot() && disp.getY() <= -20)
+>>>>>>> Stashed changes
     {
         disp->setX(this->_x+5);
         disp->setY(this->_y-15);
@@ -50,6 +61,14 @@ int Jugador::getDisparo(){
 int Jugador::getVelocidad()
 {
     return this->_velocidad;
+}
+int Jugador::getMultiplicador()
+{
+    return _multiplicador;
+}
+void Jugador::setMultiplicador(int m)
+{
+    _multiplicador = m;
 }
 void Jugador::setPts(int pts)
 {

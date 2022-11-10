@@ -101,9 +101,18 @@
                         if(enemigo[i][j]->colision(disp[2]))
                         {
                             pantalla.setNEnemigo(pantalla.getNEnemigo()-1);
+<<<<<<< Updated upstream
                             player->setPts(15);
                             enemigo[i][j]->setHit(true); ///fuera eliminado
                             disp[2]->setY(-100) ;/// fuera
+=======
+                            player.setPts(10*player.getMultiplicador());
+                            enemigo[i][j]->setHit(true); ///fuera eliminado
+                            disparoNave.setY(-100) ;/// fuera
+                            cout << player.getPts() << endl;  //Prueba, muestra puntaje en CMD
+                            if (player.getMultiplicador() < 5)player.setMultiplicador(player.getMultiplicador() + 1); //Suma multiplicador
+                            
+>>>>>>> Stashed changes
                         }
 
                         //movimiento <- ->
@@ -155,12 +164,21 @@
             if(pantalla.getStepCont() > pantalla.getVel()) pantalla.setStep(0);
 
             //estadisticas en pantalla
+<<<<<<< Updated upstream
             pantalla.texto(window,"",1,player->getPuntajeAcumulado(),30,0xFFFF0000FF,890,642);
             pantalla.texto(window,"",1,player->getPts(),0,0xFFFF0000FF,670,640);
             pantalla.texto(window,"",1,player->getVidas(),30,0xFFFF0000FF,502,616);
             pantalla.texto(window,"normal",2,0,30,0xFFFF0000FF,250,586);
             pantalla.texto(window,"",1,player->getDisparo(),30,0xFFFF0000FF,824,588);
             pantalla.texto(window,"",1,player->getVelocidad(),30,0xFFFF0000FF,318,644);
+=======
+            pantalla.texto(window,"",1,player.getRecord(),30,0xFF85C1E9FF,750,642);
+            pantalla.texto(window,"",2,player.getPts(),30,0xFFFFAA00FF,420,642);
+            pantalla.texto(window,"",1,player.getVidas(),30,0xFFB2BABBFF,570,592);
+            pantalla.texto(window,"",1,player.getMultiplicador(), 30, 0xFFFF0000FF, 250, 642);
+            pantalla.texto(window,"",1,player.getDisparo(),30,0xFF8E44ADFF,780,592);
+            pantalla.texto(window,"",1,player.getVelocidad(),30,0xFFEDBB99FF,350,592);
+>>>>>>> Stashed changes
 
             
             window.display();

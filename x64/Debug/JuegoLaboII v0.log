@@ -1,4 +1,26 @@
+<<<<<<< Updated upstream
 ﻿  Jugador.cpp
 C:\UTN\JuegoLaboII v0\Alfa\Jugador.cpp(33,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\UTN\JuegoLaboII v0\Alfa\Jugador.cpp(33,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+=======
+﻿  Escena.cpp
+C:\UTN\JuegoLaboII v0\Alfa\Escena.cpp(23,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UTN\JuegoLaboII v0\Alfa\Escena.cpp(23,23): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UTN\JuegoLaboII v0\Alfa\Escena.cpp(29,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  Juego.cpp
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(171,82): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(171,62): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(172,79): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(172,59): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(173,81): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(173,61): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(174,93): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(174,71): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(175,83): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(175,63): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(176,85): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(176,65): warning C4309: 'argumento': truncamiento de valor constante
+  main.cpp
+  Generando código...
+>>>>>>> Stashed changes
   JuegoLaboII v0.vcxproj -> C:\UTN\JuegoLaboII v0\Alfa\x64\Debug\JuegoLaboII v0.exe
