@@ -23,7 +23,8 @@ public:
     void update();// reset o pasa nivel
     void draw();
     void deInit();// precargar
-    void runJuego();///////// 
+    void runJuego();/////////
+     
 };
 
 

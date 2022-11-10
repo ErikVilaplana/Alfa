@@ -44,6 +44,7 @@
         
         
         Base escena(  0, 250, 0, 584, 1024, 120, "img/itens.png");
+        Base explosion(  115, 0, 100, 100, 50, 48, "img/itens.png");
         //init();
         
         // Crea player
@@ -54,8 +55,6 @@
         Disparo disparoEnemigo(200, 0, -100, -100, 7,12,"img/itens.png");
         Disparo disparoEnemigoDos(200, 0, -100, -100, 7,12,"img/itens.png");
         Disparo disparoNave(200, 0, -100, -100, 7,12,"img/itens.png");
-        
-        int dir=0, outsrc=670;
         
         // crea los enemigos
         Enemigo * enemigo[7][5];
@@ -70,17 +69,9 @@
         // Main Juego loop
         while (window.isOpen())
         {
-            /*// Process events
-            sf::Event event;
-            while (window.pollEvent(event)) {
-                // Close window : exit
-                if (event.type == sf::Event::Closed)
-                    window.close();
-            }
-            update();
-            draw();*/
-            int t_sort= rand() %10;
-            bool ban=false;
+            pantalla.setTsort(rand() %10); 
+            pantalla.getBan();
+            
 
             //disparo del player se panda la posición del los enemigos cargados y el objeto disparo
             player.control(window, enemigo[6][4]->getY() ,  disparoNave);
@@ -92,12 +83,12 @@
                 /// prparar disparo del enemigo alternando turno de disparo
                 if(i==0)
                 {
-                    if(disparoEnemigo.getY() < outsrc)disparoEnemigo.setYacu(5);
+                    if(disparoEnemigo.getY() < pantalla.getOutsrc())disparoEnemigo.setYacu(5);
                     disparoEnemigo.show(window);
                     
                 }else if(i==1)
                 {
-                    if(disparoEnemigoDos.getY() < outsrc)disparoEnemigoDos.setYacu(5);
+                    if(disparoEnemigoDos.getY() < pantalla.getOutsrc())disparoEnemigoDos.setYacu(5);
                     disparoEnemigoDos.show(window);
                 }
 
@@ -111,24 +102,27 @@
                             pantalla.setNEnemigo(pantalla.getNEnemigo()-1);
                             player.setPts(15);
                             enemigo[i][j]->setHit(true); ///fuera eliminado
+                            explosion.setX(enemigo[i][j]->getX());
+                            explosion.setY(enemigo[i][j]->getY());
+                            pantalla.setTexp(10);
                             disparoNave.setY(-100) ;/// fuera
                         }
 
                         //movimiento <- ->
-                        enemigo[i][j]->movimiento(pantalla.getStep(),pantalla.getVel(), dir, ban);
+                        enemigo[i][j]->movimiento(pantalla.getStep(),pantalla.getVel(), pantalla.getDir(), pantalla.getBan());
                         //animacion
                         enemigo[i][j]->animando(pantalla.getStep(),pantalla.getVel());
                         
                         enemigo[i][j]->show(window);
                         
                         /// disparo de loss aliens mirar q solo dispara la primer linea
-                        if(t_sort == i && player.getX() && disparoEnemigo.getY()>=outsrc)
+                        if(pantalla.getTsort() == i && player.getX() && disparoEnemigo.getY()>=pantalla.getOutsrc())
                         {
                             disparoEnemigo.setX(enemigo[i][j]->getX() + enemigo[i][j]->getW()/2);
                             disparoEnemigo.setY(enemigo[i][j]->getY());
                         }
 
-                        if(enemigo[i][j]->getX()== player.getX() && disparoEnemigoDos.getY()>=outsrc)
+                        if(enemigo[i][j]->getX()== player.getX() && disparoEnemigoDos.getY()>=pantalla.getOutsrc())
                         {
                             disparoEnemigoDos.setX(enemigo[i][j]->getX() + enemigo[i][j]->getW()/2);
                             disparoEnemigoDos.setY(enemigo[i][j]->getY());
@@ -142,6 +136,9 @@
             if(pantalla.getNEnemigo()==20)pantalla.setVel(35);
             if(pantalla.getNEnemigo()==10)pantalla.setVel(20);
             if(pantalla.getNEnemigo()==5)pantalla.setVel(10);
+
+            // manejo de explosion
+            if(pantalla.getTexp()){ explosion.show(window); pantalla.setTexpCont(); }
             
             player.show(window);
             
@@ -149,7 +146,7 @@
             
             escena.show(window);
 
-            if ((ban && pantalla.getVel()==pantalla.getVel()/2) || enemigo[6][4]->getY() < 300)
+            if ((pantalla.getBan() && pantalla.getVel()==pantalla.getVel()/2) || enemigo[6][4]->getY() < 300)
             {
                 for(int i=0; i<7; i++)
                 {
@@ -181,3 +178,4 @@
         }
         deInit();
     }
+
