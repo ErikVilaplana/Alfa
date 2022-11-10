@@ -88,7 +88,7 @@
                 /// prparar disparo del enemigo
                 if(i<2)
                 {
-                    if(disp[i]->getY() < outsrc)disp[i]->setYacu(5);
+                    if(disp[i]->getY() < outsrc)disp[i]->setYacu(20);
 
                     disp[i]->show(window);
                 }
@@ -165,6 +165,7 @@
 
             //estadisticas en pantalla
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             pantalla.texto(window,"",1,player->getPuntajeAcumulado(),30,0xFFFF0000FF,890,642);
             pantalla.texto(window,"",1,player->getPts(),0,0xFFFF0000FF,670,640);
             pantalla.texto(window,"",1,player->getVidas(),30,0xFFFF0000FF,502,616);
@@ -180,6 +181,14 @@
             pantalla.texto(window,"",1,player.getVelocidad(),30,0xFFEDBB99FF,350,592);
 >>>>>>> Stashed changes
 
+=======
+            pantalla.texto(window,"",1,player->getPuntajeAcumulado(),30,0xFFFFA500FF,630,642);
+            pantalla.texto(window,"",1,player->getPts(),0,0xFFFFA500FF,670,640);
+            pantalla.texto(window,"",1,player->getVidas(),30,0xFFFFA500FF,600,590);
+            pantalla.texto(window,"Normal",2,0,23,0xFFFFA500FF,400,600);
+            pantalla.texto(window,"",1,player->getDisparo(),30,0xFFFFA500FF,824,588);
+            pantalla.texto(window,"",1,player->getVelocidad(),30,0xFFFFA500FF,318,644);
+>>>>>>> Stashed changes
             
             window.display();
             

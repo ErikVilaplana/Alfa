@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿  Jugador.cpp
 C:\UTN\JuegoLaboII v0\Alfa\Jugador.cpp(33,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\UTN\JuegoLaboII v0\Alfa\Jugador.cpp(33,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
@@ -22,5 +23,20 @@ C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(176,85): warning C4305: 'argumento': trunca
 C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(176,65): warning C4309: 'argumento': truncamiento de valor constante
   main.cpp
   Generando código...
+>>>>>>> Stashed changes
+=======
+﻿  Juego.cpp
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(158,93): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(158,73): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(159,79): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(159,59): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(160,82): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(160,62): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(161,71): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(161,51): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(162,84): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(162,64): warning C4309: 'argumento': truncamiento de valor constante
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(163,86): warning C4305: 'argumento': truncamiento de '__int64' a 'int'
+C:\UTN\JuegoLaboII v0\Alfa\Juego.cpp(163,66): warning C4309: 'argumento': truncamiento de valor constante
 >>>>>>> Stashed changes
   JuegoLaboII v0.vcxproj -> C:\UTN\JuegoLaboII v0\Alfa\x64\Debug\JuegoLaboII v0.exe
