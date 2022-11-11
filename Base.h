@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include<SFML/Graphics.hpp>
+
 using namespace sf;
 class Base{
     
@@ -60,5 +61,6 @@ public:
     void setYacum(int Y);
 
     void setAcuX(int x);
+    
     
 };

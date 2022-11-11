@@ -7,6 +7,7 @@
 int main()
 {
     Juego juego;
+    juego.init();
     juego.runJuego();
 
     return 0;

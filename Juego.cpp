@@ -1,7 +1,9 @@
 ﻿#include "Juego.h"
 
+#include "Menu.h"
 
-    Juego::Juego() {
+
+Juego::Juego() {
 
     }
 
@@ -11,14 +13,93 @@
 
 
     void Juego::init() {
-        // map.ShowObjects(); // Display all the layer objects.
-        //Estudiante * vector = new Estudiante[cantA]{}
-
+    
+        Escena pantalla;
+        RenderWindow w(VideoMode(pantalla.getWidth(), pantalla.getHeight()),"lala");
+        Menu menu(pantalla.getWidth(), pantalla.getHeight());
         
-        
-      //  Enemigo * enemigd;
-    //    enemigd = new Enemigo[f]{};
+        while(w.isOpen()){
+            ///Quitar todos los  eventos en cola de la ventana
+            sf::Event event;
+            while(w.pollEvent(event)){
+                switch (event.type){
+                case sf::Event::JoystickMoved:
+                    if(event.joystickMove.axis == sf::Joystick::Y){
+                        if(event.joystickMove.position > 95.f ){
+                            menu.moverabajo();
+                            
+                        }
+                        if(event.joystickMove.position < -95.f){
+                            menu.moverarriba();
+                            
+                        }
+                    }
+                    break;
+                case sf::Event::JoystickButtonPressed:
+                    switch(menu.presionaritem()){
+                case 0:
+                    
+                    
+                    
+                        break;
+                case 1:
+                    
+                        break;
+                case 2:
+                    
+                        break;
+                case 3:
+                    
+                        w.close();
+                        break;
+                    }
+                    break;
+                    /*
+                case sf::Event::KeyReleased:
+                switch(event.key.code){
+                case sf::Keyboard::Up:
+                menu.moverarriba();
+                Soundmenu.play();
+                break;
+                case sf::Keyboard::Down:
+                menu.moverabajo();
+                Soundmenu.play();
+                break;
+                case sf::Keyboard::Return:
+                switch(menu.presionaritem()){
+                case 0:
+                Soundmenu.play();
+                dosplayer=0;
+                MenuInicio();
+                break;
+                case 1:
+                Soundmenu.play();
+                dosplayer=1;
+                MenuInicio();
+                break;
+                case 2:
+                Soundmenu.play();
+                Menudificultad();
+                break;
+                case 3:
+                Soundmenu.play();
+                w.close();
+                break;
+                }
+                break;
+                }
+                break;*/
+                    case sf::Event::Closed:
+                    
+                    w.close();
+                    break;
+                }
+            }
+            menu.dibujar(w);
+            w.display();
+        }
     }
+    
 
     void Juego::update() {
 
@@ -34,12 +115,15 @@
     }
 
     void Juego::deInit() {
+
     }
 
     void Juego::runJuego() {
         Escena  pantalla;
 
-        RenderWindow window(VideoMode(1024, 720), "Laraga");
+        
+     
+        RenderWindow window(VideoMode(pantalla.getWidth(), pantalla.getHeight()), "Laraga");
         //Prepara Tablero Score
         
         
@@ -80,14 +164,34 @@
             
             for(int i = 0; i < 7; i++)
             {
+                
                 /// prparar disparo del enemigo alternando turno de disparo
-                if(i==0)
-                {
+                if(i==0){
+                    if(player.colision(disparoEnemigo) && !player.getHit())
+                    {
+                        disparoEnemigo.setY(pantalla.getOutsrc());
+                        player.setHit(true);
+                        
+                        explosion.setX(player.getX());
+                        explosion.setY(player.getY());
+                        pantalla.setTexp(10);
+                        
+                    } 
                     if(disparoEnemigo.getY() < pantalla.getOutsrc())disparoEnemigo.setYacu(5);
                     disparoEnemigo.show(window);
                     
                 }else if(i==1)
                 {
+                    if(player.colision(disparoEnemigoDos) && !player.getHit())
+                    {
+                        disparoEnemigoDos.setY(pantalla.getOutsrc());
+                        player.setHit(true);
+                        
+                        explosion.setX(player.getX());
+                        explosion.setY(player.getY());
+                        pantalla.setTexp(10);
+                        
+                    } 
                     if(disparoEnemigoDos.getY() < pantalla.getOutsrc())disparoEnemigoDos.setYacu(5);
                     disparoEnemigoDos.show(window);
                 }
@@ -97,7 +201,7 @@
                 {
                     if(!enemigo[i][j]->getHit())
                     {
-                        if(enemigo[i][j]->colision(disparoNave))
+                        if(enemigo[i][j]->colision(disparoNave) )
                         {
                             pantalla.setNEnemigo(pantalla.getNEnemigo()-1);
                             player.setPts(15);
@@ -137,6 +241,8 @@
             if(pantalla.getNEnemigo()==10)pantalla.setVel(20);
             if(pantalla.getNEnemigo()==5)pantalla.setVel(10);
 
+            if(pantalla.getNEnemigo()==0)pantalla.reset(player);
+
             // manejo de explosion
             if(pantalla.getTexp()){ explosion.show(window); pantalla.setTexpCont(); }
             
@@ -163,14 +269,32 @@
 
             //estadisticas en pantalla
             pantalla.texto(window,"",1,player.getRecord(),30,0xFFFF0000FF,890,642);
-            pantalla.texto(window,"",1,player.getPts(),0,0xFFFF0000FF,670,640);
-            pantalla.texto(window,"",1,player.getVidas(),30,0xFFFF0000FF,502,616);
-            pantalla.texto(window,"normal",2,0,30,0xFFFF0000FF,250,586);
+            pantalla.texto(window,"",1,player.getPts(),30,0xFFFF0000FF,600,640);
+            pantalla.texto(window,"",1,player.getVidas(),30,0xFFFF0000FF,570,580);
+            pantalla.texto(window,"normal",2,0,30,0xFFFF0000FF,180,586);
             pantalla.texto(window,"",1,player.getDisparo(),30,0xFFFF0000FF,824,588);
             pantalla.texto(window,"",1,player.getVelocidad(),30,0xFFFF0000FF,318,644);
 
             
             window.display();
+            if(player.getHit()){
+                //Timer(190);
+                player.setVidas();
+               if (player.getVidas() < 0)
+               {
+                   pantalla.texto(window,"",1,2000,30,0xFFFF0000FF,318,644);
+               }else
+               {
+                   pantalla.reset(player);
+                   for(int i=0; i<7; i++){
+                       for(int j=0; j<5; j++){
+                           enemigo[i][j]->setX(i*110+120);
+                           enemigo[i][j]->setY(j*60-500);
+                           enemigo[i][j]->setHit(false); 
+                       }
+                   }
+               }
+            }
             
             // con la funcion clock hacemos fluido el juego
             pantalla.delay();

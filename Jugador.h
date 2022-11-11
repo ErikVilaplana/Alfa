@@ -7,8 +7,8 @@ using namespace sf;
 class Jugador : public Base
 {
     private:
-    int  _vidas=3 , _disparo=3,_pts=0, _record=92000, _velocidad=0;
-    
+    int  _vidas=3 , _disparo=3, _record=92000, _velocidad=0;
+    float _pts=0;
     bool _hit, _shot;
 
     public:
@@ -27,14 +27,16 @@ class Jugador : public Base
     void control(RenderWindow &window, int pos, Disparo &disp);
 
     int getRecord();
-    int getPts();
+    float getPts();
     int getX();
     int getVidas();
+    bool getHit();
     int getDisparo();
     int getVelocidad();
     
     void setPts(int pts);
-    void setVidas(int v);
+    void setVidas();
     void setHit(int h);
     void setX(int x);
+    bool colision(Disparo disp);
 };

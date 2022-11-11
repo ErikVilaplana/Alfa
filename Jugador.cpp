@@ -38,9 +38,9 @@ int Jugador::getRecord()
 {
     return this->_record;
 }
-int Jugador::getPts()
+float Jugador::getPts()
 {
-    return this->_pts;
+    return _pts;
 }
 int Jugador::getVidas(){
     return this->_vidas;
@@ -52,7 +52,11 @@ int Jugador::getVelocidad()
 {
     return this->_velocidad;
 }
-void Jugador::setPts(int pts)
+bool Jugador::getHit()
+{
+    return _hit;
+}
+void  Jugador::setPts(int pts)
 {
     _pts+=pts;
 }
@@ -60,9 +64,9 @@ int Jugador::getX()
 {
     return _x;
 }
-void Jugador::setVidas(int v)
+void Jugador::setVidas()
 {
-    _vidas=v;
+    _vidas--;
 };
 void Jugador::setHit(int h)
 {
@@ -73,3 +77,8 @@ void Jugador::setX(int x)
     _x=x;
 }
 
+bool Jugador::colision(Disparo b){
+    
+    return this->_x+this->_w > b.getX() && this->_x < b.getX()+b.getW() && this->_y + this->_h > b.getY() && this->_y < b.getY()+b.getH();
+    
+}

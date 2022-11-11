@@ -10,20 +10,26 @@ class Escena
 {
 private:
     // Tratar de ordenarlo en Escena
-    int _dir=0, _outsrc=670, _step=0, _vel=45 , _nenemigo=35, _x2=0 , _width=1024, _height=720, _nivel=0, _fila=3, _tsort=0, _texp=0;
+    int _vidas,_dir=0, _outsrc=670, _step=0, _vel=45 , _nenemigo=35, _x2=0 , _width=1024, _height=720, _nivel=0, _fila=3, _tsort=0, _texp=0
+    ,_stage=1,_misil;
     String  _name="";
     Clock _reloj;
     Text _text;
     Font _font;
     bool _ban, _hit;///no
-    
+    Texture texmapa;
+    Sprite spmapa;
     const char * _fu="img/galaga.ttf", *_fd="img/JetBrainsMonoNL-Bold.ttf", * _ft="img/Comication.ttf";
 public:
+    Escena();
     void texto(RenderWindow &w, const char *txt, int tipo, int num, int tam, int pinta, int x, int y);
-
+        
     void delay(int time=1);
 
-    void reset(bool);
+    int getWidth();
+    int getHeight();
+
+    void  reset(Jugador &b);
     //frame 
     int getStep();
     int getTexp();
@@ -45,6 +51,6 @@ public:
 
     //RenderWindow getWindow(int w=1024, int h=720);
     int getStepCont();
-    //void reset(bool mod, Enemigo enemigo[][],Jugador player);
+    void dibujar(RenderWindow & window);
     
 };
