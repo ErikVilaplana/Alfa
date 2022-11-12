@@ -37,10 +37,7 @@ int Enemigo::getW()
 {
     return _w;
 }
-int Enemigo::getStep() 
-{
-    return _step;
-}
+
 void Enemigo::setX(int x)
 {
    _x = x;

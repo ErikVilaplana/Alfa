@@ -7,15 +7,15 @@ using namespace sf;
 class Disparo : public Base{
     
 private:
-
+bool _shot;
 public:
     
     Disparo(int wx, int wy, int x, int y, int w, int h, const String iSrc): Base(wx,  wy, x,  y,  w,  h, iSrc){
         
         ///////////////
-        _shot=0;
-        _hit=0;
-        _awx=wx;
+        _shot=false;
+        
+        
         
     }
     Disparo();
@@ -33,7 +33,7 @@ public:
     int getH();
     int getW();
     
-    int getStep();
+    
     
     void setShot(bool shot);
     bool getShot();

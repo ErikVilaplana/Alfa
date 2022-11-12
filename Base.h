@@ -5,12 +5,12 @@ using namespace sf;
 class Base{
     
 protected:
-    int _step=0, _dir=0, _cant=35, _velocidad=45;
+ 
     
     int _wx,_wy,_x,_y,_w,_h,_awx;
     Texture _t;
     Sprite _spr;
-    bool _hit, _shot;
+    bool _hit;
 
 public:
     
@@ -26,8 +26,8 @@ public:
         _t.loadFromFile(iSrc);
         _spr.setTexture(_t);
         ///////////////
-        _shot=0;
-        _hit=0;
+        
+        _hit=false;
         _awx=wx;
         
     }

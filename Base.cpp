@@ -30,10 +30,7 @@ int Base::getW()
 {
     return _w;
 }
-int Base::getStep() 
-{
-    return _step;
-}
+
 void Base::setX(int x)
 {
     _x = x;

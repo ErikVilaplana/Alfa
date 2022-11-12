@@ -33,10 +33,7 @@ int Disparo::getW()
 {
     return _w;
 }
-int Disparo::getStep() 
-{
-    return _step;
-}
+
 void Disparo::setX(int x)
 {
     _x = x;

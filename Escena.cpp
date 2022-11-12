@@ -84,7 +84,7 @@ int Escena::getOutsrc()
 }
 int Escena::getTsort()
 {
-    return _outsrc;
+    return _tsort;
 }
 void Escena::setTsort(int t)
 {
@@ -113,7 +113,7 @@ int Escena::getHeight()
 void  Escena::reset( Jugador & b)
 {
     //s8.stop(); 
-    _outsrc=-100;	
+    _outsrc=670;	
     _x2      =  1;
     _vel  = 45;	
     /*disc->y =  0;

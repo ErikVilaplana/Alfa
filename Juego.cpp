@@ -120,9 +120,7 @@ Juego::Juego() {
 
     void Juego::runJuego() {
         Escena  pantalla;
-
-        
-     
+    
         RenderWindow window(VideoMode(pantalla.getWidth(), pantalla.getHeight()), "Laraga");
         //Prepara Tablero Score
         
