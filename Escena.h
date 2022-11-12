@@ -7,10 +7,10 @@
 using namespace sf;
 
 class Escena 
-{
+{ 
 private:
-    // Tratar de ordenarlo en Escena
-    int _vidas,_dir=0, _outsrc=670, _step=0, _vel=45 , _nenemigo=35, _x2=0 , _width=1024, _height=720, _nivel=0, _fila=3, _tsort=0, _texp=0
+    //  Tratar de or denarlo en Escena  
+    int _x2=0, _dir=0, _outsrc=670, _step=0, _vel=45 , _nenemigo=35 , _width=1024, _height=720, _nivel=0, _fila=3, _tsort=0, _texp=0
     ,_stage=1,_misil;
     String  _name="";
     Clock _reloj;
@@ -48,9 +48,10 @@ public:
     void setTexpCont();
     void setOutSrc(int outsrc ){}
     
-
+    void gameOver(RenderWindow & window, Jugador &b);
+    void dibujar(RenderWindow &window);
     //RenderWindow getWindow(int w=1024, int h=720);
     int getStepCont();
-    void dibujar(RenderWindow & window);
+    
     
 };

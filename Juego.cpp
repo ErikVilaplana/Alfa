@@ -277,10 +277,11 @@ Juego::Juego() {
             window.display();
             if(player.getHit()){
                 //Timer(190);
-                player.setVidas();
+                // resta vidas
+                player.setVidasDown();
                if (player.getVidas() < 0)
                {
-                   pantalla.texto(window,"",1,2000,30,0xFFFF0000FF,318,644);
+                   pantalla.gameOver(window, player);
                }else
                {
                    pantalla.reset(player);

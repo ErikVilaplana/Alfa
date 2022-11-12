@@ -3,11 +3,11 @@
 #include "Base.h"
 #include "Disparo.h"
 
-using namespace sf;
+using namespace sf  ;
 class Jugador : public Base
 {
     private:
-    int  _vidas=3 , _disparo=3, _record=92000, _velocidad=0;
+    int  _vidas=2 , _disparo=3, _record=92000, _velocidad=0;
     float _pts=0;
     bool _hit, _shot;
 
@@ -35,7 +35,8 @@ class Jugador : public Base
     int getVelocidad();
     
     void setPts(int pts);
-    void setVidas();
+    void setVidas(int v);
+    void setVidasDown();
     void setHit(int h);
     void setX(int x);
     bool colision(Disparo disp);

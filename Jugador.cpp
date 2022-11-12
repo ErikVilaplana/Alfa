@@ -64,10 +64,14 @@ int Jugador::getX()
 {
     return _x;
 }
-void Jugador::setVidas()
+void Jugador::setVidasDown()
 {
     _vidas--;
-};
+}
+void Jugador::setVidas(int v)
+{
+    _vidas=v;
+}
 void Jugador::setHit(int h)
 {
     _hit=h;
