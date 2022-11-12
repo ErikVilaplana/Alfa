@@ -3,6 +3,7 @@
 Enemigo::Enemigo()
 {
     
+    
 }
 Enemigo::~Enemigo()
 {

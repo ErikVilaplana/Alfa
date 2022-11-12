@@ -2,6 +2,7 @@
 #include "Escena.h"
 Escena::Escena()
 {
+    
     texmapa.loadFromFile("img/fondo.jpg");
     spmapa.setTexture(texmapa);
 }
@@ -78,6 +79,14 @@ bool & Escena::getBan()
 {
     return _ban; 
 }
+bool  Escena::getInit()
+{
+    return _init; 
+}
+void  Escena::setInit(bool ban)
+{
+    _init=ban; 
+}
 int Escena::getOutsrc()
 {
     return _outsrc;
@@ -109,6 +118,22 @@ int Escena::getWidth()
 int Escena::getHeight()
 {
     return _height;
+}
+int Escena::getFila()
+{
+    return _fila;
+}
+int Escena::getColumna()
+{
+    return _columna;
+}
+void Escena::setColumna(int c)
+{
+    _columna = c;
+}
+void Escena::setFila(int f)
+{
+    _fila= f;
 }
 void  Escena::reset( Jugador & b)
 {
@@ -170,5 +195,37 @@ void Escena::gameOver(RenderWindow & window,Jugador &b){
 				
     /*m2.stop();*/
     this->reset(b);
+    
+}
+
+void Escena::upNivelWin(RenderWindow & window)
+{
+    bool sair = 0;
+    /*m1.stop();
+    m2.play();*/
+    this->_fila++;
+    this->_nivel++;
+    while(!sair){
+        Event e;
+        while(window.pollEvent(e)) if(e.type==Event::Closed) exit(0);
+        if(Keyboard::isKeyPressed(Keyboard::Space)) sair = true;
+        this->texto(window, "Presione tecla SPACE para Volver a Jugar ",1, 0, 30,0xffffffFF, 420, 600);	
+        if(this->_ban)
+        {
+            this->texto(window, "Nivel",1, 0, 130,0xffffffFF, 250, 212);
+            this->texto(window, "",1, this->_nivel, 130,0xffffffFF, 250, 150);
+        }
+        else{
+            this->texto(window, "LARAGA",1, 0, 130,0xffffffFF, 80, 70);
+            this->texto(window, "UTN",1, 0, 130,0xffffffFF, 290, 232);
+        }
+        this->texto(window, "Record",1, 0, 30,0xffffffFF, 460, 442);
+        this->texto(window, "",1, 999, 30,0xffffffFF, 490, 510);
+        window.display();
+        /*Timer();*/
+        window.clear(Color::Black);	
+    }
+				
+    
     
 }

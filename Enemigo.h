@@ -8,6 +8,9 @@ using namespace sf;
 class Enemigo : public Base 
 {
     private:
+    // int _tam=3;
+    // Enemigo ** _p;
+    /*int ** matriz = new int*[filas];*/
     
     bool  _shot, _ban;
     

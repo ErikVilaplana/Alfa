@@ -120,7 +120,7 @@ Juego::Juego() {
 
     void Juego::runJuego() {
         Escena  pantalla;
-    
+        
         RenderWindow window(VideoMode(pantalla.getWidth(), pantalla.getHeight()), "Laraga");
         //Prepara Tablero Score
         
@@ -140,27 +140,33 @@ Juego::Juego() {
         
         // crea los enemigos
         Enemigo * enemigo[7][5];
-        for(int i = 0; i < 7; i++)
-        {
-            for(int j = 0; j < 5; j++)
-            {
-                enemigo[i][j] = new Enemigo(0, j*50, i*110, j*60-500, 51, 48, "img/itens.png");
-            }
-            
-        }        
+                
         // Main Juego loop
         while (window.isOpen())
         {
+            if(pantalla.getInit()==false)
+            {
+                pantalla.setNEnemigo((pantalla.getFila ()-2) * pantalla.getColumna());
+                for(int i = 0; i < pantalla.getColumna(); i++)
+                {
+                    for(int j = 0; j < pantalla.getFila(); j++)
+                    {
+                        enemigo[i][j] = new Enemigo(0, j*50, i*110, j*60-500, 51, 48, "img/itens.png");
+                    }
+            
+                }
+                pantalla.setInit(true);
+            }
             pantalla.setTsort(rand() %10); 
             pantalla.getBan();
             
 
             //disparo del player se panda la posición del los enemigos cargados y el objeto disparo
-            player.control(window, enemigo[6][4]->getY() ,  disparoNave);
+            player.control(window, enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->getY() ,  disparoNave);
 
             // Preparamos los enemigos para su funcion jajaj
             
-            for(int i = 0; i < 7; i++)
+            for(int i = 0; i < pantalla.getColumna(); i++)
             {
                 
                 /// prparar disparo del enemigo alternando turno de disparo
@@ -234,12 +240,20 @@ Juego::Juego() {
                 }   
             }
             //manejamos la cantidad de enemigos  y aumentamos la velocidad Agregar para dificultas
-            if(pantalla.getNEnemigo()==30)pantalla.setVel(40);
-            if(pantalla.getNEnemigo()==20)pantalla.setVel(35);
-            if(pantalla.getNEnemigo()==10)pantalla.setVel(20);
-            if(pantalla.getNEnemigo()==5)pantalla.setVel(10);
+            if(pantalla.getNEnemigo()==(pantalla.getNEnemigo()-3))pantalla.setVel(40);
+            if(pantalla.getNEnemigo()==(pantalla.getNEnemigo()-6))pantalla.setVel(35);
+            if(pantalla.getNEnemigo()==(pantalla.getNEnemigo()-9))pantalla.setVel(20);
+            if(pantalla.getNEnemigo()==(pantalla.getNEnemigo()-10))pantalla.setVel(10);
 
-            if(pantalla.getNEnemigo()==0)pantalla.reset(player);
+            if(pantalla.getNEnemigo()==0)
+            {
+                pantalla.setInit(false);
+                pantalla.upNivelWin(window);
+                pantalla.reset(player);
+                
+                
+                
+            }
 
             // manejo de explosion
             if(pantalla.getTexp()){ explosion.show(window); pantalla.setTexpCont(); }
@@ -250,13 +264,13 @@ Juego::Juego() {
             
             escena.show(window);
 
-            if ((pantalla.getBan() && pantalla.getVel()==pantalla.getVel()/2) || enemigo[6][4]->getY() < 300)
+            if ((pantalla.getBan() && pantalla.getVel()==pantalla.getVel()/2) || enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->getY() < 300)
             {
-                for(int i=0; i<7; i++)
+                for(int i=0; i<pantalla.getColumna(); i++)
                 {
-                    for(int j=0; j<5; j++)
+                    for(int j=0; j<pantalla.getFila(); j++)
                     {
-                        enemigo[i][j]->setYacu(enemigo[6][4]->desplazar());
+                        enemigo[i][j]->setYacu(enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->desplazar());
                     }
                 }
             }
@@ -270,7 +284,7 @@ Juego::Juego() {
             pantalla.texto(window,"",1,player.getPts(),30,0xFFFF0000FF,600,640);
             pantalla.texto(window,"",1,player.getVidas(),30,0xFFFF0000FF,570,580);
             pantalla.texto(window,"normal",2,0,30,0xFFFF0000FF,180,586);
-            pantalla.texto(window,"",1,player.getDisparo(),30,0xFFFF0000FF,824,588);
+            pantalla.texto(window,"",1,pantalla.getNEnemigo(),30,0xFFFF0000FF,824,588);
             pantalla.texto(window,"",1,player.getVelocidad(),30,0xFFFF0000FF,318,644);
 
             
@@ -285,13 +299,13 @@ Juego::Juego() {
                }else
                {
                    pantalla.reset(player);
-                   for(int i=0; i<7; i++){
-                       for(int j=0; j<5; j++){
+                   /*for(int i=0; i<pantalla.getColumna(); i++){
+                       for(int j=0; j<pantalla.getFila(); j++){
                            enemigo[i][j]->setX(i*110+120);
                            enemigo[i][j]->setY(j*60-500);
                            enemigo[i][j]->setHit(false); 
                        }
-                   }
+                   }*/
                }
             }
             
