@@ -10,7 +10,7 @@ class Jugador : public Base
     int  _vidas=2 , _disparo=3, _record=92000, _velocidad=0;
     float _pts=0;
     bool _hit, _shot;
-
+    String   _name;
     public:
     
     Jugador();
@@ -24,7 +24,7 @@ class Jugador : public Base
     ~Jugador();
     
 
-    void control(RenderWindow &window, int pos, Disparo &disp);
+    void control(RenderWindow *window, int pos, Disparo &disp);
 
     int getRecord();
     float getPts();
@@ -40,4 +40,6 @@ class Jugador : public Base
     void setHit(int h);
     void setX(int x);
     bool colision(Disparo disp);
+    void setName(String name);
+    String getName();
 };

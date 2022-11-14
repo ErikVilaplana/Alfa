@@ -35,7 +35,7 @@ public:
     Base();
     ~Base();
 
-    void show(RenderWindow &window);
+    void show(RenderWindow *window);
 
     int getAwx();
     int getWx();

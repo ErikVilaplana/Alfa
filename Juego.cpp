@@ -3,28 +3,97 @@
 #include "Menu.h"
 
 
-Juego::Juego() {
-
+    Juego::Juego()
+    {
+        deInit();
+        
     }
 
     Juego::~Juego() {
+    
+    }
+void  Juego::setName(String name)
+    {
+        _name = name;
+    }
+String Juego::getName()
+    {
+        return _name;
 
     }
-
 
     void Juego::init() {
     
         Escena pantalla;
-        RenderWindow w(VideoMode(pantalla.getWidth(), pantalla.getHeight()),"lala");
+        
+    string input_text;
+    Font font;
+    font.loadFromFile("img/galaga.ttf");
+    Text text("", font);
+    text.setOutlineThickness(2);
+    text.setFillColor(Color::Blue);
+    text.setOutlineColor(Color(127,127,127));
+    text.setPosition(60,300);
+
+    Clock clock;
+
+    while (_window->isOpen())
+    {
+        Event event;
+        while (_window->pollEvent(event))
+        {
+            if (event.type == Event::Closed)
+                _window->close();
+            else if (event.type == Event::TextEntered) {
+                if (std::isprint(event.text.unicode))
+                    input_text += event.text.unicode;
+            }
+            else if (event.type == Event::KeyPressed) {
+                if (event.key.code == Keyboard::BackSpace) {
+                    if (!input_text.empty())
+                        input_text.pop_back();
+                }
+                if (event.key.code == Keyboard::Return) {
+                    input_text += '\n';
+                }
+            }
+            
+        }
+
+        static Time text_effect_time;
+        static bool show_cursor;
+
+        text_effect_time += clock.restart();
+
+        if (text_effect_time >= seconds(0.5f))
+        {
+            show_cursor = !show_cursor;
+            text_effect_time = Time::Zero;
+        }
+
+        text.setString(input_text + (show_cursor ? '_' : ' '));
+        if (event.key.code == Keyboard::Escape) {
+            if (!input_text.empty())
+            {
+                Escena pantalla;
+                _name=input_text;
+                runJuego();
+            }
+        }
+        _window->clear();
+        _window->draw(text);
+        _window->display();
+    }
+        /*
         Menu menu(pantalla.getWidth(), pantalla.getHeight());
         
         while(w.isOpen()){
             ///Quitar todos los  eventos en cola de la ventana
-            sf::Event event;
+            Event event;
             while(w.pollEvent(event)){
                 switch (event.type){
-                case sf::Event::JoystickMoved:
-                    if(event.joystickMove.axis == sf::Joystick::Y){
+                case Event::JoystickMoved:
+                    if(event.joystickMove.axis == Joystick::Y){
                         if(event.joystickMove.position > 95.f ){
                             menu.moverabajo();
                             
@@ -35,7 +104,7 @@ Juego::Juego() {
                         }
                     }
                     break;
-                case sf::Event::JoystickButtonPressed:
+                case Event::JoystickButtonPressed:
                     switch(menu.presionaritem()){
                 case 0:
                     
@@ -55,17 +124,17 @@ Juego::Juego() {
                     }
                     break;
                     /*
-                case sf::Event::KeyReleased:
+                case Event::KeyReleased:
                 switch(event.key.code){
-                case sf::Keyboard::Up:
+                case Keyboard::Up:
                 menu.moverarriba();
                 Soundmenu.play();
                 break;
-                case sf::Keyboard::Down:
+                case Keyboard::Down:
                 menu.moverabajo();
                 Soundmenu.play();
                 break;
-                case sf::Keyboard::Return:
+                case Keyboard::Return:
                 switch(menu.presionaritem()){
                 case 0:
                 Soundmenu.play();
@@ -88,16 +157,17 @@ Juego::Juego() {
                 }
                 break;
                 }
-                break;*/
-                    case sf::Event::Closed:
+                break;#1#
+                    case Event::Closed:
                     
                     w.close();
                     break;
                 }
             }
             menu.dibujar(w);
-            w.display();
-        }
+            */
+            
+        //}
     }
     
 
@@ -107,21 +177,22 @@ Juego::Juego() {
 
     void Juego::draw() {
         // Clear screen
-     //   window.clear();
+     //   _window->clear();
         // Draw the map
-        //window.draw(map);
+        //_window->draw(map);
         // Update the window
-       // window.display();
+       // _window->display();
     }
 
     void Juego::deInit() {
-
+    Escena pantalla;
+    _window = new sf::RenderWindow(sf::VideoMode(pantalla.getWidth(), pantalla.getHeight()), "laraga");
     }
 
     void Juego::runJuego() {
         Escena  pantalla;
-        
-        RenderWindow window(VideoMode(pantalla.getWidth(), pantalla.getHeight()), "Laraga");
+              
+
         //Prepara Tablero Score
         
         
@@ -131,7 +202,7 @@ Juego::Juego() {
         
         // Crea player
         Jugador player(0,  0, 500, 520,   70,  70, "img/Nave.png");
-        
+        player.setName(_name);
         
         //Disparo Player and Enemy
         Disparo disparoEnemigo(200, 0, -100, -100, 7,12,"img/itens.png");
@@ -142,7 +213,7 @@ Juego::Juego() {
         Enemigo * enemigo[7][5];
                 
         // Main Juego loop
-        while (window.isOpen())
+        while (_window->isOpen())
         {
             if(pantalla.getInit()==false)
             {
@@ -162,7 +233,7 @@ Juego::Juego() {
             
 
             //disparo del player se panda la posición del los enemigos cargados y el objeto disparo
-            player.control(window, enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->getY() ,  disparoNave);
+            player.control(_window, enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->getY() ,  disparoNave);
 
             // Preparamos los enemigos para su funcion jajaj
             
@@ -182,7 +253,7 @@ Juego::Juego() {
                         
                     } 
                     if(disparoEnemigo.getY() < pantalla.getOutsrc())disparoEnemigo.setYacu(5);
-                    disparoEnemigo.show(window);
+                    disparoEnemigo.show(_window);
                     
                 }else if(i==1)
                 {
@@ -197,10 +268,10 @@ Juego::Juego() {
                         
                     } 
                     if(disparoEnemigoDos.getY() < pantalla.getOutsrc())disparoEnemigoDos.setYacu(5);
-                    disparoEnemigoDos.show(window);
+                    disparoEnemigoDos.show(_window);
                 }
 
-                //disparar los de la primera fila
+                //disparar los de la primera filani
                 for(int j = 4; j > 0; j--)
                 {
                     if(!enemigo[i][j]->getHit())
@@ -221,7 +292,7 @@ Juego::Juego() {
                         //animacion
                         enemigo[i][j]->animando(pantalla.getStep(),pantalla.getVel());
                         
-                        enemigo[i][j]->show(window);
+                        enemigo[i][j]->show(_window);
                         
                         /// disparo de loss aliens mirar q solo dispara la primer linea
                         if(pantalla.getTsort() == i && player.getX() && disparoEnemigo.getY()>=pantalla.getOutsrc())
@@ -248,7 +319,7 @@ Juego::Juego() {
             if(pantalla.getNEnemigo()==0)
             {
                 pantalla.setInit(false);
-                pantalla.upNivelWin(window);
+                pantalla.upNivelWin(_window);
                 pantalla.reset(player);
                 
                 
@@ -256,13 +327,13 @@ Juego::Juego() {
             }
 
             // manejo de explosion
-            if(pantalla.getTexp()){ explosion.show(window); pantalla.setTexpCont(); }
+            if(pantalla.getTexp()){ explosion.show(_window); pantalla.setTexpCont(); }
             
-            player.show(window);
+            player.show(_window);
             
-            disparoNave.show(window);
+            disparoNave.show(_window);
             
-            escena.show(window);
+            escena.show(_window);
 
             if ((pantalla.getBan() && pantalla.getVel()==pantalla.getVel()/2) || enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->getY() < 300)
             {
@@ -280,22 +351,22 @@ Juego::Juego() {
             if(pantalla.getStepCont() > pantalla.getVel()) pantalla.setStep(0);
 
             //estadisticas en pantalla
-            pantalla.texto(window,"",1,player.getRecord(),30,0xFFFF0000FF,890,642);
-            pantalla.texto(window,"",1,player.getPts(),30,0xFFFF0000FF,600,640);
-            pantalla.texto(window,"",1,player.getVidas(),30,0xFFFF0000FF,570,580);
-            pantalla.texto(window,"normal",2,0,30,0xFFFF0000FF,180,586);
-            pantalla.texto(window,"",1,pantalla.getNEnemigo(),30,0xFFFF0000FF,824,588);
-            pantalla.texto(window,"",1,player.getVelocidad(),30,0xFFFF0000FF,318,644);
+            pantalla.texto(_window,"",1,player.getRecord(),30,0xFFFF0000FF,890,642);
+            pantalla.texto(_window,"",1,player.getPts(),30,0xFFFF0000FF,600,640);
+            pantalla.texto(_window,"",1,player.getVidas(),30,0xFFFF0000FF,570,580);
+            pantalla.texto(_window,player.getName(),2,0,30,0xFFFF0000FF,180,586);
+            pantalla.texto(_window,"",1,pantalla.getNEnemigo(),30,0xFFFF0000FF,824,588);
+            pantalla.texto(_window,"",1,player.getVelocidad(),30,0xFFFF0000FF,318,644);
 
             
-            window.display();
+            _window->display();
             if(player.getHit()){
                 //Timer(190);
                 // resta vidas
                 player.setVidasDown();
                if (player.getVidas() < 0)
                {
-                   pantalla.gameOver(window, player);
+                   pantalla.gameOver(_window, player);
                }else
                {
                    pantalla.reset(player);
@@ -311,8 +382,8 @@ Juego::Juego() {
             
             // con la funcion clock hacemos fluido el juego
             pantalla.delay();
-            window.clear(Color::Black);
+            _window->clear(Color::Black);
         }
-        deInit();
+       
     }
 

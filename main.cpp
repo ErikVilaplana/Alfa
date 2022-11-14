@@ -7,7 +7,9 @@
 int main()
 {
     Juego juego;
-    /*juego.init();*/
+    
+    
+    juego.init();
     juego.runJuego();
 
     return 0;

@@ -15,7 +15,8 @@ using namespace sf;
 class Juego 
 {
 private:
-
+    sf::RenderWindow* _window;
+    String   _name;
 public:
     Juego();
     ~Juego();
@@ -24,6 +25,8 @@ public:
     void draw();
     void deInit();// precargar
     void runJuego();/////////
+    void setName(String name);
+    String getName();
      
 };
 

@@ -13,7 +13,7 @@ private:
     int _x2=0, _dir=0, _outsrc=670, _step=0, _vel=45 , _nenemigo=0 , _width=1024, _height=720,
     _nivel=1, _fila=6, _columna=3, _tsort=0, _texp=0 ,_stage=1,_misil;
     
-    String  _name="";
+    
     Clock _reloj;
     Text _text;
     Font _font;
@@ -22,8 +22,9 @@ private:
     Sprite spmapa;
     const char * _fu="img/galaga.ttf", *_fd="img/JetBrainsMonoNL-Bold.ttf", * _ft="img/Comication.ttf";
 public:
+    
     Escena();
-    void texto(RenderWindow &w, const char *txt, int tipo, int num, int tam, int pinta, int x, int y);
+    void texto(RenderWindow * w, String txt, int tipo, int num, int tam, int pinta, int x, int y);
 
     int getFila();
     int getColumna();
@@ -55,11 +56,14 @@ public:
     void setTexpCont();
     void setOutSrc(int outsrc );
     
-    void gameOver(RenderWindow & window, Jugador &b);
+    
+    void gameOver(RenderWindow * window, Jugador &b);
     void dibujar(RenderWindow &window);
     //RenderWindow getWindow(int w=1024, int h=720);
     int getStepCont();
-    void upNivelWin(RenderWindow & window);
+    void upNivelWin(RenderWindow * window);
+
+    
     
     
 };

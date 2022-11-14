@@ -10,11 +10,19 @@ Jugador::~Jugador()
 {
     
 }
+void  Jugador::setName(String name)
+{
+    _name = name;
+}
+String Jugador::getName()
+{
+    return _name;
 
-void Jugador::control(RenderWindow &window, int pos, Disparo &disp) 
+}
+void Jugador::control(RenderWindow * window, int pos, Disparo &disp) 
 {
     Event e;
-    while (window.pollEvent(e))   { if(e.type == Event::Closed) {window.close();}}
+    while (window->pollEvent(e))   { if(e.type == Event::Closed) {window->close();}}
 
     if(Keyboard::isKeyPressed(Keyboard::Left) && _x >100) { _x-=8;}
     else if(Keyboard::isKeyPressed(Keyboard::Right) &&  _x <840){_x+=8;}

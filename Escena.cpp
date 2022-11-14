@@ -7,7 +7,7 @@ Escena::Escena()
     spmapa.setTexture(texmapa);
 }
 
-void Escena::texto(RenderWindow &w, const char* txt, int tipo, int num, int tam, int pinta, int x, int y)
+void Escena::texto(RenderWindow *w, String txt, int tipo, int num, int tam, int pinta, int x, int y)
 {
     if(txt=="")
     {
@@ -27,7 +27,7 @@ void Escena::texto(RenderWindow &w, const char* txt, int tipo, int num, int tam,
     _text.setFillColor(Color(pinta));
     _text.setStyle(Text::Bold | Text::Italic);
     _text.setPosition(x,y);
-    w.draw(_text);
+    w->draw(_text);
 }
 
 void Escena::delay(int time)
@@ -135,6 +135,8 @@ void Escena::setFila(int f)
 {
     _fila= f;
 }
+
+
 void  Escena::reset( Jugador & b)
 {
     //s8.stop(); 
@@ -170,14 +172,14 @@ void Escena::dibujar(RenderWindow &window){
 
 }
 
-void Escena::gameOver(RenderWindow & window,Jugador &b){
+void Escena::gameOver(RenderWindow * window,Jugador &b){
     bool sair = 0;
     /*m1.stop();
     m2.play();*/
 	
     while(!sair){
         Event e;
-        while(window.pollEvent(e)) if(e.type==Event::Closed) exit(0);
+        while(window->pollEvent(e)) if(e.type==Event::Closed) exit(0);
         if(Keyboard::isKeyPressed(Keyboard::Escape)){exit(0);}
         if(Keyboard::isKeyPressed(Keyboard::Space)) sair = true;
         this->texto(window, "Presione tecla SPACE para Volver a Jugar ",1, 0, 30,0xffffffFF, 420, 600);	
@@ -188,9 +190,9 @@ void Escena::gameOver(RenderWindow & window,Jugador &b){
         }
         this->texto(window, "Record",1, 0, 30,0xffffffFF, 460, 442);
         this->texto(window, "",1, 999, 30,0xffffffFF, 490, 510);
-        window.display();
+        window->display();
         /*Timer();*/
-        window.clear(Color::Black);	
+        window->clear(Color::Black);	
     }
 				
     /*m2.stop();*/
@@ -198,7 +200,7 @@ void Escena::gameOver(RenderWindow & window,Jugador &b){
     
 }
 
-void Escena::upNivelWin(RenderWindow & window)
+void Escena::upNivelWin(RenderWindow * window)
 {
     bool sair = 0;
     /*m1.stop();
@@ -207,7 +209,7 @@ void Escena::upNivelWin(RenderWindow & window)
     this->_nivel++;
     while(!sair){
         Event e;
-        while(window.pollEvent(e)) if(e.type==Event::Closed) exit(0);
+        while(window->pollEvent(e)) if(e.type==Event::Closed) exit(0);
         if(Keyboard::isKeyPressed(Keyboard::Space)) sair = true;
         this->texto(window, "Presione tecla SPACE para Volver a Jugar ",1, 0, 30,0xffffffFF, 420, 600);	
         if(this->_ban)
@@ -221,9 +223,9 @@ void Escena::upNivelWin(RenderWindow & window)
         }
         this->texto(window, "Record",1, 0, 30,0xffffffFF, 460, 442);
         this->texto(window, "",1, 999, 30,0xffffffFF, 490, 510);
-        window.display();
+        window->display();
         /*Timer();*/
-        window.clear(Color::Black);	
+        window->clear(Color::Black);	
     }
 				
     
