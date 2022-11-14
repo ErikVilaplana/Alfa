@@ -174,11 +174,17 @@
             if(_pantalla.getNEnemigo()==0)
             {
                 _pantalla.setInit(false);
-                _pantalla.upNivelWin(_window);
+                _pantalla.upNivelWin(_window, _jugador);
                 _pantalla.reset(_jugador);
                 
-                
-                
+                for(int i=0; i<_pantalla.getColumna(); i++)
+                {
+                    for(int j=0; j<_pantalla.getFila(); j++){
+                        enemigo[i][j]->setX(i*110+120);
+                        enemigo[i][j]->setY(j*60-500);
+                        enemigo[i][j]->setHit(false); 
+                    }
+                }
             }
 
             

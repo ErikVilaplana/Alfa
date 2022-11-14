@@ -200,31 +200,31 @@ void Escena::gameOver(RenderWindow * window,Jugador * b){
     
 }
 
-void Escena::upNivelWin(RenderWindow * window)
+void Escena::upNivelWin(RenderWindow * window, Jugador * b)
 {
-    bool sair = 0;
+    bool salir = false;
     /*m1.stop();
     m2.play();*/
-    this->_fila++;
-    this->_nivel++;
-    while(!sair){
+    
+    while (window->isOpen()&& !salir){
         Event e;
-        while(window->pollEvent(e)) if(e.type==Event::Closed) exit(0);
-        if(Keyboard::isKeyPressed(Keyboard::Space)) sair = true;
+        while(window->pollEvent(e))
+            if(e.type==Event::Closed) exit(0);
+        if(Keyboard::isKeyPressed(Keyboard::Escape)) gameOver(window,b);
+
+        this->texto(window, "Nivel",1, 0, 130,0xffffffFF, 250, 312);
+        this->texto(window, "",1, this->_nivel, 130,0xffffffFF, 250, 150);
         this->texto(window, "Presione tecla SPACE para Volver a Jugar ",1, 0, 30,0xffffffFF, 420, 600);	
-        if(this->_ban)
-        {
-            this->texto(window, "Nivel",1, 0, 130,0xffffffFF, 250, 212);
-            this->texto(window, "",1, this->_nivel, 130,0xffffffFF, 250, 150);
+        if (e.key.code == Keyboard::Enter){
+            this->_fila++;
+            this->_nivel++;
+            salir=true;
         }
-        else{
-            this->texto(window, "LARAGA",1, 0, 130,0xffffffFF, 80, 70);
-            this->texto(window, "UTN",1, 0, 130,0xffffffFF, 290, 232);
-        }
+        
         this->texto(window, "Record",1, 0, 30,0xffffffFF, 460, 442);
         this->texto(window, "",1, 999, 30,0xffffffFF, 490, 510);
         window->display();
-        /*Timer();*/
+        
         window->clear(Color::Black);	
     }
 				

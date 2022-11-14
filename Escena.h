@@ -63,7 +63,7 @@ public:
     void dibujar(RenderWindow &window);
     //RenderWindow getWindow(int w=1024, int h=720);
     int getStepCont();
-    void upNivelWin(RenderWindow * window);
+    void upNivelWin(RenderWindow * window, Jugador * b);
     void setInicio(RenderWindow * window);
     
     void setName(String name);
