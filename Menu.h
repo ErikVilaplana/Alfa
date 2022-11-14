@@ -1,21 +1,36 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "SFML/Graphics.hpp"
+class Juego;
+using namespace std;
 using namespace sf;
-#define MAX_NUMBER_OF_ITEMS 5
 
-class Menu{
-private:
-    Texture texmapa;
-    Sprite spmapa;
-    int seleccionarindice;
-    Font fuente;
-    Text menu[MAX_NUMBER_OF_ITEMS];
+class Menu {
+    int pos;
+    bool pressed, theselect;
+
+    RenderWindow * window;
+    RectangleShape * winclose;
+    Font * font;
+    Texture * image;
+    Sprite * bg;
+    Text * text;
+    Vector2i pos_mouse;
+    Vector2f mouse_coord;
+
+    vector<const char *> options;
+    vector<Vector2f> coords;
+    vector<Text> texts;
+    vector<std::size_t> sizes;
+
+protected:
+    
 
 public:
-    Menu(float ancho, float altura);
-    ~ Menu();
-    void dibujar(RenderWindow &w);
-    void moverarriba();
-    void moverabajo();
-    int presionaritem(){return seleccionarindice;}
+    Menu();
+    ~Menu();
+    void set_values();
+    void loop_events();
+    void draw_all();
+    void run_menu();
 };

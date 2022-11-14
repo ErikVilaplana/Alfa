@@ -5,6 +5,7 @@
 #include "Jugador.h"
 
 using namespace sf;
+using namespace std;
 
 class Escena 
 { 
@@ -12,14 +13,15 @@ private:
     //  Tratar de or denarlo en Escena  
     int _x2=0, _dir=0, _outsrc=670, _step=0, _vel=45 , _nenemigo=0 , _width=1024, _height=720,
     _nivel=1, _fila=6, _columna=3, _tsort=0, _texp=0 ,_stage=1,_misil;
-    
-    
+
+    string _input_text, _name;
     Clock _reloj;
     Text _text;
     Font _font;
     bool _ban, _hit, _init=false;///no
-    Texture texmapa;
-    Sprite spmapa;
+    Texture _texmapa;
+    Sprite _spmapa;
+    
     const char * _fu="img/galaga.ttf", *_fd="img/JetBrainsMonoNL-Bold.ttf", * _ft="img/Comication.ttf";
 public:
     
@@ -62,8 +64,9 @@ public:
     //RenderWindow getWindow(int w=1024, int h=720);
     int getStepCont();
     void upNivelWin(RenderWindow * window);
-
+    void setInicio(RenderWindow * window);
     
-    
+    void setName(String name);
+    String getName();
     
 };

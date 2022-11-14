@@ -3,8 +3,8 @@
 Escena::Escena()
 {
     
-    texmapa.loadFromFile("img/fondo.jpg");
-    spmapa.setTexture(texmapa);
+   
+    
 }
 
 void Escena::texto(RenderWindow *w, String txt, int tipo, int num, int tam, int pinta, int x, int y)
@@ -168,7 +168,7 @@ void  Escena::reset( Jugador * b)
     //m1.play();
 }
 void Escena::dibujar(RenderWindow &window){
-    window.draw(spmapa);
+    window.draw(_spmapa);
 
 }
 
@@ -230,4 +230,84 @@ void Escena::upNivelWin(RenderWindow * window)
 				
     
     
+}
+void Escena::setInicio(RenderWindow* _window)
+{
+    _texmapa.loadFromFile("img/bg.jpg");
+    _spmapa.setTexture(_texmapa);
+    _spmapa.setPosition(0,0);
+    std::string input_text;
+    Font font;
+    font.loadFromFile("img/galaga.ttf");
+    Text text("", font);
+    text.setOutlineThickness(2);
+    text.setFillColor(Color::Blue);
+    text.setOutlineColor(Color(127,127,127));
+    text.setPosition(450,400);
+    bool salir = false;
+    
+    
+        while (_window->isOpen()&& !salir)
+        {
+            Event event;
+            while (_window->pollEvent(event) )
+            {
+                if (event.type == Event::Closed)
+                    _window->close();
+                else if (event.type == Event::TextEntered) {
+                    if (std::isprint(event.text.unicode))
+                        input_text += event.text.unicode;
+                }
+                else if (event.type == Event::KeyPressed) {
+                    if (event.key.code == Keyboard::BackSpace) {
+                        if (!input_text.empty())
+                            input_text.pop_back();
+                    }
+                    if (event.key.code == Keyboard::Return) {
+                        input_text += '\n';
+                    }
+                }
+            
+            }
+
+            static Time text_effect_time;
+            static bool show_cursor;
+
+            text_effect_time += _reloj.restart();
+
+            if (text_effect_time >= seconds(0.5f))
+            {
+                show_cursor = !show_cursor;
+                text_effect_time = Time::Zero;
+            }
+
+            text.setString(input_text + (show_cursor ? '_' : ' '));
+            if (event.key.code == Keyboard::Escape) {
+                if (!input_text.empty())
+                {
+                    _name=input_text;
+                    salir = true;
+                
+               
+                }
+            }
+
+            _window->clear();
+            _window->draw(_spmapa);
+            this->texto(_window,"Ingresa Tu nombre Piloto:",1,0,30,0xFFFF0000FF,100,400);
+            this->texto(_window,"Presione ESC para empezar",1,0,30,0xFFFF0000FF,200,650);
+            
+            _window->draw(text);
+            _window->display();
+        }
+    
+}
+void  Escena::setName(String name)
+{
+    _name = name;
+}
+String Escena::getName()
+{
+    return _name;
+
 }

@@ -6,6 +6,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include "Enemigo.h"
+#include "Menu.h"
 #include "Escena.h"
 #include "Jugador.h"
 #include "Disparo.h"
@@ -16,12 +17,16 @@ class Juego
 {
 private:
     sf::RenderWindow* _window;
+    Menu * _menu;
+    Escena  _pantalla;
     String   _name;
     Jugador * _jugador;
     Enemigo * _enemigo[7][5];
-    Base * _escena, * _explosion;
+    Base * _escena, * _explosion, *_logo;
     Disparo * _disparoP, * _disparoE1, *_disparoE2;
-
+    Font * font;
+    Texture  _texmapa;
+    Sprite  _spmapa;
 
     
 public:
@@ -32,9 +37,8 @@ public:
     void draw();
     void deInit();// precargar
     void runJuego();/////////
-    void setName(String name);
-    String getName();
-     
+    
+    void initMenu();
 };
 
 
