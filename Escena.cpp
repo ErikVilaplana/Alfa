@@ -137,7 +137,7 @@ void Escena::setFila(int f)
 }
 
 
-void  Escena::reset( Jugador & b)
+void  Escena::reset( Jugador * b)
 {
     //s8.stop(); 
     _outsrc=670;	
@@ -152,17 +152,17 @@ void  Escena::reset( Jugador & b)
     sh[2]->x= outscr;
     spUp = 0;*/
     
-    if(b.getVidas()==-1){
-        b.setPts(0);
+    if(b->getVidas()==-1){
+        b->setPts(0);
         _stage = 1;
         _misil=0;
-        b.setVidas(2);
-        b.setX(490);
+        b->setVidas(2);
+        b->setX(490);
         //pw_sh = 1;
         //s11.play(); 
         //Timer(50);
     }
-    b.setHit(false);
+    b->setHit(false);
     //m1.stop();
     //Timer(100);
     //m1.play();
@@ -172,7 +172,7 @@ void Escena::dibujar(RenderWindow &window){
 
 }
 
-void Escena::gameOver(RenderWindow * window,Jugador &b){
+void Escena::gameOver(RenderWindow * window,Jugador * b){
     bool sair = 0;
     /*m1.stop();
     m2.play();*/

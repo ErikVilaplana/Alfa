@@ -35,7 +35,7 @@ public:
     int getWidth();
     int getHeight();
 
-    void  reset(Jugador &b);
+    void  reset(Jugador *b);
     //frame 
     int getStep();
     int getTexp();
@@ -57,7 +57,7 @@ public:
     void setOutSrc(int outsrc );
     
     
-    void gameOver(RenderWindow * window, Jugador &b);
+    void gameOver(RenderWindow * window, Jugador * b);
     void dibujar(RenderWindow &window);
     //RenderWindow getWindow(int w=1024, int h=720);
     int getStepCont();

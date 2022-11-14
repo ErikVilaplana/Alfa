@@ -132,10 +132,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArchivoEstadistica.cpp" />
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Disparo.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="Escena.cpp" />
+    <ClCompile Include="Estadistica.cpp" />
     <ClCompile Include="GamePlay.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugador.cpp" />
@@ -143,10 +145,12 @@
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArchivoEstadistica.h" />
     <ClInclude Include="Base.h" />
     <ClInclude Include="Disparo.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Escena.h" />
+    <ClInclude Include="Estadistica.h" />
     <ClInclude Include="GamePlay.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugador.h" />

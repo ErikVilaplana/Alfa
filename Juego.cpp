@@ -6,17 +6,28 @@
     Juego::Juego()
     {
         deInit();
+        init();
         
     }
 
     Juego::~Juego() {
     
     }
-void  Juego::setName(String name)
+    void Juego::deInit() {
+        Escena pantalla;
+        _window = new sf::RenderWindow(sf::VideoMode(pantalla.getWidth(), pantalla.getHeight()), "laraga");
+        _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
+         _escena = new Base(  0, 250, 0, 584, 1024, 120, "img/itens.png");
+        _explosion = new Base(  115, 0, 100, 100, 50, 48, "img/itens.png");
+        _disparoE1= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
+        _disparoE2= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
+        _disparoP= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
+    }
+    void  Juego::setName(String name)
     {
         _name = name;
     }
-String Juego::getName()
+    String Juego::getName()
     {
         return _name;
 
@@ -184,39 +195,27 @@ String Juego::getName()
        // _window->display();
     }
 
-    void Juego::deInit() {
-    Escena pantalla;
-    _window = new sf::RenderWindow(sf::VideoMode(pantalla.getWidth(), pantalla.getHeight()), "laraga");
-    }
+    
 
     void Juego::runJuego() {
-        Escena  pantalla;
-              
 
-        //Prepara Tablero Score
+        Escena  pantalla;
+        _jugador->setName(_name);      
         
-        
-        Base escena(  0, 250, 0, 584, 1024, 120, "img/itens.png");
-        Base explosion(  115, 0, 100, 100, 50, 48, "img/itens.png");
-        //init();
-        
-        // Crea player
-        Jugador player(0,  0, 500, 520,   70,  70, "img/Nave.png");
-        player.setName(_name);
-        
-        //Disparo Player and Enemy
-        Disparo disparoEnemigo(200, 0, -100, -100, 7,12,"img/itens.png");
-        Disparo disparoEnemigoDos(200, 0, -100, -100, 7,12,"img/itens.png");
-        Disparo disparoNave(200, 0, -100, -100, 7,12,"img/itens.png");
-        
-        // crea los enemigos
         Enemigo * enemigo[7][5];
                 
-        // Main Juego loop
+        
         while (_window->isOpen())
         {
             if(pantalla.getInit()==false)
             {
+                for(int i=0; i<pantalla.getColumna(); i++){
+                    for(int j=0; j<pantalla.getFila(); j++){
+                        enemigo[i][j]->setX(i*110+120);
+                        enemigo[i][j]->setY(j*60-500);
+                        enemigo[i][j]->setHit(false); 
+                    }
+                }
                 pantalla.setNEnemigo((pantalla.getFila ()-2) * pantalla.getColumna());
                 for(int i = 0; i < pantalla.getColumna(); i++)
                 {
@@ -233,7 +232,7 @@ String Juego::getName()
             
 
             //disparo del player se panda la posición del los enemigos cargados y el objeto disparo
-            player.control(_window, enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->getY() ,  disparoNave);
+            _jugador->control(_window, enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->getY() ,  _disparoP);
 
             // Preparamos los enemigos para su funcion jajaj
             
@@ -242,33 +241,33 @@ String Juego::getName()
                 
                 /// prparar disparo del enemigo alternando turno de disparo
                 if(i==0){
-                    if(player.colision(disparoEnemigo) && !player.getHit())
+                    if(_jugador->colision(_disparoE1) && !_jugador->getHit())
                     {
-                        disparoEnemigo.setY(pantalla.getOutsrc());
-                        player.setHit(true);
+                        _disparoE1->setY(pantalla.getOutsrc());
+                        _jugador->setHit(true);
                         
-                        explosion.setX(player.getX());
-                        explosion.setY(player.getY());
+                        _explosion->setX(_jugador->getX());
+                        _explosion->setY(_jugador->getY());
                         pantalla.setTexp(10);
                         
                     } 
-                    if(disparoEnemigo.getY() < pantalla.getOutsrc())disparoEnemigo.setYacu(5);
-                    disparoEnemigo.show(_window);
+                    if(_disparoE1->getY() < pantalla.getOutsrc())_disparoE1->setYacu(5);
+                    _disparoE1->show(_window);
                     
                 }else if(i==1)
                 {
-                    if(player.colision(disparoEnemigoDos) && !player.getHit())
+                    if(_jugador->colision(_disparoE2) && !_jugador->getHit())
                     {
-                        disparoEnemigoDos.setY(pantalla.getOutsrc());
-                        player.setHit(true);
+                        _disparoE2->setY(pantalla.getOutsrc());
+                        _jugador->setHit(true);
                         
-                        explosion.setX(player.getX());
-                        explosion.setY(player.getY());
+                        _explosion->setX(_jugador->getX());
+                        _explosion->setY(_jugador->getY());
                         pantalla.setTexp(10);
                         
                     } 
-                    if(disparoEnemigoDos.getY() < pantalla.getOutsrc())disparoEnemigoDos.setYacu(5);
-                    disparoEnemigoDos.show(_window);
+                    if(_disparoE2->getY() < pantalla.getOutsrc())_disparoE2->setYacu(5);
+                    _disparoE2->show(_window);
                 }
 
                 //disparar los de la primera filani
@@ -276,15 +275,16 @@ String Juego::getName()
                 {
                     if(!enemigo[i][j]->getHit())
                     {
-                        if(enemigo[i][j]->colision(disparoNave) )
+                        
+                        if(enemigo[i][j]->colision(_disparoP) )
                         {
                             pantalla.setNEnemigo(pantalla.getNEnemigo()-1);
-                            player.setPts(15);
+                            _jugador->setPts(15);
                             enemigo[i][j]->setHit(true); ///fuera eliminado
-                            explosion.setX(enemigo[i][j]->getX());
-                            explosion.setY(enemigo[i][j]->getY());
+                            _explosion->setX(enemigo[i][j]->getX());
+                            _explosion->setY(enemigo[i][j]->getY());
                             pantalla.setTexp(10);
-                            disparoNave.setY(-100) ;/// fuera
+                            _disparoP->setY(-100) ;/// fuera
                         }
 
                         //movimiento <- ->
@@ -295,16 +295,16 @@ String Juego::getName()
                         enemigo[i][j]->show(_window);
                         
                         /// disparo de loss aliens mirar q solo dispara la primer linea
-                        if(pantalla.getTsort() == i && player.getX() && disparoEnemigo.getY()>=pantalla.getOutsrc())
+                        if(pantalla.getTsort() == i && _jugador->getX() && _disparoE1->getY()>=pantalla.getOutsrc())
                         {
-                            disparoEnemigo.setX(enemigo[i][j]->getX() + enemigo[i][j]->getW()/2);
-                            disparoEnemigo.setY(enemigo[i][j]->getY());
+                            _disparoE1->setX(enemigo[i][j]->getX() + enemigo[i][j]->getW()/2);
+                            _disparoE1->setY(enemigo[i][j]->getY());
                         }
 
-                        if(enemigo[i][j]->getX()== player.getX() && disparoEnemigoDos.getY()>=pantalla.getOutsrc())
+                        if(enemigo[i][j]->getX()== _jugador->getX() && _disparoE2->getY()>=pantalla.getOutsrc())
                         {
-                            disparoEnemigoDos.setX(enemigo[i][j]->getX() + enemigo[i][j]->getW()/2);
-                            disparoEnemigoDos.setY(enemigo[i][j]->getY());
+                            _disparoE2->setX(enemigo[i][j]->getX() + enemigo[i][j]->getW()/2);
+                            _disparoE2->setY(enemigo[i][j]->getY());
                         }
                         
                     }
@@ -320,20 +320,20 @@ String Juego::getName()
             {
                 pantalla.setInit(false);
                 pantalla.upNivelWin(_window);
-                pantalla.reset(player);
+                pantalla.reset(_jugador);
                 
                 
                 
             }
 
-            // manejo de explosion
-            if(pantalla.getTexp()){ explosion.show(_window); pantalla.setTexpCont(); }
             
-            player.show(_window);
+            if(pantalla.getTexp()){ _explosion->show(_window); pantalla.setTexpCont(); }
             
-            disparoNave.show(_window);
+            _jugador->show(_window);
             
-            escena.show(_window);
+            _disparoP->show(_window);
+            
+            _escena->show(_window);
 
             if ((pantalla.getBan() && pantalla.getVel()==pantalla.getVel()/2) || enemigo[pantalla.getColumna()-1][pantalla.getFila()-1]->getY() < 300)
             {
@@ -351,32 +351,26 @@ String Juego::getName()
             if(pantalla.getStepCont() > pantalla.getVel()) pantalla.setStep(0);
 
             //estadisticas en pantalla
-            pantalla.texto(_window,"",1,player.getRecord(),30,0xFFFF0000FF,890,642);
-            pantalla.texto(_window,"",1,player.getPts(),30,0xFFFF0000FF,600,640);
-            pantalla.texto(_window,"",1,player.getVidas(),30,0xFFFF0000FF,570,580);
-            pantalla.texto(_window,player.getName(),2,0,30,0xFFFF0000FF,180,586);
+            pantalla.texto(_window,"",1,_jugador->getRecord(),30,0xFFFF0000FF,890,642);
+            pantalla.texto(_window,"",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
+            pantalla.texto(_window,"",1,_jugador->getVidas(),30,0xFFFF0000FF,570,580);
+            pantalla.texto(_window,_jugador->getName(),2,0,30,0xFFFF0000FF,180,586);
             pantalla.texto(_window,"",1,pantalla.getNEnemigo(),30,0xFFFF0000FF,824,588);
-            pantalla.texto(_window,"",1,player.getVelocidad(),30,0xFFFF0000FF,318,644);
+            pantalla.texto(_window,"",1,_jugador->getVelocidad(),30,0xFFFF0000FF,318,644);
 
             
             _window->display();
-            if(player.getHit()){
+            if(_jugador->getHit()){
                 //Timer(190);
                 // resta vidas
-                player.setVidasDown();
-               if (player.getVidas() < 0)
+                _jugador->setVidasDown();
+               if (_jugador->getVidas() < 0)
                {
-                   pantalla.gameOver(_window, player);
+                   pantalla.gameOver(_window, _jugador);
                }else
                {
-                   pantalla.reset(player);
-                   /*for(int i=0; i<pantalla.getColumna(); i++){
-                       for(int j=0; j<pantalla.getFila(); j++){
-                           enemigo[i][j]->setX(i*110+120);
-                           enemigo[i][j]->setY(j*60-500);
-                           enemigo[i][j]->setHit(false); 
-                       }
-                   }*/
+                   pantalla.reset(_jugador);
+                   
                }
             }
             

@@ -17,6 +17,13 @@ class Juego
 private:
     sf::RenderWindow* _window;
     String   _name;
+    Jugador * _jugador;
+    Enemigo * _enemigo[7][5];
+    Base * _escena, * _explosion;
+    Disparo * _disparoP, * _disparoE1, *_disparoE2;
+
+
+    
 public:
     Juego();
     ~Juego();
