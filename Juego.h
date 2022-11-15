@@ -17,11 +17,13 @@ class Juego
 {
 private:
     sf::RenderWindow* _window;
+    int  _col=0, _fila=0;
     Menu * _menu;
     Escena  _pantalla;
     String   _name;
     Jugador * _jugador;
-    Enemigo * _enemigo[7][5];
+    
+    Enemigo * _enemigo[7][6];
     Base * _escena, * _explosion, *_logo;
     Disparo * _disparoP, * _disparoE1, *_disparoE2;
     Font * font;
@@ -32,6 +34,7 @@ private:
 public:
     Juego();
     ~Juego();
+    void crearEnemigo();
     void init();// precarga
     void update();// reset o pasa nivel
     void draw();

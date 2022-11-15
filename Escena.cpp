@@ -127,9 +127,9 @@ int Escena::getColumna()
 {
     return _columna;
 }
-void Escena::setColumna(int c)
+void Escena::setColumna()
 {
-    _columna = c;
+    _columna++;
 }
 void Escena::setFila(int f)
 {
@@ -218,6 +218,8 @@ void Escena::upNivelWin(RenderWindow * window, Jugador * b)
         if (e.key.code == Keyboard::Enter){
             this->_fila++;
             this->_nivel++;
+            this->setColumna();
+            this->setNEnemigo(this->getColumna()*this->getFila());
             salir=true;
         }
         

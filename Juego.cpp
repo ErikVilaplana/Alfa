@@ -30,6 +30,12 @@
         _disparoE2= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _disparoP= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _pantalla.setNEnemigo((_pantalla.getFila()-2) * _pantalla.getColumna());
+        crearEnemigo();
+        _window->draw(_spmapa);
+    }
+    void Juego::crearEnemigo()
+    {
+        setPosEnemigo();
         for(int i = 0; i < _pantalla.getColumna(); i++)
         {
             for(int j = 0; j < _pantalla.getFila(); j++)
@@ -38,14 +44,7 @@
             }
             
         }
-                
-            
-        
-        
-        
-        _window->draw(_spmapa);
     }
-
 
     void Juego::init() {
         _window->draw(_spmapa);
@@ -180,7 +179,7 @@
                 
                 _pantalla.upNivelWin(_window, _jugador);
                 _pantalla.reset(_jugador);
-                setPosEnemigo();
+                crearEnemigo();
                 runJuego();
             }
 
@@ -243,9 +242,8 @@
     {
         for(int i=0; i<_pantalla.getColumna(); i++){
             for(int j=0; j<_pantalla.getFila(); j++){
-                /*_enemigo[i][j]->setX(i*110+120);
-                _enemigo[i][j]->setY(j*60-500);
-                _enemigo[i][j]->setHit(false); */
+                _enemigo[i][j]={} ;
+                
             }
         }
     }

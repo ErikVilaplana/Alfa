@@ -30,7 +30,7 @@ public:
 
     int getFila();
     int getColumna();
-    void setColumna(int c);
+    void setColumna();
     void setFila(int f);
     void delay(int time=1);
 

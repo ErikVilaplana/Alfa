@@ -1,8 +1,5 @@
-
-
-
 #include "Juego.h"
-int main()
+int main(int argc, char* argv[]) 
 {
    
     Juego juego;
