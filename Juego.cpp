@@ -204,8 +204,7 @@
             
             //contador pasos
             
-            if(_pantalla.getStepCont() > _pantalla.getVel()) _pantalla.set                                   S      tep(0
-                );
+            if(_pantalla.getStepCont() > _pantalla.getVel()) _pantalla.setStep(0);
 
             //estadisticas en pantalla
             _pantalla.texto(_window,"",1,_jugador->getRecord(),30,0xFFFF0000FF,890,642);
