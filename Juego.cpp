@@ -19,7 +19,7 @@
         
         _texmapa.loadFromFile("img/fondoDos.jpg");
         _spmapa.setTexture(_texmapa);
-        _spmapa.setPosition(0,0);
+        _spmapa.setPosition(500,200);
         _window = new sf::RenderWindow(sf::VideoMode(_pantalla.getWidth(), _pantalla.getHeight()), "laraga");
         _window->setPosition(Vector2i(200,0));
         _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
@@ -29,7 +29,7 @@
         _disparoE1= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _disparoE2= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _disparoP= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
-        _pantalla.setNEnemigo((_pantalla.getFila()-2) * _pantalla.getColumna());
+        _pantalla.setNEnemigo(_pantalla.getFila() * _pantalla.getColumna());
         crearEnemigo();
         _window->draw(_spmapa);
     }
@@ -72,23 +72,19 @@
     
 
     void Juego::runJuego() {
-        
+        _window->draw(_spmapa);
         while (_window->isOpen())
         {   //dibuja fondo
             
+            _spmapa.setPosition(500,0);
             
-            _window->draw(_spmapa);
-            /*_enemigo[0][0]=new Enemigo(0, 0, 110, 60, 51, 48, "img/enemigos.png");
-            _enemigo[0][0]->setX(0);
-            _enemigo[0][0]->setY(300);
-            _enemigo[0][0]->show(_window);*/
             
             _pantalla.setTsort(rand() %10); 
             _pantalla.getBan();
             
 
             //disparo del player se panda la posición del los enemigos cargados y el objeto disparo
-            _jugador->control(_window, _enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() ,  _disparoP);
+            _jugador->control(_window, _enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() ,  _disparoP,_spmapa);
 
             // Preparamos los enemigos para su funcion jajaj
             

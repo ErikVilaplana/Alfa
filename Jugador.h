@@ -25,7 +25,7 @@ class Jugador : public Base
     ~Jugador();
     
 
-    void control(RenderWindow *window, int pos, Disparo * disp);
+    void control(RenderWindow *window, int pos, Disparo * disp,Sprite _spmapa);
 
     int getRecord();
     float getPts();

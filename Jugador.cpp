@@ -36,13 +36,29 @@ void Jugador::animando(int step, int velocidad)
     }
     
 }
-void Jugador::control(RenderWindow * window, int pos, Disparo * disp) 
+void Jugador::control(RenderWindow * window, int pos, Disparo * disp, Sprite _spmapa) 
 {
     Event e;
+    
+    _spmapa.setPosition(_x-1000,-100);
+    
+    
     while (window->pollEvent(e))   { if(e.type == Event::Closed) {window->close();}}
 
-    if(Keyboard::isKeyPressed(Keyboard::Left) && _x >100) { _x-=8;}
-    else if(Keyboard::isKeyPressed(Keyboard::Right) &&  _x <840){_x+=8;}
+    if(Keyboard::isKeyPressed(Keyboard::Left) && _x >100)
+    {
+        _x-=8;
+        _spmapa.setPosition(_x-1000,-100);
+        
+        
+    }
+    else if(Keyboard::isKeyPressed(Keyboard::Right) &&  _x <840)
+    {
+        _x+=8;
+        _spmapa.setPosition(_x-1000,-100);
+        
+        
+    }
     else if(Keyboard::isKeyPressed(Keyboard::Escape)){exit(0);}//cerrar juego
     // disparos
     else if(Keyboard::isKeyPressed(Keyboard::Space) && (pos >= 300) && disp->getY() <=-20)
@@ -56,7 +72,7 @@ void Jugador::control(RenderWindow * window, int pos, Disparo * disp)
         
     }
     if(disp->getY() > -20) disp->setYacum(5);
-    
+    window->draw(_spmapa);
 }
 
 int Jugador::getRecord()
