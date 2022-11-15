@@ -37,7 +37,7 @@ public:
     void draw();
     void deInit();// precargar
     void runJuego();/////////
-    
+    void setPosEnemigo();
     void initMenu();
 };
 

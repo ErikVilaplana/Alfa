@@ -16,11 +16,12 @@
     }
    
     void Juego::deInit() {
+        
         _texmapa.loadFromFile("img/fondoDos.jpg");
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(0,0);
         _window = new sf::RenderWindow(sf::VideoMode(_pantalla.getWidth(), _pantalla.getHeight()), "laraga");
-        _window->setPosition(Vector2i(0,0));
+        _window->setPosition(Vector2i(200,0));
         _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
          _escena = new Base(  0, 250, 0, 584, 1024, 120, "img/itens.png");
          _logo = new Base(  0, 0, 300, 600, 346, 123, "img/LaraGa.png");
@@ -28,6 +29,18 @@
         _disparoE1= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _disparoE2= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _disparoP= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
+        _pantalla.setNEnemigo((_pantalla.getFila()-2) * _pantalla.getColumna());
+        for(int i = 0; i < _pantalla.getColumna(); i++)
+        {
+            for(int j = 0; j < _pantalla.getFila(); j++)
+            {
+                _enemigo[i][j] = new Enemigo(0, j*50, i*110, j*60-500, 51, 48, "img/itens.png");
+            }
+            
+        }
+                
+            
+        
         
         
         _window->draw(_spmapa);
@@ -36,8 +49,9 @@
 
     void Juego::init() {
         _window->draw(_spmapa);
-    _pantalla.setInicio(_window);
-    runJuego();
+        _pantalla.setInicio(_window);
+        _jugador->setName(_pantalla.getName());      
+        runJuego();
         
     }
     
@@ -61,33 +75,23 @@
     void Juego::runJuego() {
 
         
-        _jugador->setName(_pantalla.getName());      
         
-        Enemigo * enemigo[7][5];
+        
+     
                 
         
         while (_window->isOpen())
-        {_window->draw(_spmapa);
-            if(_pantalla.getInit()==false)
-            {
-                
-                _pantalla.setNEnemigo((_pantalla.getFila()-2) * _pantalla.getColumna());
-                for(int i = 0; i < _pantalla.getColumna(); i++)
-                {
-                    for(int j = 0; j < _pantalla.getFila(); j++)
-                    {
-                        enemigo[i][j] = new Enemigo(0, j*50, i*110, j*60-500, 51, 48, "img/itens.png");
-                    }
+        {   //dibuja fondo
             
-                }
-                _pantalla.setInit(true);
-            }
+            _window->draw(_spmapa);
+            
+            
             _pantalla.setTsort(rand() %10); 
             _pantalla.getBan();
             
 
             //disparo del player se panda la posición del los enemigos cargados y el objeto disparo
-            _jugador->control(_window, enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() ,  _disparoP);
+            _jugador->control(_window, _enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() ,  _disparoP);
 
             // Preparamos los enemigos para su funcion jajaj
             
@@ -128,38 +132,38 @@
                 //disparar los de la primera filani
                 for(int j = 4; j > 0; j--)
                 {
-                    if(!enemigo[i][j]->getHit())
+                    if(!_enemigo[i][j]->getHit())
                     {
                         
-                        if(enemigo[i][j]->colision(_disparoP) )
+                        if(_enemigo[i][j]->colision(_disparoP) )
                         {
                             _pantalla.setNEnemigo(_pantalla.getNEnemigo()-1);
                             _jugador->setPts(15);
-                            enemigo[i][j]->setHit(true); ///fuera eliminado
-                            _explosion->setX(enemigo[i][j]->getX());
-                            _explosion->setY(enemigo[i][j]->getY());
+                            _enemigo[i][j]->setHit(true); ///fuera eliminado
+                            _explosion->setX(_enemigo[i][j]->getX());
+                            _explosion->setY(_enemigo[i][j]->getY());
                             _pantalla.setTexp(10);
                             _disparoP->setY(-100) ;/// fuera
                         }
 
                         //movimiento <- ->
-                        enemigo[i][j]->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
+                        _enemigo[i][j]->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
                         //animacion
-                        enemigo[i][j]->animando(_pantalla.getStep(),_pantalla.getVel());
+                        _enemigo[i][j]->animando(_pantalla.getStep(),_pantalla.getVel());
                         
-                        enemigo[i][j]->show(_window);
+                        _enemigo[i][j]->show(_window);
                         
                         /// disparo de loss aliens mirar q solo dispara la primer linea
                         if(_pantalla.getTsort() == i && _jugador->getX() && _disparoE1->getY()>=_pantalla.getOutsrc())
                         {
-                            _disparoE1->setX(enemigo[i][j]->getX() + enemigo[i][j]->getW()/2);
-                            _disparoE1->setY(enemigo[i][j]->getY());
+                            _disparoE1->setX(_enemigo[i][j]->getX() + _enemigo[i][j]->getW()/2);
+                            _disparoE1->setY(_enemigo[i][j]->getY());
                         }
 
-                        if(enemigo[i][j]->getX()== _jugador->getX() && _disparoE2->getY()>=_pantalla.getOutsrc())
+                        if(_enemigo[i][j]->getX()== _jugador->getX() && _disparoE2->getY()>=_pantalla.getOutsrc())
                         {
-                            _disparoE2->setX(enemigo[i][j]->getX() + enemigo[i][j]->getW()/2);
-                            _disparoE2->setY(enemigo[i][j]->getY());
+                            _disparoE2->setX(_enemigo[i][j]->getX() + _enemigo[i][j]->getW()/2);
+                            _disparoE2->setY(_enemigo[i][j]->getY());
                         }
                         
                     }
@@ -173,18 +177,11 @@
 
             if(_pantalla.getNEnemigo()==0)
             {
-                _pantalla.setInit(false);
+                
                 _pantalla.upNivelWin(_window, _jugador);
                 _pantalla.reset(_jugador);
-                
-                for(int i=0; i<_pantalla.getColumna(); i++)
-                {
-                    for(int j=0; j<_pantalla.getFila(); j++){
-                        enemigo[i][j]->setX(i*110+120);
-                        enemigo[i][j]->setY(j*60-500);
-                        enemigo[i][j]->setHit(false); 
-                    }
-                }
+                setPosEnemigo();
+                runJuego();
             }
 
             
@@ -196,13 +193,13 @@
             
             _escena->show(_window);
 
-            if ((_pantalla.getBan() && _pantalla.getVel()==_pantalla.getVel()/2) || enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() < 300)
+            if ((_pantalla.getBan() && _pantalla.getVel()==_pantalla.getVel()/2) || _enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() < 300)
             {
                 for(int i=0; i<_pantalla.getColumna(); i++)
                 {
                     for(int j=0; j<_pantalla.getFila(); j++)
                     {
-                        enemigo[i][j]->setYacu(enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->desplazar());
+                        _enemigo[i][j]->setYacu(_enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->desplazar());
                     }
                 }
             }
@@ -231,13 +228,7 @@
                }else
                {
                    _pantalla.reset(_jugador);
-                   /*for(int i=0; i<_pantalla.getColumna(); i++){
-                       for(int j=0; j<_pantalla.getFila(); j++){
-                           enemigo[i][j]->setX(i*110+120);
-                           enemigo[i][j]->setY(j*60-500);
-                           enemigo[i][j]->setHit(false); 
-                       }
-                   }*/
+                   
                    
                }
             }
@@ -247,5 +238,15 @@
             _window->clear(Color::Black);
         }
        
+    }
+    void Juego::setPosEnemigo()
+    {
+        for(int i=0; i<_pantalla.getColumna(); i++){
+            for(int j=0; j<_pantalla.getFila(); j++){
+                /*_enemigo[i][j]->setX(i*110+120);
+                _enemigo[i][j]->setY(j*60-500);
+                _enemigo[i][j]->setHit(false); */
+            }
+        }
     }
 
