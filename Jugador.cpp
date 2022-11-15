@@ -19,6 +19,23 @@ String Jugador::getName()
     return _name;
 
 }
+void Jugador::animando(int step, int velocidad)  
+{
+    
+    //_wx=(step > velocidad/2) ? _awx + _w  : 0; // operador ternario en base a un juego clasico
+    //_wx=(step > velocidad/4) ? _awx + (_w * 2)  : _awx; // operador ternario en base a un juego clasico
+    if(step<10)
+    {
+        _wx=_awx;
+    }else if(step<20)
+    {
+        _wx=_awx + _w ;
+    }else if(step<30)
+    {
+        _wx=_awx + (_w * 2);
+    }
+    
+}
 void Jugador::control(RenderWindow * window, int pos, Disparo * disp) 
 {
     Event e;

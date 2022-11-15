@@ -49,5 +49,5 @@ void Base::setAcuX(int x)
 void Base::show(RenderWindow *window){
     _spr.setTextureRect(IntRect(_wx,_wy,_w,_h));
     _spr.setPosition(_x,_y);
-    if(!_hit) window->draw(_spr);
+    if(!_hit){ window->draw(_spr);}
 }

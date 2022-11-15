@@ -39,13 +39,13 @@ void Menu::set_values(){
   coords = {{590,40},{610,191},{590,282},{600,370},{623,457}};
   sizes = {20,28,24,24,24};
 
-  for (size_t i{}; i < texts.size(); ++i){
+  /*for (size_t i{}; i < texts.size(); ++i){
    texts[i].setFont(*font); 
    texts[i].setString(options[i]); 
    texts[i].setCharacterSize(sizes[i]);
    texts[i].setOutlineColor(Color::Black);
    texts[i].setPosition(coords[i]);
-  }
+  }*/
   texts[1].setOutlineThickness(4);
   pos = 1;
 

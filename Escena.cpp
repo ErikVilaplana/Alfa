@@ -216,7 +216,7 @@ void Escena::upNivelWin(RenderWindow * window, Jugador * b)
         this->texto(window, "",1, this->_nivel, 130,0xffffffFF, 250, 150);
         this->texto(window, "Presione tecla SPACE para Volver a Jugar ",1, 0, 30,0xffffffFF, 420, 600);	
         if (e.key.code == Keyboard::Enter){
-            this->_fila++;
+            
             this->_nivel++;
             this->setColumna();
             this->setNEnemigo(this->getColumna()*this->getFila());

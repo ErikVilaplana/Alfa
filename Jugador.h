@@ -43,4 +43,5 @@ class Jugador : public Base
     bool colision(Disparo * disp);
     void setName(String name);
     String getName();
+    void animando(int step, int vel );
 };

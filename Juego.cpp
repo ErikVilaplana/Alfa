@@ -40,7 +40,7 @@
         {
             for(int j = 0; j < _pantalla.getFila(); j++)
             {
-                _enemigo[i][j] = new Enemigo(0, j*50, i*110, j*60-500, 51, 48, "img/itens.png");
+                _enemigo[i][j] = new Enemigo(0, j*50, i*110, j*60-500, 51, 48, "img/enemigos.png");
             }
             
         }
@@ -72,18 +72,16 @@
     
 
     void Juego::runJuego() {
-
-        
-        
-        
-     
-                
         
         while (_window->isOpen())
         {   //dibuja fondo
             
-            _window->draw(_spmapa);
             
+            _window->draw(_spmapa);
+            /*_enemigo[0][0]=new Enemigo(0, 0, 110, 60, 51, 48, "img/enemigos.png");
+            _enemigo[0][0]->setX(0);
+            _enemigo[0][0]->setY(300);
+            _enemigo[0][0]->show(_window);*/
             
             _pantalla.setTsort(rand() %10); 
             _pantalla.getBan();
@@ -129,7 +127,7 @@
                 }
 
                 //disparar los de la primera filani
-                for(int j = 4; j > 0; j--)
+                for(int j = 4; j > -1; j--)
                 {
                     if(!_enemigo[i][j]->getHit())
                     {
@@ -149,6 +147,7 @@
                         _enemigo[i][j]->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
                         //animacion
                         _enemigo[i][j]->animando(_pantalla.getStep(),_pantalla.getVel());
+                        _jugador->animando(_pantalla.getStep(),_pantalla.getVel());
                         
                         _enemigo[i][j]->show(_window);
                         
@@ -205,7 +204,8 @@
             
             //contador pasos
             
-            if(_pantalla.getStepCont() > _pantalla.getVel()) _pantalla.setStep(0);
+            if(_pantalla.getStepCont() > _pantalla.getVel()) _pantalla.set                                   S      tep(0
+                );
 
             //estadisticas en pantalla
             _pantalla.texto(_window,"",1,_jugador->getRecord(),30,0xFFFF0000FF,890,642);
