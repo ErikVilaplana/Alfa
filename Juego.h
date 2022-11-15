@@ -25,7 +25,7 @@ private:
     
     Enemigo * _enemigo[7][5],* _boss;
     Base * _escena, * _explosion, *_logo;
-    Disparo * _disparoP, * _disparoE1, *_disparoE2;
+    Disparo * _disparoP, * _disparoE1, *_disparoE2,*_bossE1,*_bossE2;
     Font * font;
     Texture  _texmapa;
     Sprite  _spmapa;

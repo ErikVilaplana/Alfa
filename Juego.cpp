@@ -29,6 +29,8 @@
         _explosion = new Base(  115, 0, 100, 100, 50, 48, "img/itens.png");
         _disparoE1= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _disparoE2= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
+        _bossE1= new Disparo(0, 0, -100, -100, 11,19,"img/fire.png");
+        _bossE2= new Disparo(0, 0, -100, -100, 11,19,"img/fire.png");
         _disparoP= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _pantalla.setNEnemigo(_pantalla.getFila() * _pantalla.getColumna());
         crearEnemigo();
@@ -104,6 +106,19 @@
                     } 
                     if(_disparoE1->getY() < _pantalla.getOutsrc())_disparoE1->setYacu(5);
                     _disparoE1->show(_window);
+
+                    /*if(_jugador->colision(_bossE1) && !_jugador->getHit())
+                    {
+                        _bossE1->setY(_pantalla.getOutsrc());
+                        _jugador->setHit(true);
+                        
+                        _explosion->setX(_jugador->getX());
+                        _explosion->setY(_jugador->getY());
+                        _pantalla.setTexp(10);
+                        
+                    } 
+                    if(_bossE1->getY() < _pantalla.getOutsrc())_bossE1->setYacu(5);
+                    _bossE1->show(_window);*/
                     
                 }else if(i==1)
                 {
@@ -119,7 +134,21 @@
                     } 
                     if(_disparoE2->getY() < _pantalla.getOutsrc())_disparoE2->setYacu(5);
                     _disparoE2->show(_window);
+                    
+                    /*if(_jugador->colision(_bossE2) && !_jugador->getHit())
+                    {
+                        _bossE2->setY(_pantalla.getOutsrc());
+                        _jugador->setHit(true);
+                        
+                        _explosion->setX(_jugador->getX());
+                        _explosion->setY(_jugador->getY());
+                        _pantalla.setTexp(10);
+                        
+                    } 
+                    if(_bossE2->getY() < _pantalla.getOutsrc())_bossE2->setYacu(5);
+                    _bossE2->show(_window);*/
                 }
+                
 
                 //disparar los de la primera filani
                 for(int j = 4; j > -1; j--)
@@ -139,18 +168,18 @@
                         }
 
                         //movimiento <- ->
-                        _boss->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
+                        /*_boss->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());*/
                         _enemigo[i][j]->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
                         //animacion
 
-                        _boss->animando(_pantalla.getStep(),_pantalla.getVel());
+                        /*_boss->animando(_pantalla.getStep(),_pantalla.getVel());*/
                         _enemigo[i][j]->animando(_pantalla.getStep(),_pantalla.getVel());
                         _jugador->animando(_pantalla.getStep(),_pantalla.getVel());
 
                         //enemigos niveles comunes
-                        /*_enemigo[i][j]->show(_window);*/
                         
-                        /// disparo de loss aliens mirar q solo dispara la primer linea
+                        _enemigo[i][j]->show(_window);
+                        
                         if(_pantalla.getTsort() == i && _jugador->getX() && _disparoE1->getY()>=_pantalla.getOutsrc())
                         {
                             _disparoE1->setX(_enemigo[i][j]->getX() + _enemigo[i][j]->getW()/2);
@@ -162,6 +191,19 @@
                             _disparoE2->setX(_enemigo[i][j]->getX() + _enemigo[i][j]->getW()/2);
                             _disparoE2->setY(_enemigo[i][j]->getY());
                         }
+
+                        ///disparo Bosss
+                        /*if(_pantalla.getTsort() == i && _jugador->getX() && _bossE1->getY()>=_pantalla.getOutsrc())
+                        {
+                            _bossE1->setX(_boss->getX() + _boss->getW()/2);
+                            _bossE1->setY(_boss->getY());
+                        }
+
+                        if(_boss->getX()== _jugador->getX() && _bossE2->getY()>=_pantalla.getOutsrc())
+                        {
+                            _bossE2->setX(_boss->getX() + _boss->getW()/2);
+                            _bossE2->setY(_boss->getY());
+                        }*/
                         
                     }
                 }   
@@ -189,7 +231,8 @@
             _disparoP->show(_window);
             
             _escena->show(_window);
-            _boss->show(_window);
+            /*_boss->show(_window);*/
+            
             if ((_pantalla.getBan() && _pantalla.getVel()==_pantalla.getVel()/2) || _enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() < 300)
             {
                 for(int i=0; i<_pantalla.getColumna(); i++)
