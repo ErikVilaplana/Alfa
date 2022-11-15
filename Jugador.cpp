@@ -40,22 +40,31 @@ void Jugador::control(RenderWindow * window, int pos, Disparo * disp, Sprite _sp
 {
     Event e;
     
-    _spmapa.setPosition(_x-1000,-100);
+    /*_spmapa.setPosition(_x-1000,(_y-600));*/
     
     
     while (window->pollEvent(e))   { if(e.type == Event::Closed) {window->close();}}
-
+    if(Keyboard::isKeyPressed(Keyboard::Up)&& _y >0)
+    {
+        _y-=8;
+        
+    }
+    if(Keyboard::isKeyPressed(Keyboard::Down)&& _y <500)
+    {
+        _y+=8;
+        
+    }
     if(Keyboard::isKeyPressed(Keyboard::Left) && _x >100)
     {
         _x-=8;
-        _spmapa.setPosition(_x-1000,-100);
+        
         
         
     }
     else if(Keyboard::isKeyPressed(Keyboard::Right) &&  _x <840)
     {
         _x+=8;
-        _spmapa.setPosition(_x-1000,-100);
+        
         
         
     }
@@ -72,6 +81,7 @@ void Jugador::control(RenderWindow * window, int pos, Disparo * disp, Sprite _sp
         
     }
     if(disp->getY() > -20) disp->setYacum(5);
+    _spmapa.setPosition(_x-1000,_y-600);
     window->draw(_spmapa);
 }
 

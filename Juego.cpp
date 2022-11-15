@@ -72,7 +72,7 @@
     
 
     void Juego::runJuego() {
-        _window->draw(_spmapa);
+        
         while (_window->isOpen())
         {   //dibuja fondo
             
