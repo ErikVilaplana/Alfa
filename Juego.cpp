@@ -23,6 +23,7 @@
         _window = new sf::RenderWindow(sf::VideoMode(_pantalla.getWidth(), _pantalla.getHeight()), "laraga");
         _window->setPosition(Vector2i(200,0));
         _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
+        _boss = new Enemigo(0,  0, 0, 0,   184,  164, "img/boss.png");
          _escena = new Base(  0, 250, 0, 584, 1024, 120, "img/itens.png");
          _logo = new Base(  0, 0, 300, 600, 346, 123, "img/LaraGa.png");
         _explosion = new Base(  115, 0, 100, 100, 50, 48, "img/itens.png");
@@ -75,9 +76,7 @@
         
         while (_window->isOpen())
         {   //dibuja fondo
-            
-            _spmapa.setPosition(500,0);
-            
+
             
             _pantalla.setTsort(rand() %10); 
             _pantalla.getBan();
@@ -140,12 +139,16 @@
                         }
 
                         //movimiento <- ->
+                        _boss->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
                         _enemigo[i][j]->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
                         //animacion
+
+                        _boss->animando(_pantalla.getStep(),_pantalla.getVel());
                         _enemigo[i][j]->animando(_pantalla.getStep(),_pantalla.getVel());
                         _jugador->animando(_pantalla.getStep(),_pantalla.getVel());
-                        
-                        _enemigo[i][j]->show(_window);
+
+                        //enemigos niveles comunes
+                        /*_enemigo[i][j]->show(_window);*/
                         
                         /// disparo de loss aliens mirar q solo dispara la primer linea
                         if(_pantalla.getTsort() == i && _jugador->getX() && _disparoE1->getY()>=_pantalla.getOutsrc())
@@ -186,7 +189,7 @@
             _disparoP->show(_window);
             
             _escena->show(_window);
-
+            _boss->show(_window);
             if ((_pantalla.getBan() && _pantalla.getVel()==_pantalla.getVel()/2) || _enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() < 300)
             {
                 for(int i=0; i<_pantalla.getColumna(); i++)

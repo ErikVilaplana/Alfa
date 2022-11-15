@@ -23,7 +23,7 @@ private:
     String   _name;
     Jugador * _jugador;
     
-    Enemigo * _enemigo[7][5];
+    Enemigo * _enemigo[7][5],* _boss;
     Base * _escena, * _explosion, *_logo;
     Disparo * _disparoP, * _disparoE1, *_disparoE2;
     Font * font;

@@ -80,7 +80,7 @@ void Enemigo::movimiento(int step, int velocidad, int &dir,bool &ban)
 {
     
     if(this->_x <10){ban=true; dir=1;}
-    if(this->_x >950){ban=true; dir=-1;}
+    if(this->_x >850){ban=true; dir=-1;}
     
     this->_x+=(step==(velocidad/2) || !step)*dir*(50 - velocidad);
     
