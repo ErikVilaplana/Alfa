@@ -86,7 +86,7 @@
             if(_pantalla.getStepCont() > _pantalla.getVel()) _pantalla.setStep(0);
 
             //estadisticas en pantalla
-            _pantalla.texto(_window,"",1,_jugador->getRecord(),30,0xFFFF0000FF,890,642);
+            _pantalla.texto(_window,"",1,999,30,0xFFFF0000FF,890,642);
             _pantalla.texto(_window,"",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
             _pantalla.texto(_window,"",1,_jugador->getVidas(),30,0xFFFF0000FF,570,580);
             _pantalla.texto(_window,_jugador->getName(),2,0,30,0xFFFF0000FF,180,586);

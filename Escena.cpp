@@ -221,7 +221,7 @@ void Escena::gameWon(RenderWindow * window,Jugador * b){
     /*m1.stop();
     m2.play();*/
     ArchivoEstadistica arch;
-	arch.guardar(* b);
+	/*arch.guardar(* b);*/
     while(!salir){
         Event e;
         while(window->pollEvent(e)) if(e.type==Event::Closed) exit(0);
@@ -235,12 +235,12 @@ void Escena::gameWon(RenderWindow * window,Jugador * b){
             this->texto(window, "LARAGA",1, 0, 50,0xffffffFF, 80, 70);
             this->texto(window, "UTN",1, 0, 50,0xffffffFF, 290, 102);
            
-            for(int i = 0;i< arch.cantidadJugador();i++)
+            /*for(int i = 0;i< arch.cantidadJugador();i++)
             {
-                Jugador jugador=arch.leerJugador();
+                /*Jugador jugador=arch.leerJugador();#1#
                 this->texto(window, "",1, 0, 50,0xffffffFF, 80, 150);
                 this->texto(window, "UTN",1, 0, 50,0xffffffFF, 80, 180);
-            }
+            }*/
             
             this->texto(window, "Presione tecla SPACE para Salir ",1, 0, 30,0xffffffFF, 420, 600);
         }

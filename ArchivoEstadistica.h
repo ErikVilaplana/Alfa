@@ -12,5 +12,5 @@ public:
     int generarCodigo();
     int cantidadJugador();
     void leerJugador(Jugador jugador[], int cantidad);
-    Jugador leerDeDisco(Jugador * jugador,int pos);
+    /*Jugador leerDeDisco(Jugador * jugador,int pos);*/
 };

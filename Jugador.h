@@ -35,7 +35,7 @@ class Jugador : public Base
     int getDisparo();
     int getVelocidad();
     
-    void setCodigo(int cod);
+    /*void setCodigo(int cod);*/
     
     void setPts(int pts);
     void setVidas(int v);

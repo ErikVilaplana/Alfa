@@ -8,7 +8,7 @@ Jugador ArchivoEstadistica::guardar(Jugador jugador)
 {
     FILE* pFile;
 
-    jugador.setCodigo(generarCodigo());
+    /*jugador.setCodigo(generarCodigo());*/
 
     pFile = fopen("Jugadores.dat", "ab+");
   
@@ -61,7 +61,7 @@ void ArchivoEstadistica::leerJugador(Jugador Jugadors[], int cantidad)
 
     fclose(pFile);
 }
-bool ArchivoEstadistica::leerDeDisco(Jugador * jugador,int pos){
+/*bool ArchivoEstadistica::leerDeDisco(Jugador * jugador,int pos){
     FILE *p;
     p=fopen("Jugadores.dat","rb");
     if(p==NULL) return false;
@@ -69,4 +69,4 @@ bool ArchivoEstadistica::leerDeDisco(Jugador * jugador,int pos){
     bool leyo=fread(jugador, sizeof *(jugador), 1, p);
     fclose(p);
     return leyo;
-}
+}*/
