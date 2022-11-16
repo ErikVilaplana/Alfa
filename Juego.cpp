@@ -5,10 +5,7 @@
 
     Juego::Juego()
     {
-        
         deInit();
-        init();
-        
     }
 
     Juego::~Juego() {
@@ -25,13 +22,15 @@
         _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
         _boss = new Enemigo(0,  0, 0, 0,   184,  164, "img/boss.png");
          _escena = new Base(  0, 250, 0, 584, 1024, 120, "img/itens.png");
-         _logo = new Base(  0, 0, 300, 600, 346, 123, "img/LaraGa.png");
+         /*_logo = new Base(  0, 0, 300, 600, 346, 123, "img/LaraGa.png");*/
         _explosion = new Base(  115, 0, 100, 100, 50, 48, "img/itens.png");
+        /*_explosionBoss = new Base(  115, 0, 100, 100, 50, 48, "img/itens.png");*/
         _disparoE1= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _disparoE2= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
         _bossE1= new Disparo(0, 0, -100, -100, 11,19,"img/fire.png");
         _bossE2= new Disparo(0, 0, -100, -100, 11,19,"img/fire.png");
         _disparoP= new Disparo(200, 0, -100, -100, 7,12,"img/itens.png");
+        //seteo de enemigos
         _pantalla.setNEnemigo(_pantalla.getFila() * _pantalla.getColumna());
         crearEnemigo();
         _window->draw(_spmapa);
@@ -43,14 +42,13 @@
         {
             for(int j = 0; j < _pantalla.getFila(); j++)
             {
-                _enemigo[i][j] = new Enemigo(0, j*50, i*110, j*60-500, 51, 48, "img/enemigos.png");
+                _enemigo[i][j] = new Enemigo(0, j*50, i*110, j*60-500, 52, 48, "img/enemigos.png");
             }
             
         }
     }
 
     void Juego::init() {
-        _window->draw(_spmapa);
         _pantalla.setInicio(_window);
         _jugador->setName(_pantalla.getName());      
         runJuego();
@@ -77,11 +75,10 @@
     void Juego::runJuego() {
         
         while (_window->isOpen())
-        {   //dibuja fondo
-
+        {   
             
             _pantalla.setTsort(rand() %10); 
-            _pantalla.getBan();
+            
             
 
             //disparo del player se panda la posición del los enemigos cargados y el objeto disparo
@@ -107,7 +104,7 @@
                     if(_disparoE1->getY() < _pantalla.getOutsrc())_disparoE1->setYacu(5);
                     _disparoE1->show(_window);
 
-                    /*if(_jugador->colision(_bossE1) && !_jugador->getHit())
+                    if(_jugador->colision(_bossE1) && !_jugador->getHit())
                     {
                         _bossE1->setY(_pantalla.getOutsrc());
                         _jugador->setHit(true);
@@ -118,7 +115,7 @@
                         
                     } 
                     if(_bossE1->getY() < _pantalla.getOutsrc())_bossE1->setYacu(5);
-                    _bossE1->show(_window);*/
+                    _bossE1->show(_window);
                     
                 }else if(i==1)
                 {
@@ -135,7 +132,7 @@
                     if(_disparoE2->getY() < _pantalla.getOutsrc())_disparoE2->setYacu(5);
                     _disparoE2->show(_window);
                     
-                    /*if(_jugador->colision(_bossE2) && !_jugador->getHit())
+                    if(_jugador->colision(_bossE2) && !_jugador->getHit())
                     {
                         _bossE2->setY(_pantalla.getOutsrc());
                         _jugador->setHit(true);
@@ -146,7 +143,7 @@
                         
                     } 
                     if(_bossE2->getY() < _pantalla.getOutsrc())_bossE2->setYacu(5);
-                    _bossE2->show(_window);*/
+                    _bossE2->show(_window);
                 }
                 
 
@@ -168,11 +165,11 @@
                         }
 
                         //movimiento <- ->
-                        /*_boss->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());*/
+                        _boss->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
                         _enemigo[i][j]->movimiento(_pantalla.getStep(),_pantalla.getVel(), _pantalla.getDir(), _pantalla.getBan());
                         //animacion
 
-                        /*_boss->animando(_pantalla.getStep(),_pantalla.getVel());*/
+                        _boss->animando(_pantalla.getStep(),_pantalla.getVel());
                         _enemigo[i][j]->animando(_pantalla.getStep(),_pantalla.getVel());
                         _jugador->animando(_pantalla.getStep(),_pantalla.getVel());
 
@@ -193,7 +190,7 @@
                         }
 
                         ///disparo Bosss
-                        /*if(_pantalla.getTsort() == i && _jugador->getX() && _bossE1->getY()>=_pantalla.getOutsrc())
+                        if(_pantalla.getTsort() == i && _jugador->getX() && _bossE1->getY()>=_pantalla.getOutsrc())
                         {
                             _bossE1->setX(_boss->getX() + _boss->getW()/2);
                             _bossE1->setY(_boss->getY());
@@ -203,7 +200,7 @@
                         {
                             _bossE2->setX(_boss->getX() + _boss->getW()/2);
                             _bossE2->setY(_boss->getY());
-                        }*/
+                        }
                         
                     }
                 }   
@@ -231,7 +228,7 @@
             _disparoP->show(_window);
             
             _escena->show(_window);
-            /*_boss->show(_window);*/
+            _boss->show(_window);
             
             if ((_pantalla.getBan() && _pantalla.getVel()==_pantalla.getVel()/2) || _enemigo[_pantalla.getColumna()-1][_pantalla.getFila()-1]->getY() < 300)
             {

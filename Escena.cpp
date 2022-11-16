@@ -238,7 +238,8 @@ void Escena::setInicio(RenderWindow* _window)
     _texmapa.loadFromFile("img/bg.jpg");
     _spmapa.setTexture(_texmapa);
     _spmapa.setPosition(0,0);
-    std::string input_text;
+    //crea variable para ingreso nombre del player
+    string input_text;
     Font font;
     font.loadFromFile("img/galaga.ttf");
     Text text("", font);
@@ -246,6 +247,7 @@ void Escena::setInicio(RenderWindow* _window)
     text.setFillColor(Color::Blue);
     text.setOutlineColor(Color(127,127,127));
     text.setPosition(450,400);
+
     bool salir = false;
     
     
@@ -284,20 +286,17 @@ void Escena::setInicio(RenderWindow* _window)
             }
 
             text.setString(input_text + (show_cursor ? '_' : ' '));
-            if (event.key.code == Keyboard::Escape) {
-                if (!input_text.empty())
-                {
-                    _name=input_text;
-                    salir = true;
-                
-               
+            if (!input_text.empty())
+            {
+                if (event.key.code == Keyboard::Escape) {
+                        _name=input_text;
+                        salir = true;
                 }
             }
-
             _window->clear();
             _window->draw(_spmapa);
             this->texto(_window,"Ingresa Tu nombre Piloto:",1,0,30,0xFFFF0000FF,100,400);
-            this->texto(_window,"Presione ESC para empezar",1,0,30,0xFFFF0000FF,200,650);
+            this->texto(_window,"Presione Enter para empezar",1,0,30,0xFFFF0000FF,200,650);
             
             _window->draw(text);
             _window->display();

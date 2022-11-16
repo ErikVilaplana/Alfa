@@ -7,7 +7,7 @@ using namespace sf  ;
 class Jugador : public Base
 {
     private:
-    int  _vidas=2 , _disparo=3, _record=92000, _velocidad=0;
+    int  _vidas=2 , _disparo=3, _record=92000, _velocidad=0,_piv=0;
     float _pts=0;
     bool _hit, _shot;
     String   _name;
