@@ -7,7 +7,7 @@ using namespace sf  ;
 class Jugador : public Base
 {
     private:
-    int  _vidas=2 , _disparo=3, _record=92000, _velocidad=0,_piv=0;
+    int  _vidas=2 , _disparo=3, _velocidad=0,_piv=0, _codigo;
     float _pts=0;
     bool _hit, _shot;
     String   _name;
@@ -27,13 +27,15 @@ class Jugador : public Base
 
     void control(RenderWindow *window, int pos, Disparo * disp,Sprite _spmapa);
 
-    int getRecord();
+    
     float getPts();
     int getX();
     int getVidas();
     bool getHit();
     int getDisparo();
     int getVelocidad();
+    
+    void setCodigo(int cod);
     
     void setPts(int pts);
     void setVidas(int v);
@@ -44,4 +46,7 @@ class Jugador : public Base
     void setName(String name);
     String getName();
     void animando(int step, int vel );
+    /*void guardar();
+    void leer();
+    int getCantArch();*/
 };

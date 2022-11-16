@@ -89,6 +89,7 @@ int Enemigo::desplazar()
 {
     return (30 -(this->_y < 300)*25);/// desplaza hacia abajo
 }
+
 void Enemigo::animando(int step, int velocidad)  
 {
     

@@ -1,5 +1,8 @@
 ﻿
 #include "Escena.h"
+
+#include "ArchivoEstadistica.h"
+
 Escena::Escena()
 {
     
@@ -44,6 +47,10 @@ void Escena::delay(int time)
 int Escena::getStep()
 {
     return _step;
+}
+int Escena::getNivel()
+{
+    return _nivel;
 }
 int Escena::getVel()
 {
@@ -131,6 +138,10 @@ void Escena::setColumna()
 {
     _columna++;
 }
+void Escena::setColumnaI(int i)
+{
+    _columna=i;
+}
 void Escena::setFila(int f)
 {
     _fila= f;
@@ -142,7 +153,8 @@ void  Escena::reset( Jugador * b)
     //s8.stop(); 
     _outsrc=670;	
     _x2      =  1;
-    _vel  = 45;	
+    if(_nenemigo==(_fila*_columna))
+        _vel  = 45;	
     /*disc->y =  0;
     disc->shot = false;
     disc->x = outscr;
@@ -157,11 +169,12 @@ void  Escena::reset( Jugador * b)
         _stage = 1;
         _misil=0;
         b->setVidas(2);
-        b->setX(490);
+        
         //pw_sh = 1;
         //s11.play(); 
         //Timer(50);
     }
+    b->setX(490);
     b->setHit(false);
     //m1.stop();
     //Timer(100);
@@ -187,6 +200,49 @@ void Escena::gameOver(RenderWindow * window,Jugador * b){
         else{
             this->texto(window, "LARAGA",1, 0, 130,0xffffffFF, 80, 70);
             this->texto(window, "UTN",1, 0, 130,0xffffffFF, 290, 232);
+        }
+        this->texto(window, "Record",1, 0, 30,0xffffffFF, 460, 442);
+        this->texto(window, "",1, 999, 30,0xffffffFF, 490, 510);
+        window->display();
+        /*Timer();*/
+        window->clear(Color::Black);	
+    }
+				
+    /*m2.stop();*/
+    this->reset(b);
+    
+}
+void Escena::setNivel(int n)
+{
+    _nivel=n;
+}
+void Escena::gameWon(RenderWindow * window,Jugador * b){
+    bool salir = false;
+    /*m1.stop();
+    m2.play();*/
+    ArchivoEstadistica arch;
+	arch.guardar(* b);
+    while(!salir){
+        Event e;
+        while(window->pollEvent(e)) if(e.type==Event::Closed) exit(0);
+        if(Keyboard::isKeyPressed(Keyboard::Escape)){exit(0);}
+        if(Keyboard::isKeyPressed(Keyboard::Space)) {_ban=true; salir = true;}
+        if(Keyboard::isKeyPressed(Keyboard::Enter)) {_ban=false; }
+        this->texto(window, "Presione tecla SPACE para Salir ",1, 0, 30,0xffffffFF, 420, 600);	
+        if(this->_ban)	this->texto(window, "Soldado Has Ganado",1, 0, 130,0xffffffFF, 250, 212);
+        else{
+            
+            this->texto(window, "LARAGA",1, 0, 50,0xffffffFF, 80, 70);
+            this->texto(window, "UTN",1, 0, 50,0xffffffFF, 290, 102);
+           
+            for(int i = 0;i< arch.cantidadJugador();i++)
+            {
+                Jugador jugador=arch.leerJugador();
+                this->texto(window, "",1, 0, 50,0xffffffFF, 80, 150);
+                this->texto(window, "UTN",1, 0, 50,0xffffffFF, 80, 180);
+            }
+            
+            this->texto(window, "Presione tecla SPACE para Salir ",1, 0, 30,0xffffffFF, 420, 600);
         }
         this->texto(window, "Record",1, 0, 30,0xffffffFF, 460, 442);
         this->texto(window, "",1, 999, 30,0xffffffFF, 490, 510);

@@ -3,14 +3,14 @@
 using namespace std;
 
 
-/*
+
 Jugador ArchivoEstadistica::guardar(Jugador jugador)
 {
     FILE* pFile;
 
     jugador.setCodigo(generarCodigo());
 
-    pFile = fopen("Jugadors.dat", "ab");
+    pFile = fopen("Jugadores.dat", "ab+");
   
     if (pFile == nullptr) {
         cout << "Error al abrir el archivo" << endl;
@@ -24,18 +24,18 @@ Jugador ArchivoEstadistica::guardar(Jugador jugador)
     return jugador;
 }
 
-int ArchivoJugador::generarCodigo()
+int ArchivoEstadistica::generarCodigo()
 {
-    return cantidadJugadores() + 1;
+    return cantidadJugador() + 1;
 }
 
-int ArchivoJugador::cantidadJugadors()
+int ArchivoEstadistica::cantidadJugador()
 {
     FILE* pFile;
     int cantidad = 0;
     Jugador Jugador;
 
-    pFile = fopen("Jugadors.dat", "rb");
+    pFile = fopen("Jugadores.dat", "rb");
 
     if (pFile == nullptr) {
         return 0;
@@ -49,10 +49,10 @@ int ArchivoJugador::cantidadJugadors()
     return cantidad;
 }
 
-void ArchivoEstadistica::leerJugadors(Jugador Jugadors[], int cantidad)
+void ArchivoEstadistica::leerJugador(Jugador Jugadors[], int cantidad)
 {
     FILE* pFile;
-    pFile = fopen("Jugadors.dat", "rb");
+    pFile = fopen("Jugadores.dat", "rb");
     if (pFile == nullptr) {
         return;
     }
@@ -60,4 +60,13 @@ void ArchivoEstadistica::leerJugadors(Jugador Jugadors[], int cantidad)
     fread(Jugadors, sizeof(Jugador), cantidad, pFile);
 
     fclose(pFile);
-}*/
+}
+bool ArchivoEstadistica::leerDeDisco(Jugador * jugador,int pos){
+    FILE *p;
+    p=fopen("Jugadores.dat","rb");
+    if(p==NULL) return false;
+    fseek(p,pos*sizeof *jugador, 0);
+    bool leyo=fread(jugador, sizeof *(jugador), 1, p);
+    fclose(p);
+    return leyo;
+}

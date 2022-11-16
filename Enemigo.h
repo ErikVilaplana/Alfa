@@ -49,6 +49,7 @@ class Enemigo : public Base
     
     void movimiento(int step, int vel,int &dir, bool &ban);
     int desplazar();
+    int desplazarBajo();
     void animando(int step, int vel );
     bool colision(Disparo * disp);
     
