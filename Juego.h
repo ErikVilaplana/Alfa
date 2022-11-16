@@ -35,6 +35,7 @@ public:
     Juego();
     ~Juego();
     void crearEnemigo();
+    
     void init();// precarga
     void update();// reset o pasa nivel
     void draw();
