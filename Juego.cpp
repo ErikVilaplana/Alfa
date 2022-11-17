@@ -2,22 +2,11 @@
 
     Juego::Juego()
     {
-        
-            
             int pos=0;
             
             while(_arch.leerDeDisco(reg,pos)){
-                cout << "asdsadas" << endl;
                 _estadistica[0]=reg;
-                for(int i=0;i<10;i++){
-                    for(int j=0;j<10-1;j++){
-                        if(_estadistica[i].getPts() > _estadistica[j].getPts()){
-                            aux=_estadistica[i];
-                            _estadistica[i]=_estadistica[j];
-                            _estadistica[j]=aux;
-                        }
-                    }
-                }
+                cout << "asdsad" << endl;
                 
                 pos++;
             }
@@ -33,7 +22,7 @@
         _texmapa.loadFromFile("img/fondoDos.jpg");
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(500,200);
-        _mainMenu= new MainMenu(_pantalla.getWidth(), _pantalla.getHeight());
+        _mainMenu = new MainMenu(_pantalla.getWidth(), _pantalla.getHeight());
         _window = new sf::RenderWindow(sf::VideoMode(_pantalla.getWidth(), _pantalla.getHeight()), "laraga");
         _window->setPosition(Vector2i(200,0));
         _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
@@ -107,7 +96,7 @@
                                         _pantalla.setInicio(_window);
                                         
                                         runJuego();
-                                
+                                               
                             }
                             
                         }
@@ -191,7 +180,8 @@
 
     void Juego::runJuego() {
         
-        deInit();
+        _texmapa.loadFromFile("img/fondoDos.jpg");
+        _spmapa.setTexture(_texmapa);
         _jugador->setName(_pantalla.getName());
         
         while (_window->isOpen())
@@ -465,8 +455,9 @@
                 _pantalla.gameWon(_window, _jugador);
                 if(_pantalla.getBan())
                 {
-                    
-                    _arch.guardar(*_jugador);
+                    _jugo.setName(_jugador->getName());
+                    _jugo.setPts(_jugador->getPts());
+                    _arch.guardar(_jugo);
                     _pantalla.setColumnaI(3);
                     _pantalla.setNivel(1);
                     _pantalla.setNEnemigo(_pantalla.getColumna()*_pantalla.getFila());

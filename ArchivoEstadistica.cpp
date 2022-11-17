@@ -1,10 +1,12 @@
 #include <cstdio>
 #include "ArchivoEstadistica.h"
+
+#include "JugaEsta.h"
 using namespace std;
 
 
 
-bool ArchivoEstadistica::guardar(Jugador jugador)
+bool ArchivoEstadistica::guardar(JugaEsta jugador)
 {
     FILE* pFile;
 
@@ -17,59 +19,25 @@ bool ArchivoEstadistica::guardar(Jugador jugador)
         exit(1552);
     }
 
-   bool ok = fwrite(&jugador, sizeof(jugador), 1, pFile);
+   bool ok = fwrite(&jugador, sizeof(JugaEsta), 1, pFile);
 
     fclose(pFile);
 
     return ok;
 }
 
-int ArchivoEstadistica::generarCodigo()
-{
-    return cantidadJugador() + 1;
-}
 
-int ArchivoEstadistica::cantidadJugador()
-{
-    FILE* pFile;
-    int cantidad = 0;
-    Jugador Jugador;
-
-    pFile = fopen("Jugadores.dat", "rb");
-
-    if (pFile == nullptr) {
-        return 0;
-    }
-
-    fseek(pFile, 0, SEEK_END);
-    cantidad = ftell(pFile) / sizeof(Jugador);
-
-    fclose(pFile);
-
-    return cantidad;
-}
-bool ArchivoEstadistica::leerDeDisco(Jugador jugador,int pos){
-        FILE* p = fopen("Jugadores.dat", "rb+");
+bool ArchivoEstadistica::leerDeDisco(JugaEsta jugador,int pos){
+        FILE* p = fopen("Jugadores.dat", "rb");
         if (p == NULL) {
             return false;
         }
-        fseek(p, pos * sizeof(jugador), SEEK_SET);
-        bool ok = fread(&jugador, sizeof(jugador), 1, p);
+        fseek(p, pos * sizeof(JugaEsta), SEEK_SET);
+        bool ok = fread(&jugador, sizeof(JugaEsta), 1, p);
         fclose(p);
         return ok;
     }
-void ArchivoEstadistica::leerJugador(Jugador Jugadors[], int cantidad)
-{
-    FILE* pFile;
-    pFile = fopen("Jugadores.dat", "rb");
-    if (pFile == nullptr) {
-        return;
-    }
-  
-    fread(Jugadors, sizeof(Jugador), cantidad, pFile);
 
-    fclose(pFile);
-}
 /*bool ArchivoEstadistica::leerDeDisco(Jugador * jugador,int pos){
     FILE *p;
     p=fopen("Jugadores.dat","rb");

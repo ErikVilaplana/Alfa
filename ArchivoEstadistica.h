@@ -2,16 +2,16 @@
 # include<iostream>
 # include<cstring>
 using namespace std;
-#include "Jugador.h"
+#include "JugaEsta.h"
 
 class ArchivoEstadistica
 {
 
 public:
-    bool guardar(Jugador jugador);
+    bool guardar(JugaEsta JugaEsta);
     int generarCodigo();
-    int cantidadJugador();
-    bool leerDeDisco(Jugador jugador,int pos);
-    void leerJugador(Jugador jugador[], int cantidad);
+    int cantidadJugaEsta();
+    bool leerDeDisco(JugaEsta jugador,int pos);
+    void leerJugaEsta(JugaEsta jugador[], int cantidad);
     /*Jugador leerDeDisco(Jugador * jugador,int pos);*/
 };

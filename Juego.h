@@ -12,6 +12,7 @@
 #include "Escena.h"
 #include "Jugador.h"
 #include "Disparo.h"
+#include "JugaEsta.h"
 #include "MainMenu.h"
 using namespace std;
 using namespace sf;
@@ -19,11 +20,11 @@ using namespace sf;
 class Juego 
 {
 private:
-    sf::RenderWindow* _window;
-    MainMenu  * _mainMenu;
+    sf::RenderWindow * _window;
+    MainMenu   * _mainMenu;
     ArchivoEstadistica _arch;
     int  _col=0, _fila=0, _limitY;
-    Jugador  _estadistica[10]{},  reg,aux;
+    
     Escena  _pantalla;
     String   _name;
     Jugador * _jugador;
@@ -34,7 +35,7 @@ private:
     Font * font;
     Texture  _texmapa;
     Sprite  _spmapa;
-
+    JugaEsta _jugo,_estadistica[11]{},  reg,aux;
     
 public:
     Juego();
