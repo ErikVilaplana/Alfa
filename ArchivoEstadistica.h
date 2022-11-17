@@ -8,9 +8,10 @@ class ArchivoEstadistica
 {
 
 public:
-    Jugador guardar(Jugador jugador);
+    bool guardar(Jugador jugador);
     int generarCodigo();
     int cantidadJugador();
+    bool leerDeDisco(Jugador jugador,int pos);
     void leerJugador(Jugador jugador[], int cantidad);
     /*Jugador leerDeDisco(Jugador * jugador,int pos);*/
 };

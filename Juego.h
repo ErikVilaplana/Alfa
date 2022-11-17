@@ -23,7 +23,7 @@ private:
     MainMenu  * _mainMenu;
     ArchivoEstadistica _arch;
     int  _col=0, _fila=0, _limitY;
-    
+    Jugador  _estadistica[10]{},  reg,aux;
     Escena  _pantalla;
     String   _name;
     Jugador * _jugador;

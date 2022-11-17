@@ -2,6 +2,25 @@
 
     Juego::Juego()
     {
+        
+            
+            int pos=0;
+            
+            while(_arch.leerDeDisco(reg,pos)){
+                cout << "asdsadas" << endl;
+                _estadistica[0]=reg;
+                for(int i=0;i<10;i++){
+                    for(int j=0;j<10-1;j++){
+                        if(_estadistica[i].getPts() > _estadistica[j].getPts()){
+                            aux=_estadistica[i];
+                            _estadistica[i]=_estadistica[j];
+                            _estadistica[j]=aux;
+                        }
+                    }
+                }
+                
+                pos++;
+            }
         deInit();
     }
 
@@ -88,9 +107,6 @@
                                         _pantalla.setInicio(_window);
                                         
                                         runJuego();
-                                        
-                                        
-                                   
                                 
                             }
                             
@@ -110,11 +126,8 @@
                                 {   
                                     init();
                                 }
-                         
                                 
                                     getEstadistica();
-                                        
-                                        
                                 
                             }
                             
@@ -485,8 +498,9 @@
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(0,0);
         _window->draw(_spmapa);
-        _pantalla.texto(_window,"Presione Esc para salir",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
-            _window->display();
+        for(int i=0;i<10;i++)
+        _pantalla.texto(_window,"",1,_estadistica[i].getPts(),30,0xFFFF0000FF,600,200+(i*20));
+        _window->display();
     }
     void Juego::getAcercaDe()
     {
@@ -496,7 +510,7 @@
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(0,0);
         _window->draw(_spmapa);
-        _pantalla.texto(_window,"Presione Esc para salir",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
+        _pantalla.texto(_window,"Presione Esc para salir",1,0,30,0xFFFF0000FF,600,640);
 
         
         _window->display();

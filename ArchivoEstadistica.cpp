@@ -4,7 +4,7 @@ using namespace std;
 
 
 
-Jugador ArchivoEstadistica::guardar(Jugador jugador)
+bool ArchivoEstadistica::guardar(Jugador jugador)
 {
     FILE* pFile;
 
@@ -17,11 +17,11 @@ Jugador ArchivoEstadistica::guardar(Jugador jugador)
         exit(1552);
     }
 
-    fwrite(&jugador, sizeof(jugador), 1, pFile);
+   bool ok = fwrite(&jugador, sizeof(jugador), 1, pFile);
 
     fclose(pFile);
 
-    return jugador;
+    return ok;
 }
 
 int ArchivoEstadistica::generarCodigo()
@@ -48,7 +48,16 @@ int ArchivoEstadistica::cantidadJugador()
 
     return cantidad;
 }
-
+bool ArchivoEstadistica::leerDeDisco(Jugador jugador,int pos){
+        FILE* p = fopen("Jugadores.dat", "rb+");
+        if (p == NULL) {
+            return false;
+        }
+        fseek(p, pos * sizeof(jugador), SEEK_SET);
+        bool ok = fread(&jugador, sizeof(jugador), 1, p);
+        fclose(p);
+        return ok;
+    }
 void ArchivoEstadistica::leerJugador(Jugador Jugadors[], int cantidad)
 {
     FILE* pFile;
