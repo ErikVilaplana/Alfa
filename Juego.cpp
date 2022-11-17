@@ -85,8 +85,6 @@
                                 }
                                 
                                    
-                                    if (_aevent.key.code == Keyboard::Enter)
-                                    {
                          
                                         _jugador->setName(_pantalla.getName());
                                         _pantalla.setInicio(_window);
@@ -94,7 +92,7 @@
                                         runJuego();
                                         
                                         
-                                    }
+                                   
                                 
                             }
                             
@@ -110,14 +108,16 @@
                                 {
                                     _window->close();
                                 }
-                                if (_aevent.key.code == Keyboard::Enter)
+                                if (_aevent.key.code == Keyboard::Escape)
                                 {
+                                    init();
+                                }
                          
-                                   if(!a)
+                                
                                     getEstadistica();
                                         
                                         
-                                }
+                                
                             }
                             
         
@@ -137,10 +137,9 @@
                                 {
                                     init();
                                 }
-                                if (_aevent.key.code == Keyboard::Enter)
-                                {
+                                
                                         getAcercaDe();
-                                }
+                                
                                 
                             }
                         }
