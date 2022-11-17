@@ -9,4 +9,27 @@ C:\UTN\JuegoLaboII v0\Alfa\main.cpp(8,37): warning C4244: 'argumento': conversiÃ
           [
               T=unsigned int
           ]
-  JuegoLaboII v0.vcxproj -> C:\UTN\JuegoLaboII v0\Alfa\x64\Debug\JuegoLaboII v0.exe
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(41,32): error C2065: 'Play': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(44,36): error C2065: 'Play': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(47,37): error C2065: 'Play': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(56,41): error C2065: 'Play': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(60,29): error C2065: 'OPTIONS': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(61,29): error C2065: 'ABOUT': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(62,29): error C2065: 'Play': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(63,29): error C2065: 'Play': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(67,32): error C2065: 'OPTIONS': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(70,36): error C2065: 'OPTIONS': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(73,37): error C2065: 'OPTIONS': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(79,41): error C2065: 'OPTIONS': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(83,29): error C2065: 'Play': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(84,29): error C2065: 'OPTIONS': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(85,29): error C2065: 'ABOUT': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(86,29): error C2065: 'OPTIONS': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(91,32): error C2065: 'ABOUT': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(94,36): error C2065: 'ABOUT': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(97,37): error C2065: 'ABOUT': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(103,41): error C2065: 'ABOUT': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(107,29): error C2065: 'Play': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(108,29): error C2065: 'OPTIONS': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(109,29): error C2065: 'ABOUT': identificador no declarado
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(110,29): error C2065: 'ABOUT': identificador no declarado
