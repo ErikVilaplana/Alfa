@@ -108,7 +108,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <UndefinePreprocessorDefinitions></UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,6 +144,7 @@
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +157,7 @@
     <ClInclude Include="GamePlay.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugador.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

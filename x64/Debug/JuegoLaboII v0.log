@@ -1,2 +1,12 @@
 ﻿  main.cpp
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(8,55): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+          with
+          [
+              T=unsigned int
+          ]
+C:\UTN\JuegoLaboII v0\Alfa\main.cpp(8,37): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+          with
+          [
+              T=unsigned int
+          ]
   JuegoLaboII v0.vcxproj -> C:\UTN\JuegoLaboII v0\Alfa\x64\Debug\JuegoLaboII v0.exe
