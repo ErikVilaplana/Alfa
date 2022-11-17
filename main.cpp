@@ -29,9 +29,9 @@ int main()
                     break;
                 }
                 if (event.key.code == Keyboard::Return) {
-                   // RenderWindow Play(VideoMode(1024, 720), "Laraga v2.0");
-                    //RenderWindow OPTIONS(VideoMode(1024, 720), "Opciones");
-                    //RenderWindow ABOUT(VideoMode(1024, 720), "ACERCA DE");
+                   RenderWindow Play(VideoMode(1024, 720), "Laraga v2.0");
+                   RenderWindow OPTIONS(VideoMode(1024, 720), "Opciones");
+                   RenderWindow ABOUT(VideoMode(1024, 720), "ACERCA DE");
 
 
 

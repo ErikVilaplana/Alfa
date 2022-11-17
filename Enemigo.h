@@ -38,7 +38,7 @@ class Enemigo : public Base
     void setY(int Y);
     
     void setShot(bool shot);
-    
+     //asdsa
     void setHit(bool hit);
     bool getShot();
     void setYacu(int Y);
