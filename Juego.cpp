@@ -47,9 +47,7 @@
     }
 
     void Juego::init() {
-        
-     
-
+        bool a=false;
     while (_window->isOpen())
     {
 
@@ -100,11 +98,11 @@
                                 
                             }
                             
-                            
                         }
                     }
                     if (x == 1) {
-                        while (_window->isOpen())
+                        bool a=false;
+                        while (_window->isOpen() && !a)
                         {
                             
                             while (_window->pollEvent(_aevent)) {
@@ -112,16 +110,22 @@
                                 {
                                     _window->close();
                                 }
-                                
+                                if (_aevent.key.code == Keyboard::Enter)
+                                {
+                         
+                                   if(!a)
+                                    getEstadistica();
+                                        
+                                        
+                                }
                             }
                             
-                            _window->clear();
-                            _window->display();
+        
                         }
                     }
                     if (x == 2)
                     {
-                        while (_window->isOpen())
+                        while (_window->isOpen()&&!a)
                         {
                             
                             while (_window->pollEvent(_aevent)) {
@@ -129,11 +133,16 @@
                                 {
                                     _window->close();
                                 }
+                                if (_aevent.key.code == Keyboard::Escape)
+                                {
+                                    init();
+                                }
+                                if (_aevent.key.code == Keyboard::Enter)
+                                {
+                                        getAcercaDe();
+                                }
                                 
                             }
-                            
-                            _window->clear();
-                            _window->display();
                         }
                     }
                     if (x == 3)
@@ -470,4 +479,29 @@
             }
                
     }
+    void Juego::getEstadistica()
+    {
+        _texmapa.loadFromFile("img/acercade.jpeg");
+        _spmapa.setTexture(_texmapa);
+        _spmapa.setPosition(0,0);
+        _window->draw(_spmapa);
+        _pantalla.texto(_window,"Presione Esc para salir",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
+            _window->display();
+    }
+    void Juego::getAcercaDe()
+    {
+        
+                
+        _texmapa.loadFromFile("img/acercade.jpeg");
+        _spmapa.setTexture(_texmapa);
+        _spmapa.setPosition(0,0);
+        _window->draw(_spmapa);
+        _pantalla.texto(_window,"Presione Esc para salir",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
+
+        
+        _window->display();
+        
+
+    }
+
 

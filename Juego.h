@@ -51,6 +51,8 @@ public:
     void setEnemigos();
     void setBoss();
     void fondo();
+    void getEstadistica();
+    void getAcercaDe();
     
 };
 
