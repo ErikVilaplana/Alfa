@@ -47,7 +47,7 @@
     }
 
     void Juego::init() {
-        bool a=false;
+        
     while (_window->isOpen())
     {
 
@@ -77,14 +77,12 @@
                     {
                         while (_window->isOpen())
                         {
-                            _window->clear();    
+                                
                             while (_window->pollEvent(_aevent)) {
                                 if (_aevent.type == Event::Closed)
                                 {
                                     _window->close();
                                 }
-                                
-                                   
                          
                                         _jugador->setName(_pantalla.getName());
                                         _pantalla.setInicio(_window);
@@ -99,8 +97,8 @@
                         }
                     }
                     if (x == 1) {
-                        bool a=false;
-                        while (_window->isOpen() && !a)
+                        
+                        while (_window->isOpen() )
                         {
                             
                             while (_window->pollEvent(_aevent)) {
@@ -109,7 +107,7 @@
                                     _window->close();
                                 }
                                 if (_aevent.key.code == Keyboard::Escape)
-                                {
+                                {   
                                     init();
                                 }
                          
@@ -125,7 +123,7 @@
                     }
                     if (x == 2)
                     {
-                        while (_window->isOpen()&&!a)
+                        while (_window->isOpen())
                         {
                             
                             while (_window->pollEvent(_aevent)) {
@@ -135,10 +133,11 @@
                                 }
                                 if (_aevent.key.code == Keyboard::Escape)
                                 {
+                                    
                                     init();
                                 }
                                 
-                                        getAcercaDe();
+                                getAcercaDe();
                                 
                                 
                             }
@@ -153,6 +152,7 @@
         _window->clear();
         _mainMenu->draw(_window);
         _window->display();
+        _window->clear(Color::Black);
     }
 
 
@@ -177,7 +177,8 @@
     
 
     void Juego::runJuego() {
-
+        
+        deInit();
         _jugador->setName(_pantalla.getName());
         
         while (_window->isOpen())
