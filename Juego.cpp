@@ -83,7 +83,7 @@
                     {
                         while (_window->isOpen())
                         {
-                            _window->clear();    
+                                
                             while (_window->pollEvent(_aevent)) {
                                 if (_aevent.type == Event::Closed)
                                 {
