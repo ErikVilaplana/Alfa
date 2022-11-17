@@ -3,6 +3,7 @@
 Enemigo::Enemigo()
 {
     
+    
 }
 Enemigo::~Enemigo()
 {
@@ -37,10 +38,7 @@ int Enemigo::getW()
 {
     return _w;
 }
-int Enemigo::getStep() 
-{
-    return _step;
-}
+
 void Enemigo::setX(int x)
 {
    _x = x;
@@ -91,6 +89,7 @@ int Enemigo::desplazar()
 {
     return (30 -(this->_y < 300)*25);/// desplaza hacia abajo
 }
+
 void Enemigo::animando(int step, int velocidad)  
 {
     
@@ -98,9 +97,9 @@ void Enemigo::animando(int step, int velocidad)
     
 }
 
-bool Enemigo::colision(Disparo b){
+bool Enemigo::colision(Disparo * b){
     
-    return this->_x+this->_w > b.getX() && this->_x < b.getX()+b.getW() && this->_y + this->_h > b.getY() && this->_y < b.getY()+b.getH();
+    return this->_x+this->_w > b->getX() && this->_x < b->getX()+b->getW() && this->_y + this->_h > b->getY() && this->_y < b->getY()+b->getH();
     
 }
 

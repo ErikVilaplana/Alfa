@@ -8,15 +8,18 @@ using namespace sf;
 class Enemigo : public Base 
 {
     private:
+    // int _tam=3;
+    // Enemigo ** _p;
+    /*int ** matriz = new int*[filas];*/
     
-    bool _hit, _shot, _ban;
+    bool  _shot, _ban;
     
     public:
     
     Enemigo(int wx, int wy, int x, int y, int w, int h, const String iSrc): Base(wx,  wy, x,  y,  w,  h, iSrc){
     
-        _shot=0;
-        _hit=0;
+        _shot=false;
+        
 		
     }
     Enemigo();
@@ -29,13 +32,13 @@ class Enemigo : public Base
     int getY();
     int getH();
     int getW();
-    int getStep();
+    
     
     void setX(int x);
     void setY(int Y);
     
     void setShot(bool shot);
-    
+     //asdsa
     void setHit(bool hit);
     bool getShot();
     void setYacu(int Y);
@@ -46,7 +49,8 @@ class Enemigo : public Base
     
     void movimiento(int step, int vel,int &dir, bool &ban);
     int desplazar();
+    int desplazarBajo();
     void animando(int step, int vel );
-    bool colision(Disparo disp);
+    bool colision(Disparo * disp);
     
 };

@@ -3,14 +3,15 @@
 #include "Base.h"
 #include "Disparo.h"
 
-using namespace sf;
+using namespace sf  ;
 class Jugador : public Base
 {
     private:
-    int  _vidas=3 , _disparo=3,_pts=0, _record=92000, _velocidad=0;
-    
+    int  _vidas=2 , _disparo=3, _velocidad=0,_piv=0, _codigo;
+    float _pts=0;
     bool _hit, _shot;
-
+    String   _name;
+    
     public:
     
     Jugador();
@@ -24,17 +25,28 @@ class Jugador : public Base
     ~Jugador();
     
 
-    void control(RenderWindow &window, int pos, Disparo &disp);
+    void control(RenderWindow *window, int pos, Disparo * disp,Sprite _spmapa);
 
-    int getRecord();
-    int getPts();
+    
+    float getPts();
     int getX();
     int getVidas();
+    bool getHit();
     int getDisparo();
     int getVelocidad();
     
+    /*void setCodigo(int cod);*/
+    
     void setPts(int pts);
     void setVidas(int v);
+    void setVidasDown();
     void setHit(int h);
     void setX(int x);
+    bool colision(Disparo * disp);
+    void setName(String name);
+    String getName();
+    void animando(int step, int vel );
+    /*void guardar();
+    void leer();
+    int getCantArch();*/
 };
