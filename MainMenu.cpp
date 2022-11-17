@@ -43,10 +43,10 @@ MainMenu::~MainMenu()
 
 //Draw MainMenu
 
-void MainMenu::draw(RenderWindow& window){
+void MainMenu::draw(RenderWindow* window){
 
 	for (int i = 0; i < Max_main_menu; ++i) {
-		window.draw(mainMenu[i]);
+		window->draw(mainMenu[i]);
 	}
 }
 

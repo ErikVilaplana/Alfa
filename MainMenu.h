@@ -12,7 +12,7 @@ class MainMenu
 public:
 
 	MainMenu(float width, float height);
-	void draw(RenderWindow& window);
+	void draw(RenderWindow * window);
 	void Moveup();
 	void MoveDown();
 

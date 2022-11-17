@@ -1,5 +1,6 @@
 ﻿#include "Juego.h"
 
+#include "MainMenu.h"
 #include "Menu.h"
 
 
@@ -49,9 +50,111 @@
     }
 
     void Juego::init() {
-        _pantalla.setInicio(_window);
-        _jugador->setName(_pantalla.getName());      
-        runJuego();
+        
+        
+        
+        MainMenu mainMenu(_pantalla.getWidth(), _pantalla.getHeight());
+
+    while (_window->isOpen())
+    {
+        Event event;
+        while (_window->pollEvent(event))
+        {
+            if (event.type == Event::Closed)
+            {
+                _window->close();
+            }
+            if (event.type == Event::KeyReleased)
+            {
+                if (event.key.code == Keyboard::Down)
+                {
+                    mainMenu.MoveDown();
+                    break;
+                }
+                if (event.key.code == Keyboard::Up)
+                {
+                    mainMenu.Moveup();
+                    break;
+                }
+                if (event.key.code == Keyboard::Return) {
+                   /*RenderWindow Play(VideoMode(1024, 720), "Laraga v2.0");
+                   RenderWindow OPTIONS(VideoMode(1024, 720), "Opciones");
+                   RenderWindow ABOUT(VideoMode(1024, 720), "ACERCA DE");*/
+
+
+
+                    int x = mainMenu.MainMenuPressed();
+                    if (x == 0)
+                    {
+                        while (_window->isOpen())
+                        {
+                            Event aevent;
+                            while (_window->pollEvent(aevent)) {
+                                if (aevent.type == Event::Closed)
+                                {
+                                    _window->close();
+                                }
+                                
+                                   
+                                    if (aevent.key.code == Keyboard::Enter)
+                                    {_jugador->setName(_pantalla.getName());
+                                        _pantalla.setInicio(_window);
+                                        
+                                        runJuego();
+                                        
+                                    }
+                                
+                            }
+                            
+                            _window->clear();
+                            _window->display();
+                        }
+                    }
+                    if (x == 1) {
+                        while (_window->isOpen())
+                        {
+                            Event aevent;
+                            while (_window->pollEvent(aevent)) {
+                                if (aevent.type == Event::Closed)
+                                {
+                                    _window->close();
+                                }
+                                
+                            }
+                            
+                            _window->clear();
+                            _window->display();
+                        }
+                    }
+                    if (x == 2)
+                    {
+                        while (_window->isOpen())
+                        {
+                            Event aevent;
+                            while (_window->pollEvent(aevent)) {
+                                if (aevent.type == Event::Closed)
+                                {
+                                    _window->close();
+                                }
+                                
+                            }
+                            
+                            _window->clear();
+                            _window->display();
+                        }
+                    }
+                    if (x == 3)
+                        _window->close();
+                    break;
+                }
+            }
+        }
+        _window->clear();
+        mainMenu.draw(_window);
+        _window->display();
+    }
+
+
         
     }
     
