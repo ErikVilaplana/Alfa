@@ -18,6 +18,7 @@
         _texmapa.loadFromFile("img/fondoDos.jpg");
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(500,200);
+        _mainMenu= new MainMenu(_pantalla.getWidth(), _pantalla.getHeight());
         _window = new sf::RenderWindow(sf::VideoMode(_pantalla.getWidth(), _pantalla.getHeight()), "laraga");
         _window->setPosition(Vector2i(200,0));
         _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
@@ -51,71 +52,67 @@
 
     void Juego::init() {
         
-        
-        
-        MainMenu mainMenu(_pantalla.getWidth(), _pantalla.getHeight());
+     
 
     while (_window->isOpen())
     {
-        Event event;
-        while (_window->pollEvent(event))
+
+        while (_window->pollEvent(_aevent))
         {
-            if (event.type == Event::Closed)
+            if (_aevent.type == Event::Closed)
             {
                 _window->close();
             }
-            if (event.type == Event::KeyReleased)
+            if (_aevent.type == Event::KeyReleased)
             {
-                if (event.key.code == Keyboard::Down)
+                if (_aevent.key.code == Keyboard::Down)
                 {
-                    mainMenu.MoveDown();
+                    _mainMenu->MoveDown();
                     break;
                 }
-                if (event.key.code == Keyboard::Up)
+                if (_aevent.key.code == Keyboard::Up)
                 {
-                    mainMenu.Moveup();
+                    _mainMenu->Moveup();
                     break;
                 }
-                if (event.key.code == Keyboard::Return) {
-                   /*RenderWindow Play(VideoMode(1024, 720), "Laraga v2.0");
-                   RenderWindow OPTIONS(VideoMode(1024, 720), "Opciones");
-                   RenderWindow ABOUT(VideoMode(1024, 720), "ACERCA DE");*/
+                if (_aevent.key.code == Keyboard::Return) {
+                    
 
-
-
-                    int x = mainMenu.MainMenuPressed();
+                    int x = _mainMenu->MainMenuPressed();
                     if (x == 0)
                     {
                         while (_window->isOpen())
                         {
-                            Event aevent;
-                            while (_window->pollEvent(aevent)) {
-                                if (aevent.type == Event::Closed)
+                            _window->clear();    
+                            while (_window->pollEvent(_aevent)) {
+                                if (_aevent.type == Event::Closed)
                                 {
                                     _window->close();
                                 }
                                 
                                    
-                                    if (aevent.key.code == Keyboard::Enter)
-                                    {_jugador->setName(_pantalla.getName());
+                                    if (_aevent.key.code == Keyboard::Enter)
+                                    {
+                         
+                                        _jugador->setName(_pantalla.getName());
                                         _pantalla.setInicio(_window);
                                         
                                         runJuego();
+                                        
                                         
                                     }
                                 
                             }
                             
-                            _window->clear();
-                            _window->display();
+                            
                         }
                     }
                     if (x == 1) {
                         while (_window->isOpen())
                         {
-                            Event aevent;
-                            while (_window->pollEvent(aevent)) {
-                                if (aevent.type == Event::Closed)
+                            
+                            while (_window->pollEvent(_aevent)) {
+                                if (_aevent.type == Event::Closed)
                                 {
                                     _window->close();
                                 }
@@ -130,9 +127,9 @@
                     {
                         while (_window->isOpen())
                         {
-                            Event aevent;
-                            while (_window->pollEvent(aevent)) {
-                                if (aevent.type == Event::Closed)
+                            
+                            while (_window->pollEvent(_aevent)) {
+                                if (_aevent.type == Event::Closed)
                                 {
                                     _window->close();
                                 }
@@ -150,7 +147,7 @@
             }
         }
         _window->clear();
-        mainMenu.draw(_window);
+        _mainMenu->draw(_window);
         _window->display();
     }
 
@@ -176,6 +173,8 @@
     
 
     void Juego::runJuego() {
+
+        _jugador->setName(_pantalla.getName());
         
         while (_window->isOpen())
         {   
@@ -204,6 +203,11 @@
                if (_jugador->getVidas() < 0)
                {
                    _pantalla.gameOver(_window, _jugador);
+                   if(!_pantalla.getBan())
+                   {
+                       crearEnemigo();
+                       init();
+                   }
                }else
                {
                    _pantalla.reset(_jugador);

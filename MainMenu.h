@@ -25,6 +25,7 @@ private:
 	int MainMenuSelected;
 	Font font;
 	Text mainMenu[Max_main_menu];
-
+	Texture  _texmapa;
+	Sprite  _spmapa;
 };
 

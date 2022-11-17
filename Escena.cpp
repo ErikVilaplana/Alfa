@@ -193,13 +193,14 @@ void Escena::gameOver(RenderWindow * window,Jugador * b){
     while(!sair){
         Event e;
         while(window->pollEvent(e)) if(e.type==Event::Closed) exit(0);
-        if(Keyboard::isKeyPressed(Keyboard::Escape)){exit(0);}
+        if(Keyboard::isKeyPressed(Keyboard::Escape)){_ban=false;}
         if(Keyboard::isKeyPressed(Keyboard::Space)) sair = true;
         this->texto(window, "Presione tecla SPACE para Volver a Jugar ",1, 0, 30,0xffffffFF, 420, 600);	
         if(this->_ban)	this->texto(window, "Game Over",1, 0, 130,0xffffffFF, 250, 212);
         else{
             this->texto(window, "LARAGA",1, 0, 130,0xffffffFF, 80, 70);
             this->texto(window, "UTN",1, 0, 130,0xffffffFF, 290, 232);
+            sair=true;
         }
         this->texto(window, "Record",1, 0, 30,0xffffffFF, 460, 442);
         this->texto(window, "",1, 999, 30,0xffffffFF, 490, 510);

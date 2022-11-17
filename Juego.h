@@ -10,6 +10,7 @@
 #include "Escena.h"
 #include "Jugador.h"
 #include "Disparo.h"
+#include "MainMenu.h"
 using namespace std;
 using namespace sf;
 
@@ -17,12 +18,13 @@ class Juego
 {
 private:
     sf::RenderWindow* _window;
+    MainMenu  * _mainMenu;
     int  _col=0, _fila=0, _limitY;
     Menu * _menu;
     Escena  _pantalla;
     String   _name;
     Jugador * _jugador;
-    
+    Event  _aevent;
     Enemigo * _enemigo[8][5],* _boss;
     Base * _escena, * _explosion, *_logo;
     Disparo * _disparoP, * _disparoE1, *_disparoE2,*_bossE1,*_bossE2;
@@ -45,6 +47,7 @@ public:
     void initMenu();
     void setEnemigos();
     void setBoss();
+    void fondo();
     
 };
 
