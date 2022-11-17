@@ -139,13 +139,10 @@
     <ClCompile Include="Disparo.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="Escena.cpp" />
-    <ClCompile Include="Estadistica.cpp" />
-    <ClCompile Include="GamePlay.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArchivoEstadistica.h" />
@@ -153,12 +150,9 @@
     <ClInclude Include="Disparo.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Escena.h" />
-    <ClInclude Include="Estadistica.h" />
-    <ClInclude Include="GamePlay.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="MainMenu.h" />
-    <ClInclude Include="Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

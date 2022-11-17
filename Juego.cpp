@@ -1,9 +1,5 @@
 ﻿#include "Juego.h"
 
-#include "MainMenu.h"
-#include "Menu.h"
-
-
     Juego::Juego()
     {
         deInit();
@@ -52,8 +48,6 @@
 
     void Juego::init() {
         
-     
-
     while (_window->isOpen())
     {
 
@@ -89,10 +83,6 @@
                                 {
                                     _window->close();
                                 }
-                                
-                                   
-                                    if (_aevent.key.code == Keyboard::Enter)
-                                    {
                          
                                         _jugador->setName(_pantalla.getName());
                                         _pantalla.setInicio(_window);
@@ -100,15 +90,15 @@
                                         runJuego();
                                         
                                         
-                                    }
+                                   
                                 
                             }
-                            
                             
                         }
                     }
                     if (x == 1) {
-                        while (_window->isOpen())
+                        
+                        while (_window->isOpen() )
                         {
                             
                             while (_window->pollEvent(_aevent)) {
@@ -116,11 +106,19 @@
                                 {
                                     _window->close();
                                 }
+                                if (_aevent.key.code == Keyboard::Escape)
+                                {   
+                                    init();
+                                }
+                         
+                                
+                                    getEstadistica();
+                                        
+                                        
                                 
                             }
                             
-                            _window->clear();
-                            _window->display();
+        
                         }
                     }
                     if (x == 2)
@@ -133,11 +131,16 @@
                                 {
                                     _window->close();
                                 }
+                                if (_aevent.key.code == Keyboard::Escape)
+                                {
+                                    
+                                    init();
+                                }
+                                
+                                getAcercaDe();
+                                
                                 
                             }
-                            
-                            _window->clear();
-                            _window->display();
                         }
                     }
                     if (x == 3)
@@ -149,6 +152,7 @@
         _window->clear();
         _mainMenu->draw(_window);
         _window->display();
+        _window->clear(Color::Black);
     }
 
 
@@ -173,7 +177,8 @@
     
 
     void Juego::runJuego() {
-
+        
+        deInit();
         _jugador->setName(_pantalla.getName());
         
         while (_window->isOpen())
@@ -447,6 +452,8 @@
                 _pantalla.gameWon(_window, _jugador);
                 if(_pantalla.getBan())
                 {
+                    
+                    _arch.guardar(*_jugador);
                     _pantalla.setColumnaI(3);
                     _pantalla.setNivel(1);
                     _pantalla.setNEnemigo(_pantalla.getColumna()*_pantalla.getFila());
@@ -472,4 +479,29 @@
             }
                
     }
+    void Juego::getEstadistica()
+    {
+        _texmapa.loadFromFile("img/acercade.jpeg");
+        _spmapa.setTexture(_texmapa);
+        _spmapa.setPosition(0,0);
+        _window->draw(_spmapa);
+        _pantalla.texto(_window,"Presione Esc para salir",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
+            _window->display();
+    }
+    void Juego::getAcercaDe()
+    {
+        
+                
+        _texmapa.loadFromFile("img/acercade.jpeg");
+        _spmapa.setTexture(_texmapa);
+        _spmapa.setPosition(0,0);
+        _window->draw(_spmapa);
+        _pantalla.texto(_window,"Presione Esc para salir",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
+
+        
+        _window->display();
+        
+
+    }
+
 

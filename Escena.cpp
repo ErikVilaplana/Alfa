@@ -221,16 +221,16 @@ void Escena::gameWon(RenderWindow * window,Jugador * b){
     bool salir = false;
     /*m1.stop();
     m2.play();*/
-    ArchivoEstadistica arch;
-	/*arch.guardar(* b);*/
+    
     while(!salir){
         Event e;
         while(window->pollEvent(e)) if(e.type==Event::Closed) exit(0);
         if(Keyboard::isKeyPressed(Keyboard::Escape)){exit(0);}
         if(Keyboard::isKeyPressed(Keyboard::Space)) {_ban=true; salir = true;}
         if(Keyboard::isKeyPressed(Keyboard::Enter)) {_ban=false; }
-        this->texto(window, "Presione tecla SPACE para Salir ",1, 0, 30,0xffffffFF, 420, 600);	
-        if(this->_ban)	this->texto(window, "Soldado Has Ganado",1, 0, 130,0xffffffFF, 250, 212);
+        this->texto(window, "Presione tecla SPACE para Salir ",1, 0, 30,0xffffffFF, 420, 600);
+        this->texto(window, "Presione tecla ESC para Salir ",1, 0, 30,0xffffffFF, 420, 600);
+        if(this->_ban)	this->texto(window, "Soldado Has Ganado",1, 0, 50,0xffffffFF, 250, 212);
         else{
             
             this->texto(window, "LARAGA",1, 0, 50,0xffffffFF, 80, 70);
