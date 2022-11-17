@@ -5,8 +5,10 @@
 
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+
+#include "ArchivoEstadistica.h"
 #include "Enemigo.h"
-#include "Menu.h"
+
 #include "Escena.h"
 #include "Jugador.h"
 #include "Disparo.h"
@@ -19,8 +21,9 @@ class Juego
 private:
     sf::RenderWindow* _window;
     MainMenu  * _mainMenu;
+    ArchivoEstadistica _arch;
     int  _col=0, _fila=0, _limitY;
-    Menu * _menu;
+    
     Escena  _pantalla;
     String   _name;
     Jugador * _jugador;

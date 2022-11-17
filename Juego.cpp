@@ -1,9 +1,5 @@
 ﻿#include "Juego.h"
 
-#include "MainMenu.h"
-#include "Menu.h"
-
-
     Juego::Juego()
     {
         deInit();
@@ -447,6 +443,8 @@
                 _pantalla.gameWon(_window, _jugador);
                 if(_pantalla.getBan())
                 {
+                    
+                    _arch.guardar(*_jugador);
                     _pantalla.setColumnaI(3);
                     _pantalla.setNivel(1);
                     _pantalla.setNEnemigo(_pantalla.getColumna()*_pantalla.getFila());
