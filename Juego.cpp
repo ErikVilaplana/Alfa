@@ -41,7 +41,7 @@
         _window->setPosition(Vector2i(200,0));
         _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
         _boss = new Enemigo(0,  0, 0, 0,   184,  164, "img/boss.png");
-         _escena = new Base(  0, 250, 0, 584, 1024, 120, "img/itens.png");
+         _escena = new Base(  0, 250, 0, 584, 1024, 120, "img/HUD2.png");
          /*_logo = new Base(  0, 0, 300, 600, 346, 123, "img/LaraGa.png");*/
         _explosion = new Base(  115, 0, 100, 100, 50, 48, "img/itens.png");
         /*_explosionBoss = new Base(  115, 0, 100, 100, 50, 48, "img/itens.png");*/
@@ -210,12 +210,12 @@
             if(_pantalla.getStepCont() > _pantalla.getVel()) _pantalla.setStep(0);
 
             //estadisticas en pantalla
-            _pantalla.texto(_window,"",1,999,30,0xFFFF0000FF,890,642);
-            _pantalla.texto(_window,"",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
-            _pantalla.texto(_window,"",1,_jugador->getVidas(),30,0xFFFF0000FF,570,580);
-            _pantalla.texto(_window,_jugador->getName(),2,0,30,0xFFFF0000FF,180,586);
-            _pantalla.texto(_window,"",1,_pantalla.getNEnemigo(),30,0xFFFF0000FF,824,588);
-            _pantalla.texto(_window,"",1,_jugador->getVelocidad(),30,0xFFFF0000FF,318,644);
+            _pantalla.texto(_window,"",1, _pantalla.getNivel(),45,0xFFFFBB00FF,170,630);
+            _pantalla.texto(_window,"",1,_jugador->getPts(),50,0xFFFFFFFFFF,500,630);
+            _pantalla.texto(_window,"",1,_jugador->getVidas(),35,0xFFFFCCCCFF,850,660);
+            _pantalla.texto(_window,_jugador->getName(),2,0,30,0xFFFF0000FF,70,610);
+            _pantalla.texto(_window,"",1,_pantalla.getNEnemigo(),35,0xFFFF0000FF,810,635);
+            //_pantalla.texto(_window,"",1,_jugador->getVelocidad(),30,0xFFFF0000FF,318,644);
             
             _window->display();
             if(_jugador->getHit()){
