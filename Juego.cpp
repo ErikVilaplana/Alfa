@@ -2,33 +2,33 @@
 
     Juego::Juego()
     {
-            int pos=0;
-            
-            while(_arch.leerDeDisco(  reg,pos)){
-                
-                _estadistica[pos]=reg;
-                cout << _estadistica[pos].getName() << endl;
-                pos++;
-            }
-            
-            for(int i=0 ; i<10 ;i++){
-                for(int j=0;j<10-1;j++){
-                    if(_estadistica[i].getPts()>_estadistica[j].getPts()){
-                        aux=_estadistica[i];
-                        _estadistica[i]=_estadistica[j];
-                        _estadistica[j]=aux;
-                    }
-                }
-            }
-        
-        
-        
-            
+        ordenaEstadistica();       
         deInit();
     }
 
     Juego::~Juego() {
     
+    }
+    void Juego::ordenaEstadistica()
+    {
+        int pos=0;
+            
+        while(_arch.leerDeDisco(  reg,pos)){
+                
+            _estadistica[pos]=reg;
+            cout << _estadistica[pos].getName() << endl;
+            pos++;
+        }
+            
+        for(int i=0 ; i<10 ;i++){
+            for(int j=0;j<10-1;j++){
+                if(_estadistica[i].getPts()>_estadistica[j].getPts()){
+                    aux=_estadistica[i];
+                    _estadistica[i]=_estadistica[j];
+                    _estadistica[j]=aux;
+                }
+            }
+        }
     }
    
     void Juego::deInit() {
@@ -174,21 +174,7 @@
 
         
     }
-    
 
-    /*void Juego::update() {
-        
-
-    }
-
-    void Juego::draw() {
-        // Clear screen
-     //   _window->clear();
-        // Draw the map
-        //_window->draw(map);
-        // Update the window
-       // _window->display();
-    }*/
 
     
 
@@ -222,11 +208,12 @@
                 
                 // resta vidas
                 _jugador->setVidasDown();
-               if (_jugador->getVidas() < 0)
+               if (_jugador->getVidas() < 1)
                {
                    _pantalla.gameOver(_window, _jugador);
                    if(!_pantalla.getBan())
                    {
+                       _jugador->setPts(0);
                        crearEnemigo();
                        init();
                    }
@@ -478,10 +465,8 @@
                     _pantalla.setNivel(1);
                     _pantalla.setNEnemigo(_pantalla.getColumna()*_pantalla.getFila());
                     crearEnemigo();
+                    ordenaEstadistica();
                     init();
-                }else
-                {
-                    Juego::~Juego();
                 }
             }
 
