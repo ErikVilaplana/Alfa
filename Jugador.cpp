@@ -12,11 +12,11 @@ Jugador::~Jugador()
 {
     
 }
-void  Jugador::setName(String name)
+void  Jugador::setName(const char* name)
 {
-    _name = name;
+    strcpy(_name , name);
 }
-String Jugador::getName()
+const char* Jugador::getName()
 {
     return _name;
 

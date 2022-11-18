@@ -2,6 +2,28 @@
 
     Juego::Juego()
     {
+            int pos=0;
+            
+            while(_arch.leerDeDisco(  reg,pos)){
+                
+                _estadistica[pos]=reg;
+                cout << _estadistica[pos].getName() << endl;
+                pos++;
+            }
+            
+            for(int i=0 ; i<10 ;i++){
+                for(int j=0;j<10-1;j++){
+                    if(_estadistica[i].getPts()>_estadistica[j].getPts()){
+                        aux=_estadistica[i];
+                        _estadistica[i]=_estadistica[j];
+                        _estadistica[j]=aux;
+                    }
+                }
+            }
+        
+        
+        
+            
         deInit();
     }
 
@@ -14,7 +36,7 @@
         _texmapa.loadFromFile("img/fondoDos.jpg");
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(500,200);
-        _mainMenu= new MainMenu(_pantalla.getWidth(), _pantalla.getHeight());
+        _mainMenu = new MainMenu(_pantalla.getWidth(), _pantalla.getHeight());
         _window = new sf::RenderWindow(sf::VideoMode(_pantalla.getWidth(), _pantalla.getHeight()), "laraga");
         _window->setPosition(Vector2i(200,0));
         _jugador = new Jugador(0,  0, 500, 520,   70,  70, "img/Nave.png");
@@ -88,10 +110,7 @@
                                         _pantalla.setInicio(_window);
                                         
                                         runJuego();
-                                        
-                                        
-                                   
-                                
+                                               
                             }
                             
                         }
@@ -110,11 +129,8 @@
                                 {   
                                     init();
                                 }
-                         
                                 
                                     getEstadistica();
-                                        
-                                        
                                 
                             }
                             
@@ -178,7 +194,8 @@
 
     void Juego::runJuego() {
         
-        deInit();
+        _texmapa.loadFromFile("img/fondoDos.jpg");
+        _spmapa.setTexture(_texmapa);
         _jugador->setName(_pantalla.getName());
         
         while (_window->isOpen())
@@ -283,7 +300,7 @@
                             if(_enemigo[i][j]->colision(_disparoP) )
                             {
                                 _pantalla.setNEnemigo(_pantalla.getNEnemigo()-1);
-                                _jugador->setPts(15);
+                                _jugador->setPts(_jugador->getVidas()*(j+15));
                                 _enemigo[i][j]->setHit(true); ///fuera eliminado
                                 _explosion->setX(_enemigo[i][j]->getX());
                                 _explosion->setY(_enemigo[i][j]->getY());
@@ -447,13 +464,16 @@
             if(_pantalla.getNEnemigo()==(_pantalla.getNEnemigo()-9))_pantalla.setVel(20);
             if(_pantalla.getNEnemigo()==(_pantalla.getNEnemigo()-10))_pantalla.setVel(10);
 
+
+        //final BOSS
             if(_pantalla.getNEnemigo()==0)
             {
                 _pantalla.gameWon(_window, _jugador);
                 if(_pantalla.getBan())
                 {
-                    
-                    _arch.guardar(*_jugador);
+                    _jugo.setName(_jugador->getName());
+                    _jugo.setPts(_jugador->getPts());
+                    _arch.guardar(_jugo);
                     _pantalla.setColumnaI(3);
                     _pantalla.setNivel(1);
                     _pantalla.setNEnemigo(_pantalla.getColumna()*_pantalla.getFila());
@@ -484,9 +504,15 @@
         _texmapa.loadFromFile("img/acercade.jpeg");
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(0,0);
+        
         _window->draw(_spmapa);
-        _pantalla.texto(_window,"Presione Esc para salir",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
-            _window->display();
+        _pantalla.texto(_window,"Nombre",0,0,30,0xFFFF0000FF,300,150);
+        _pantalla.texto(_window,"Puntos",0,0,30,0xFFFF0000FF,600,150);
+        for(int i=0;i<10;i++){
+        _pantalla.texto(_window,_estadistica[i].getName(),0,0,30,0xFFFF0000FF,300,200+(i*30));
+        _pantalla.texto(_window,"",0,_estadistica[i].getPts(),30,0xFFFF0000FF,600,200+(i*30));
+        }
+        _window->display();
     }
     void Juego::getAcercaDe()
     {
@@ -496,7 +522,7 @@
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(0,0);
         _window->draw(_spmapa);
-        _pantalla.texto(_window,"Presione Esc para salir",1,_jugador->getPts(),30,0xFFFF0000FF,600,640);
+        _pantalla.texto(_window,"Presione Esc para salir",1,0,30,0xFFFF0000FF,600,640);
 
         
         _window->display();

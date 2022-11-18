@@ -44,7 +44,7 @@ MainMenu::~MainMenu()
 
 //Draw MainMenu
 
-void MainMenu::draw(RenderWindow* window){
+void MainMenu::draw(RenderWindow * window){
 
 	window->draw(_spmapa);
 	for (int i = 0; i < Max_main_menu; ++i) {

@@ -8,10 +8,10 @@
 
 #include "ArchivoEstadistica.h"
 #include "Enemigo.h"
-
 #include "Escena.h"
 #include "Jugador.h"
 #include "Disparo.h"
+#include "JugaEsta.h"
 #include "MainMenu.h"
 using namespace std;
 using namespace sf;
@@ -19,8 +19,8 @@ using namespace sf;
 class Juego 
 {
 private:
-    sf::RenderWindow* _window;
-    MainMenu  * _mainMenu;
+    sf::RenderWindow * _window;
+    MainMenu   * _mainMenu;
     ArchivoEstadistica _arch;
     int  _col=0, _fila=0, _limitY;
     
@@ -34,7 +34,7 @@ private:
     Font * font;
     Texture  _texmapa;
     Sprite  _spmapa;
-
+    JugaEsta  _estadistica[10]={}, _jugo, reg,aux;
     
 public:
     Juego();
