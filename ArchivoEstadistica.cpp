@@ -27,7 +27,8 @@ bool ArchivoEstadistica::guardar(JugaEsta jugador)
 }
 
 
-bool ArchivoEstadistica::leerDeDisco(JugaEsta jugador,int pos){
+bool ArchivoEstadistica::leerDeDisco(JugaEsta  &jugador,int pos){
+        
         FILE* p = fopen("Jugadores.dat", "rb");
         if (p == NULL) {
             return false;

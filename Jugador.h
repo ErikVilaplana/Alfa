@@ -10,7 +10,7 @@ class Jugador : public Base
     int  _vidas=2 , _disparo=3, _velocidad=0,_piv=0, _codigo;
     float _pts=0;
     bool _hit, _shot;
-    String   _name;
+    char _name[20];
     
     public:
     
@@ -43,8 +43,8 @@ class Jugador : public Base
     void setHit(int h);
     void setX(int x);
     bool colision(Disparo * disp);
-    void setName(String name);
-    String getName();
+    void setName(const char* name);
+    const char* getName();
     void animando(int step, int vel );
     /*void guardar();
     void leer();

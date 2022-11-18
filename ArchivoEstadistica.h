@@ -11,7 +11,7 @@ public:
     bool guardar(JugaEsta JugaEsta);
     int generarCodigo();
     int cantidadJugaEsta();
-    bool leerDeDisco(JugaEsta jugador,int pos);
-    void leerJugaEsta(JugaEsta jugador[], int cantidad);
+    bool leerDeDisco(JugaEsta &jugador,int pos);
+    /*void leerJugaEsta(JugaEsta jugador[], int cantidad);*/
     /*Jugador leerDeDisco(Jugador * jugador,int pos);*/
 };

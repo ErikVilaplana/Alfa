@@ -1,11 +1,11 @@
 #include "JugaEsta.h"
-void  JugaEsta::setName(sf::String name)
+void  JugaEsta::setName(const char * name)
 {
-    _name = name;
+   strcpy(_name , name) ;
 }
 
 
-sf::String JugaEsta::getName()
+const char* JugaEsta::getName()
 {
     return _name;
 

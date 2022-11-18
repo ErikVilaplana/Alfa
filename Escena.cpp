@@ -226,8 +226,8 @@ void Escena::gameWon(RenderWindow * window,Jugador * b){
         Event e;
         while(window->pollEvent(e)) if(e.type==Event::Closed) exit(0);
         if(Keyboard::isKeyPressed(Keyboard::Escape)){exit(0);}
-        if(Keyboard::isKeyPressed(Keyboard::Space)) {_ban=true; salir = true;}
-        if(Keyboard::isKeyPressed(Keyboard::Enter)) {_ban=false; }
+        if(Keyboard::isKeyPressed(Keyboard::G)) {_ban=true; salir = true;}
+        if(Keyboard::isKeyPressed(Keyboard::S)) {_ban=false; }
         this->texto(window, "Presione tecla SPACE para Salir ",1, 0, 30,0xffffffFF, 420, 600);
         this->texto(window, "Presione tecla ESC para Salir ",1, 0, 30,0xffffffFF, 420, 600);
         if(this->_ban)	this->texto(window, "Soldado Has Ganado",1, 0, 50,0xffffffFF, 250, 212);
@@ -346,7 +346,17 @@ void Escena::setInicio(RenderWindow* _window)
             if (!input_text.empty())
             {
                 if (event.key.code == Keyboard::Escape) {
-                        _name=input_text;
+                    string s = input_text;
+ 
+                    int n = s.length();
+ 
+                    // declaring character array
+                    
+ 
+                    // copying the contents of the
+                    // string to char array
+                    strcpy(_name, s.c_str());
+                        
                         salir = true;
                 }
             }
@@ -360,11 +370,11 @@ void Escena::setInicio(RenderWindow* _window)
         }
     
 }
-void  Escena::setName(String name)
+void  Escena::setName(const char *  name)
 {
-    _name = name;
+    strcpy(_name , name);
 }
-String Escena::getName()
+const char * Escena::getName()
 {
     return _name;
 

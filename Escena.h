@@ -14,7 +14,8 @@ private:
     int _x2=0, _dir=0, _outsrc=670, _step=0, _vel=45 , _nenemigo=0 , _width=1024, _height=720,
     _nivel=5, _fila=5, _columna=3, _tsort=0, _texp=0 ,_stage=1,_misil;
 
-    string _input_text, _name;
+    string _input_text;
+    char _name[20];
     Clock _reloj;
     Text _text;
     Font _font;
@@ -69,7 +70,7 @@ public:
     void upNivelWin(RenderWindow * window, Jugador * b);
     void setInicio(RenderWindow * window);
     
-    void setName(String name);
-    String getName();
+    void setName(const char * name);
+    const char * getName();
     
 };

@@ -8,7 +8,6 @@
 
 #include "ArchivoEstadistica.h"
 #include "Enemigo.h"
-
 #include "Escena.h"
 #include "Jugador.h"
 #include "Disparo.h"
@@ -35,7 +34,7 @@ private:
     Font * font;
     Texture  _texmapa;
     Sprite  _spmapa;
-    JugaEsta _jugo,_estadistica[11]{},  reg,aux;
+    JugaEsta  _estadistica[10]={}, _jugo, reg,aux;
     
 public:
     Juego();

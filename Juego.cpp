@@ -4,12 +4,26 @@
     {
             int pos=0;
             
-            while(_arch.leerDeDisco(reg,pos)){
-                _estadistica[0]=reg;
-                cout << "asdsad" << endl;
+            while(_arch.leerDeDisco(  reg,pos)){
                 
+                _estadistica[pos]=reg;
+                cout << _estadistica[pos].getName() << endl;
                 pos++;
             }
+            
+            for(int i=0 ; i<10 ;i++){
+                for(int j=0;j<10-1;j++){
+                    if(_estadistica[i].getPts()>_estadistica[j].getPts()){
+                        aux=_estadistica[i];
+                        _estadistica[i]=_estadistica[j];
+                        _estadistica[j]=aux;
+                    }
+                }
+            }
+        
+        
+        
+            
         deInit();
     }
 
@@ -286,7 +300,7 @@
                             if(_enemigo[i][j]->colision(_disparoP) )
                             {
                                 _pantalla.setNEnemigo(_pantalla.getNEnemigo()-1);
-                                _jugador->setPts(15);
+                                _jugador->setPts(_jugador->getVidas()*(j+15));
                                 _enemigo[i][j]->setHit(true); ///fuera eliminado
                                 _explosion->setX(_enemigo[i][j]->getX());
                                 _explosion->setY(_enemigo[i][j]->getY());
@@ -450,6 +464,8 @@
             if(_pantalla.getNEnemigo()==(_pantalla.getNEnemigo()-9))_pantalla.setVel(20);
             if(_pantalla.getNEnemigo()==(_pantalla.getNEnemigo()-10))_pantalla.setVel(10);
 
+
+        //final BOSS
             if(_pantalla.getNEnemigo()==0)
             {
                 _pantalla.gameWon(_window, _jugador);
@@ -488,9 +504,14 @@
         _texmapa.loadFromFile("img/acercade.jpeg");
         _spmapa.setTexture(_texmapa);
         _spmapa.setPosition(0,0);
+        
         _window->draw(_spmapa);
-        for(int i=0;i<10;i++)
-        _pantalla.texto(_window,"",1,_estadistica[i].getPts(),30,0xFFFF0000FF,600,200+(i*20));
+        _pantalla.texto(_window,"Nombre",0,0,30,0xFFFF0000FF,300,150);
+        _pantalla.texto(_window,"Puntos",0,0,30,0xFFFF0000FF,600,150);
+        for(int i=0;i<10;i++){
+        _pantalla.texto(_window,_estadistica[i].getName(),0,0,30,0xFFFF0000FF,300,200+(i*30));
+        _pantalla.texto(_window,"",0,_estadistica[i].getPts(),30,0xFFFF0000FF,600,200+(i*30));
+        }
         _window->display();
     }
     void Juego::getAcercaDe()

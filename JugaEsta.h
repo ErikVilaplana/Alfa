@@ -7,11 +7,10 @@ class JugaEsta
 {
 private:
     float _pts=0;
-
-    sf::String _name="";
+    char _name[20];
 public:
     float getPts();
-    void setName(sf::String name);
+    void setName(const char* name);
     void setPts(int pts);
-    sf::String getName();
+    const char * getName();
 };
