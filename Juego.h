@@ -53,6 +53,7 @@ public:
     void fondo();
     void getEstadistica();
     void getAcercaDe();
+    void ordenaEstadistica();
     
 };
 

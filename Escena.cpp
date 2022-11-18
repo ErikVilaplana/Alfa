@@ -155,30 +155,17 @@ void  Escena::reset( Jugador * b)
     _x2      =  1;
     if(_nenemigo==(_fila*_columna))
         _vel  = 45;	
-    /*disc->y =  0;
-    disc->shot = false;
-    disc->x = outscr;
-    pup->x  = outscr;
-    sh[0]->x= outscr;
-    sh[1]->x= outscr;
-    sh[2]->x= outscr;
-    spUp = 0;*/
     
-    if(b->getVidas()==-1){
+    
+    if(b->getVidas()==0){
         b->setPts(0);
         _stage = 1;
         _misil=0;
         b->setVidas(2);
-        
-        //pw_sh = 1;
-        //s11.play(); 
-        //Timer(50);
     }
     b->setX(490);
     b->setHit(false);
-    //m1.stop();
-    //Timer(100);
-    //m1.play();
+    
 }
 void Escena::dibujar(RenderWindow &window){
     window.draw(_spmapa);
